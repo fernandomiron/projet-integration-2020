@@ -1,15 +1,18 @@
 # Institut des Carrières Commerciales 2019-2020: Projet d'intégration de développement
-This documentaion is based on a linux (Ubuntu 18.04.8 LTS) version.
+This documentaion is based on a linux (Ubuntu 18.04.4 LTS) version.
+
 For Windows or Mac, please refere to the matching documentation.
+
+Creating and developping on a virtual Ubuntu 18.04.4 machine is higly recommanded in order to keep the development environment as simimilar as possibl between the different developpers.
 
 ## Important notes !
 
 - **NEVER PUSH DIRECTLY ON MASTER**
-- **DO NOT FORGET TO MAKE MIGRATIONS AND MIGRATE AFTER EACH FETCH/PULL FROM GITHUB**
 - **ALWAYS UPDATE YOUR BRANCH FROM MASTER**
-- **ALWAYS DOCUMENT YOUR CODE**
+- **DO NOT FORGET TO MAKE MIGRATIONS AND MIGRATE AFTER EACH FETCH/PULL FROM GITHUB**
 - **ENGLISH CODE ONLY**
 - **ALWAYS ADD EXPLICIT MESSAGES TO YOUR COMMITS**
+- **ALWAYS DOCUMENT YOUR CODE**
 
 ## Prerequisites
 
@@ -119,7 +122,10 @@ source env/bin/activate
 
 Your prompt will change to indicate that you are now operating within the virtual environment. It will look something like this `(env)user@host:~/reservations$`.
 
-*Note: You can deactivate the virtualenv by the following command: `deactivate`*
+*Note: You can deactivate the virtualenv by the following command:* 
+```bash
+deactivate
+```
 
 **Important note: Keep in mind that all the requirements must be installed. If you don't run a virtualenv, every requirements will be installed directly on your global environment, which can lead to conflicts if you have other apps running !**
 
@@ -127,11 +133,15 @@ Your prompt will change to indicate that you are now operating within the virtua
 
 Once your virtual environment is active, you can install Django with `pip3`. We will also install the `mysqlclient` package that will allow us to use the database we configured:
 
-`pip3 install django mysqlclient`
+```bash
+pip3 install django mysqlclient
+```
 
 You can now install every requirements indicated in the requirements.txt by the following command, into our virtualenv:
 
-`pip3 install -r requirements.txt`
+```bash
+pip3 install -r requirements.txt
+```
 
 ### Let Django prepare the MySQL database tables
 
@@ -152,7 +162,7 @@ python3 manage.py createsuperuser
 
 You will be asked to select a username, provide an email address, and choose and confirm a password for the account.
 
-*Note: This one can bu unique for you. All the team members mustn't use the same superuser's credentials*
+*Note: This one can be unique for you. All the team members mustn't use the same superuser's credentials*
 
 ### Launch the Django runserver_plus
 
@@ -162,16 +172,27 @@ You can now run the runserver script with the follwing command:
 ./scripts/runserver.sh
 ```
 
-Is the server fails to start, it will be relaunched every 5 secondes by displaying an error message in the terminal.
+If the server fails to start, it will be relaunched every 5 secondes by displaying an error message in the terminal. Keep the server's log attached to the terminal to get the error messages.
+
 Press `Ctrl + C` to kill the server.
 
 The Django dev-server is exposed on the port 8000.
 You can access to it by typing the following address in your web browser: `localhost:8000`
 
+By default, no home page has been created yet but you can access to the admin panel by entering the following url: `localhost:8000/admin/` and entering your superuser's credentials.
+
 ## Tools
 
 ### ipython
 
+It's recommand to use the ipython shell_plus instead of the regular python3 shell. iPython provides a lot of usefull and convenient functions and make the use of the shell more easy.
+
 ```bash
 python3 manage.py shell_plus
+```
+
+If you want to use the original python3 shell, you still can with this command:
+
+```bash
+python3 manage.py shell
 ```
