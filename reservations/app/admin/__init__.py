@@ -1,1 +1,1 @@
-from reservations.app.admin import *
+from app.admin import *

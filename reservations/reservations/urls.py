@@ -20,9 +20,13 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
+from app.views import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/?', admin.site.urls, name="admin"),
+    url(r'^$', views.home, name='home'),  # Test homepage
+    url(r'^app/', include('app.urls')),
 ]
 
 if settings.DEBUG:

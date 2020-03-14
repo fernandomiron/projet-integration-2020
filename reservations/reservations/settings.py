@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
+    'app',  # Project app module
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,9 @@ ROOT_URLCONF = 'reservations.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # Add default template folder
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

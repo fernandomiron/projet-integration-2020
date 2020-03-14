@@ -1,4 +1,6 @@
 # Institut des Carrières Commerciales 2019-2020: Projet d'intégration de développement
+*Author: Bryan M. Ramsamy - March 2020*
+
 This documentaion is based on a linux (Ubuntu 18.04.4 LTS) version.
 
 For Windows or Mac, please refere to the matching documentation.
@@ -16,7 +18,7 @@ Creating and developping on a virtual Ubuntu 18.04.4 machine is higly recommande
 
 ## Prerequisites
 
-This documentation has been provided by: https://www.digitalocean.com/community/tutorials/how-to-use-mysql-or-mariadb-with-your-django-application-on-ubuntu-14-04
+This documentation has been provided by DigitalOcean before being readapted: https://www.digitalocean.com/community/tutorials/how-to-use-mysql-or-mariadb-with-your-django-application-on-ubuntu-14-04
 
 Our first step will be install all of the pieces that we need from the repositories. We will install `pip3`, the Python package manager, in order to install and manage our Python components. We will also install the database software and the associated libraries required to interact with them.
 
