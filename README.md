@@ -81,7 +81,7 @@ CREATE USER pid_admin@localhost IDENTIFIED BY 'PID_2020pass';
 Now, all we need to do is give our database user access rights to the database we created:
 
 ```sql
-GRANT ALL PRIVILEGES ON resevrations.* TO pid_admin@localhost;
+GRANT ALL PRIVILEGES ON reservations.* TO pid_admin@localhost;
 ```
 
 Flush the changes so that they will be available during the current session:
