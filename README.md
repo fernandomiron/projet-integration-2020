@@ -1,4 +1,5 @@
 # Institut des Carrières Commerciales 2019-2020: Projet d'intégration de développement
+
 *Author: Bryan M. Ramsamy - March 2020*
 
 This documentaion is based on a linux (Ubuntu 18.04.4 LTS) version.
@@ -7,7 +8,7 @@ For Windows or Mac, please refere to the matching documentation.
 
 Creating and developping on a virtual Ubuntu 18.04.4 machine is higly recommanded in order to keep the development environment as simimilar as possibl between the different developpers.
 
-## Important notes !
+## IMPORTANT NOTES
 
 - **NEVER PUSH DIRECTLY ON MASTER**
 - **ALWAYS UPDATE YOUR BRANCH FROM MASTER**
@@ -18,7 +19,7 @@ Creating and developping on a virtual Ubuntu 18.04.4 machine is higly recommande
 
 ## Prerequisites
 
-This documentation has been provided by DigitalOcean before being readapted: https://www.digitalocean.com/community/tutorials/how-to-use-mysql-or-mariadb-with-your-django-application-on-ubuntu-14-04
+This documentation has been provided by DigitalOcean before being readapted: <https://www.digitalocean.com/community/tutorials/how-to-use-mysql-or-mariadb-with-your-django-application-on-ubuntu-14-04>
 
 Our first step will be install all of the pieces that we need from the repositories. We will install `pip3`, the Python package manager, in order to install and manage our Python components. We will also install the database software and the associated libraries required to interact with them.
 
@@ -124,7 +125,8 @@ source env/bin/activate
 
 Your prompt will change to indicate that you are now operating within the virtual environment. It will look something like this `(env)user@host:~/reservations$`.
 
-*Note: You can deactivate the virtualenv by the following command:* 
+*Note: You can deactivate the virtualenv by the following command:*
+
 ```bash
 deactivate
 ```
@@ -133,13 +135,9 @@ deactivate
 
 **Important note: You won't be able to run the Django dev-server correctly if you don't activate the virtualenv !**
 
-Once your virtual environment is active, you can install Django with `pip3`. We will also install the `mysqlclient` package that will allow us to use the database we configured:
+Once your virtual environment is active, we can install the requirements with `pip3` in our virtual. `Django` and `mysqlclient` packages are the most required. `Django` will install the framework architecure while `mysqlclient` will allow us to use the database we configured.
 
-```bash
-pip3 install django mysqlclient
-```
-
-You can now install every requirements indicated in the requirements.txt by the following command, into our virtualenv:
+All of them are available with the other required and optional packages in the `requirement.txt` file. `pip3` can read this file and install everything declared in it. If no version is sepcified, python3 will automatically try to get the latest version, which can cause conflicts in some cases:
 
 ```bash
 pip3 install -r requirements.txt
@@ -160,7 +158,9 @@ python3 manage.py migrate
 
 After creating the database structure, we can create an administrative account by typing:
 
+```bash
 python3 manage.py createsuperuser
+```
 
 You will be asked to select a username, provide an email address, and choose and confirm a password for the account.
 
@@ -174,7 +174,7 @@ You can now run the runserver script with the follwing command:
 ./scripts/runserver.sh
 ```
 
-If the server fails to start, it will be relaunched every 5 secondes by displaying an error message in the terminal. Keep the server's log attached to the terminal to get the error messages.
+If the server fails to start, it will be relaunched every 5 seconds by displaying an error message in the terminal. Keep the server's log attached to the terminal to get the error messages.
 
 Press `Ctrl + C` to kill the server.
 
