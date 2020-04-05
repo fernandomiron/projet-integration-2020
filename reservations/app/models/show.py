@@ -1,5 +1,9 @@
 from django.db import models
 
+'''
+show model
+'''
+
 class Show(models.Model):
     slug = models.CharField(unique=True, max_length=60)
     title = models.CharField(max_length=255)
@@ -19,4 +23,4 @@ class Show(models.Model):
             + '\nLocation ID : ' + self.location_id \
             + '\nBookable : ' + self.bookable \
             + '\nPrice : ' + self.price
-                  
+
