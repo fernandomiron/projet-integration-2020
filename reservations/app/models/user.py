@@ -18,5 +18,9 @@ user model
         verbose_name = "User"
 
     def __str__(self):
-        return 'Role ID : ' + self.role_id + '\nLogin : ' + self.login + '\nFirstname : ' + self.firstname + '\nLastname : ' + self.lastname \
-            + '\nEmail : ' + self.email +  '\nLangue : ' + self.langue 
+        return 'Role ID : ' + self.role_id \
+        '\nLogin : ' + self.login \
+        '\nFirstname : ' + self.firstname \
+        '\nLastname : ' + self.lastname \
+        '\nEmail : ' + self.email \ 
+        '\nLangue : ' + self.langue \
