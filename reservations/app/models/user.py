@@ -3,6 +3,7 @@ from django.db import models
 """
 user model
 """
+class User(models.Model):
 
     role_id = models.ForeignKey("Role", on_delete=models.CASCADE)
     login = models.CharField(max_length=30, unique=True)
