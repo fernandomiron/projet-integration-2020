@@ -20,8 +20,9 @@ class User(models.Model):
 
     def __str__(self):
         return 'Role ID : ' + self.role_id \
-        '\nLogin : ' + self.login \
-        '\nFirstname : ' + self.firstname \
-        '\nLastname : ' + self.lastname \
-        '\nEmail : ' + self.email \ 
-        '\nLangue : ' + self.langue \
+        +'\nLogin : ' + self.login \
+        +'\nFirstname : ' + self.firstname \
+        +'\nLastname : ' + self.lastname \
+        +'\nEmail : ' + self.email \
+        +'\nLangue : ' + self.langue
+
