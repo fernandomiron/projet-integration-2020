@@ -1,5 +1,9 @@
 from django.db import models
 
+'''
+location model
+'''
+
 class Location(models.Model):
     slug = models.CharField(unique=True, max_length=60)
     designation = models.CharField(max_length=60)
