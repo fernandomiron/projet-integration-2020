@@ -4,3 +4,5 @@ env/
 # Untrack python-cache-files in main directory
 __pycache__/
 *.pyc
+*.vscode
+*.vs
