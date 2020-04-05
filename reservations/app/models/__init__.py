@@ -4,4 +4,4 @@ from .artist_type import *
 from .type import *
 from .role import *
 from .locality import *
-from .localion import *
+from .location import *
