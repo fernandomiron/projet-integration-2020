@@ -1,1 +1,1 @@
-from app.models import *
+from app.models.artist import *
