@@ -148,7 +148,7 @@ pip3 install -r requirements.txt
 The project-leader should provide you an `.env` file.
 This file contains senssible credentials and MUST NOT be shared on the repository. The file was already added into the `.gitignore` file.
 
-You must put the `.env` file in the `reservation/reservation` directory, alongside the `manage.py` file.
+You must put the `.env` file in the `reservation/reservation` directory, alongside the `settings.py` file.
 
 ### Let Django prepare the MySQL database tables
 

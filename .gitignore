@@ -2,7 +2,7 @@
 env/
 
 # Untrack environment variables
-.env
+reservations/reservations/.env
 
 # Untrack python-cache-files in main directory
 __pycache__/
