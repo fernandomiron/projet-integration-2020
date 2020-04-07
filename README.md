@@ -143,6 +143,13 @@ All of them are available with the other required and optional packages in the `
 pip3 install -r requirements.txt
 ```
 
+### Import manually the environment file
+
+The project-leader should provide you an `.env` file.
+This file contains senssible credentials and MUST NOT be shared on the repository. The file was already added into the `.gitignore` file.
+
+You must put the `.env` file in the `reservation/reservation` directory, alongside the `manage.py` file.
+
 ### Let Django prepare the MySQL database tables
 
 Now that the Django settings are configured, we can migrate our data structures to our database and test out the server.
