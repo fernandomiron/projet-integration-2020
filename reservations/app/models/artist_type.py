@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 class Artist_type(models.Model):
 
@@ -7,12 +6,8 @@ class Artist_type(models.Model):
     type_id = models.ForeignKey("Type", on_delete=models.CASCADE)
 
     class Meta:
-        db_table = "artist_type"
         verbose_name = "Artist_type"
         verbose_name_plural = "Artist_types"
 
     def __str__(self):
-        return 'Artist : ' + self.artist_id + '\nType : ' + self.type_id
-
-    def get_absolute_url(self):
-        return reverse("Artist_type_detail", kwargs={"pk": self.pk})
+        return f'Artist : {self.artist_id}, Type :  {self.type_id}'
