@@ -2,16 +2,16 @@ from django.db import models
 from django.urls import reverse
 
 class Type(models.Model):
+
+    """ Type model definition """
     type = models.CharField(max_length=60)    
 
+    """ Type meta definition """
     class Meta:
-        db_table = "types"
         verbose_name = "Type"
         verbose_name_plural = "Types"
-
+    
+    """ String representation of Type """
     def __str__(self):
-        return self.type
-
-    def get_absolute_url(self):
-        return reverse("Type_detail", kwargs={"pk": self.pk})
+        return f'({self.pk}) {self.type}'
 
