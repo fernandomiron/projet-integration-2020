@@ -1,20 +1,16 @@
 """ artist_type_show """
 
 from django.db import models
-from django.urls import reverse
 
 class Collaboration(models.Model):
-
+    """ Collaboration model definition """
     artist_type_id = models.ForeignKey("Artist_type", on_delete=models.CASCADE)
     show_id = models.ForeignKey("Show", on_delete=models.CASCADE)    
 
+    """ Collaboration meta definition """
     class Meta:
-        db_table = "artist_type_show"
         verbose_name = "Collaboration"
         verbose_name_plural = "Collaborations"
 
     def __str__(self):
-        return 'Artist_type ID : ' + self.artist_type_id + '\nShow ID : ' + self.show_id
-
-    def get_absolute_url(self):
-        return reverse("Collaboration_detail", kwargs={"pk": self.pk})
+        return f'Artist_type ID : {self.artist_type_id}, Show ID : {self.show_id}'
