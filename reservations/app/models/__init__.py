@@ -7,5 +7,4 @@ from .type import *
 from .locality import *
 from .location import *
 from .collaboration import *
-from .user import *
 from .role import *
