@@ -3,6 +3,7 @@ from django.urls import reverse
 
 class Location(models.Model):
 
+    """ Location model definition """
     locality_id = models.ForeignKey("Locality", on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(max_length=60, unique=True)
     designation = models.CharField(max_length=60)
@@ -10,13 +11,11 @@ class Location(models.Model):
     website = models.URLField(max_length=255, null=True)
     phone = models.CharField(max_length=30, null=True)
 
+    """ Location meta definition """
     class Meta:
-        db_table = "locations"
         verbose_name = "Location"
         verbose_name_plural = "Locations"
 
+    """ String representation of Location """
     def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("Location_detail", kwargs={"pk": self.pk})
+        return f'({self.pk}) {self.designation}'
