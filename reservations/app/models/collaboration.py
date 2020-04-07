@@ -12,5 +12,6 @@ class Collaboration(models.Model):
         verbose_name = "Collaboration"
         verbose_name_plural = "Collaborations"
 
+    """ String representation of Collaboration """
     def __str__(self):
-        return f'Artist_type ID : {self.artist_type_id}, Show ID : {self.show_id}'
+        return f'({self.pk}) Artist_type ID : {self.artist_type_id}, Show ID : {self.show_id}'
