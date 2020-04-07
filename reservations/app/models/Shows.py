@@ -10,8 +10,8 @@ class Shows (models.Model) :
     price = models.FloatField()
     description = models.CharField(max_length = 1000)
     created_at = models.DateField()
-    """Location_id ==>foreign Key, comment?"""
-
+    location_id = models.ForeignKey('Locations',on_delete=models.CASCADE)
+    
 
     class Meta:
         """meta for Shows."""
