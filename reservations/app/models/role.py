@@ -1,17 +1,15 @@
 from django.db import models
-from django.urls import reverse
 
 class Role(models.Model):
 
+    """ Role model definition """
     role = models.CharField(max_length=30)
 
+    """ Role meta definition """
     class Meta:
-        db_table = "roles"
         verbose_name = "Role"
         verbose_name_plural = "Roles"
 
+    """ String representation of Role """
     def __str__(self):
-        return self.role
-
-    def get_absolute_url(self):
-        return reverse("Role_detail", kwargs={"pk": self.pk})
+        return f'({self.pk}) {self.role}'
