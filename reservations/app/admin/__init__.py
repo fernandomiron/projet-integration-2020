@@ -4,3 +4,4 @@ from app.admin.types import *
 from app.admin.shows import *
 from app.admin.localities import *
 from app.admin.users import *
+from app.admin.roles import *
