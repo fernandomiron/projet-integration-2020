@@ -5,3 +5,4 @@ from app.models.locality import *
 from app.models.location import *
 from app.models.show import *
 from app.models.collaboration import *
+from app.models.role import *
