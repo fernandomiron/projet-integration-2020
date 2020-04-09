@@ -8,12 +8,7 @@ reservations/reservations/.env
 __pycache__/
 *.pyc
 
-<<<<<<< HEAD
-#vs code
-.vscode/
-=======
 
 # Untrack other non-project related directories
 .vscode/
 .idea/
->>>>>>> d7fdbed1f24724ecdfd4c116444e926a4987f3af
