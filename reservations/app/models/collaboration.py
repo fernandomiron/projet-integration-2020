@@ -1,10 +1,11 @@
 from django.db import models
 from django.urls import reverse
-from app.models.artystType import ArtystType
+from app.models.artistType import ArtistType
+from app.models.show import Show
 
 class Collaboration(models.Model):
     """Collaboration model"""
-    artistTypeId = models.ForeignKey(ArtystType, on_delete = models.CASCADE)
+    artistTypeId = models.ForeignKey(ArtistType, on_delete = models.CASCADE)
     showId = models.ForeignKey(Show,on_delete=models.CASCADE)
     class Meta:
         """ Collaboration meta data"""
