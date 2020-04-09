@@ -3,3 +3,4 @@ from app.admin.artist_type import *
 from app.admin.collaboration import *
 from app.admin.locality import *
 from app.admin.location import *
+from app.admin.role import *
