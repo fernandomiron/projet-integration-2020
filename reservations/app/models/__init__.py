@@ -8,3 +8,4 @@ from .locality import *
 from .location import *
 from .collaboration import *
 from .role import *
+from .user_profile import *
