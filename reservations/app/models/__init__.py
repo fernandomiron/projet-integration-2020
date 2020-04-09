@@ -7,3 +7,4 @@ from app.models.Locations import *
 from app.models.Users import *
 from app.models.Roles import *
 from app.models.Collaborations import *
+from app.models.Artist_type import *

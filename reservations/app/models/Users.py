@@ -4,11 +4,11 @@ class Users (models.Model) :
     """model definition of Users"""
 
     login = models.IntegerField()
-    password = models.CharField(max_length=60)
-    role_id=models.ForeignKey('Roles', on_delete=models.CASCADE)
-    firstname = models.CharField(max_length=60)
-    lastname = models.CharField(max_length=60)
-    email = models.CharField(max_length=255)
+    password = models.CharField(max_length = 60)
+    role_id=models.ForeignKey('Roles', on_delete = models.CASCADE)
+    firstname = models.CharField(max_length = 60)
+    lastname = models.CharField(max_length = 60)
+    email = models.CharField(max_length = 255)
     langue = models.BooleanField()
 
     class Meta:

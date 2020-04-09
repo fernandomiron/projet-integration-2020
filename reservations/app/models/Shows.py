@@ -5,10 +5,10 @@ class Shows (models.Model) :
 
     slug = models.CharField(max_length = 60, unique=True)
     title = models.CharField(max_length = 255)
-    poster_url = models.CharField(max_length =255)
+    poster_url = models.CharField(max_length = 255)
     bookable = models.BooleanField()
     price = models.FloatField()
-    description = models.CharField(max_length = 1000)
+    description = models.CharField(max_length = 500)
     created_at = models.DateField()
     location_id = models.ForeignKey('Locations',on_delete=models.CASCADE)
     

@@ -5,3 +5,4 @@ from app.admin.shows import *
 from app.admin.localities import *
 from app.admin.users import *
 from app.admin.roles import *
+from app.admin.artist_type import *
