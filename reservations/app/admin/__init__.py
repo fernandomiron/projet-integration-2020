@@ -6,3 +6,4 @@ from app.admin.location import *
 from app.admin.show import *
 from app.admin.collaboration import *
 from app.admin.role import *
+from app.admin.user import *
