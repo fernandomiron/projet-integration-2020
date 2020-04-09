@@ -1,4 +1,3 @@
-from app.models import *
 from .artist import *
 from .type import *
 from .artist_type import *
