@@ -3,3 +3,5 @@ from app.models.artistType import *
 from app.models.types import *
 from app.models.locality import *
 from app.models.location import *
+from app.models.show import *
+from app.models.Collaboration import *
