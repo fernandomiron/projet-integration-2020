@@ -6,3 +6,4 @@ from app.models.Localities import *
 from app.models.Locations import *
 from app.models.Users import *
 from app.models.Roles import *
+from app.models.Collaborations import *
