@@ -8,8 +8,8 @@ Creation of the Artist_type model
 on_delete=models.CASCADE to delete referenced objects
 """
 class Artist_type(models.Model):
-    artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
-    type = models.ForeignKey('Type', on_delete=models.CASCADE)
+    artist_id = models.ForeignKey('Artist', on_delete=models.CASCADE)
+    type_id = models.ForeignKey('Type', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'artist_type'
