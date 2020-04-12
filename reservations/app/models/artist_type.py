@@ -13,8 +13,8 @@ class Artist_type(models.Model):
 
     class Meta:
         db_table = 'artist_type'
-        verbose_name = "Artist_type"
-        verbose_name_plural = "Artist_types"
+        verbose_name = "Artist Type"
+        verbose_name_plural = "Artist Types"
 
     def __str__(self):
         return 'Artist : ' + self.artist_id + '\nType : ' + self.type_id
