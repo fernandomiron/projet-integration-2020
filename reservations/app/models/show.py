@@ -17,9 +17,5 @@ class Show(models.Model):
         verbose_name = 'Show'
 
     def __str__(self):
-        return 'Title : ' + self.title \
-            + '\nPoster URL : ' + self.title \
-            + '\nLocation ID : ' + self.location_id \
-            + '\nBookable : ' + self.bookable \
-            + '\nPrice : ' + self.price
+        return f'({self.pk}) {self.title}'
 
