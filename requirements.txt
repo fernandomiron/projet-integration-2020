@@ -1,5 +1,10 @@
 asgiref==3.2.4
+<<<<<<< HEAD
+=======
+Django==3.0.5
+>>>>>>> d7fdbed1f24724ecdfd4c116444e926a4987f3af
 django-debug-toolbar==2.2
+django-environ==0.4.5
 django-extensions==2.2.8
 ipython==7.13.0
 mysqlclient==1.4.6
