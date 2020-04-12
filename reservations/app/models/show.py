@@ -13,7 +13,6 @@ class Show(models.Model):
     price = models.FloatField()
 
     class Meta:
-        db_table = 'shows'
         verbose_name_plural = 'Shows'
         verbose_name = 'Show'
 

@@ -12,7 +12,6 @@ class Artist_type(models.Model):
     type_id = models.ForeignKey('Type', on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'artist_type'
         verbose_name = "Artist Type"
         verbose_name_plural = "Artist Types"
 

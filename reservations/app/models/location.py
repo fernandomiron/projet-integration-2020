@@ -13,7 +13,6 @@ class Location(models.Model):
     phone = models.CharField(max_length=30)
 
     class Meta:
-        db_table = 'locations'
         verbose_name_plural= 'Locations'
         verbose_name = 'Location'
 

@@ -9,7 +9,6 @@ class Locality(models.Model):
     locality = models.CharField(unique=True, max_length=60)
 
     class Meta:
-        db_table = 'localities'
         verbose_name_plural = 'Localities'
         verbose_name = 'Locality'
 

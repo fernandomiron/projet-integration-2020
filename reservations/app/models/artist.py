@@ -8,7 +8,6 @@ class Artist(models.Model):
     lastname = models.CharField(max_length=60)
 
     class Meta:
-        db_table = 'artists'
         verbose_name_plural= 'Artists'
         verbose_name = 'Artist'
 

@@ -11,7 +11,6 @@ class Collaboration(models.Model):
     show_id = models.ForeignKey('Show', on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'artist_type_show'
         verbose_name = 'Collaboration'
         verbose_name_plural = 'Collaborations'
 
