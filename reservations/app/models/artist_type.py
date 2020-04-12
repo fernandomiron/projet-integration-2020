@@ -16,4 +16,4 @@ class Artist_type(models.Model):
         verbose_name_plural = "Artist Types"
 
     def __str__(self):
-        return 'Artist : ' + self.artist_id + '\nType : ' + self.type_id
+        return f'({self.pk}) Artist: {self.artist_id}, Type: {self.type_id}'
