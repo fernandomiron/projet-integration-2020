@@ -15,5 +15,4 @@ class Collaboration(models.Model):
         verbose_name_plural = 'Collaborations'
 
     def __str__(self):
-        return 'Artist_type ID : ' + self.artist_type_id \
-        + '\nShow ID : ' + self.show_id
+        return f'({self.pk}) Artist_type ID : {self.artist_type_id}, Show ID : {self.show_id}'
