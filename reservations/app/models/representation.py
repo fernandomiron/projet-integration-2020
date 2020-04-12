@@ -16,6 +16,4 @@ class Representation(models.Model):
         verbose_name_plural = "Representations"
 
     def __str__(self):
-        return 'Show ID: ' + self.show_id \
-            + '\nWhen : ' + self.when \
-            + '\nLocation : ' + self.location
+        return f'({self.pk}) Show ID : {self.show_id}, When : {self.when} Location ID : {self.location_id}'
