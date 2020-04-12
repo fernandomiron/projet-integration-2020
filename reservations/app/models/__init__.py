@@ -9,3 +9,4 @@ from .show import *
 from .collaboration import *
 from .user_profile import *
 from .representation import *
+from .representation_user import *
