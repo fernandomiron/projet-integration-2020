@@ -12,4 +12,4 @@ class Artist(models.Model):
         verbose_name = 'Artist'
 
     def __str__(self):
-        return self.lastname +' - '+self.firstname
+        return self.firstname +'  '+self.lastname
