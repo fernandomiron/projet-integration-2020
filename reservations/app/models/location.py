@@ -8,7 +8,7 @@ class Location(models.Model):
     slug = models.CharField(unique=True, max_length=60)
     designation = models.CharField(max_length=60)
     address = models.CharField(max_length=255)
-    locality_id = models.ForeignKey('Locality', on_delete=models.SET_NULL, null=True)
+    locality_id = models.ForeignKey('Locality', on_delete=models.CASCADE, null=True, blank=True)
     website = models.CharField(max_length=255)
     phone = models.CharField(max_length=30)
 
