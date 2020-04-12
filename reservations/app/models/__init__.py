@@ -8,3 +8,4 @@ from .location import *
 from .show import *
 from .collaboration import *
 from .user_profile import *
+from .representation import *
