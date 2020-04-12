@@ -17,8 +17,4 @@ class Location(models.Model):
         verbose_name = 'Location'
 
     def __str__(self):
-        return 'Designation: ' + self.designation \
-            + '\nAddress: ' + self.address \
-            + '\nLocality ID: ' + self.locality_id \
-            + '\nWelbsite : ' + self.website \
-            +'\nPhone : ' + self.phone         
+        return self.designation
