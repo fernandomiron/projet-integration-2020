@@ -5,12 +5,12 @@ show model
 '''
 
 class Show(models.Model):
-    slug = models.CharField(unique=True, max_length=60)
+    slug = models.SlugField(unique=True, max_length=60)
     title = models.CharField(max_length=255)
-    poster_url = models.CharField(max_length=255)
+    poster_url = models.URLField(max_length=255)
     location_id = models.ForeignKey('Location', on_delete=models.CASCADE, null=True, blank=True )
-    bookable = models.BooleanField()
-    price=models.FloatField()
+    bookable = models.BooleanField(default=True)
+    price = models.FloatField()
 
     class Meta:
         db_table = 'shows'
