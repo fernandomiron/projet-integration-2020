@@ -8,7 +8,7 @@ class Show(models.Model):
     slug = models.CharField(unique=True, max_length=60)
     title = models.CharField(max_length=255)
     poster_url = models.CharField(max_length=255)
-    location_id = models.ForeignKey('Location',  on_delete=models.CASCADE)
+    location_id = models.ForeignKey('Location', on_delete=models.CASCADE, null=True, blank=True )
     bookable = models.BooleanField()
     price=models.FloatField()
 

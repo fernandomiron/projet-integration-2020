@@ -9,7 +9,7 @@ class Representation(models.Model):
     
     show_id = models.ForeignKey('Show', on_delete=models.CASCADE, null=True, blank=True)
     when = models.DateTimeField()
-    location = models.ForeignKey('Location', on_delete=models.CASCADE, null=True, blank=True)
+    location_id = models.ForeignKey('Location', on_delete=models.CASCADE, null=True, blank=True )
 
     class Meta:
         verbose_name = "Representation"
