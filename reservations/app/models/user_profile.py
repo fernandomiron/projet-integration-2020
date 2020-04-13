@@ -15,8 +15,4 @@ class UserProfile(models.Model):
         verbose_name_plural = 'Users Profiles'
 
     def __str__(self):
-        return 'Firstname : ' + self.firstname \
-            + '\nLastname : ' + self.lastname \
-            + '\nEmail : ' + self.email \
-            + '\nRole ID : ' + self.role_id \
-            + '\nLangue : ' + self.langue 
+        return f'({self.pk}) Profile n° ({self.user.pk}) - {self.user.username}"'
