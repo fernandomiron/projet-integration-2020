@@ -17,4 +17,4 @@ class Artist_type (models.Model):
     def __str__(self) :
         """representation of Artist_type"""
 
-     return "({}) {} {}".format(self.pk, self.artist_id, self.type_id)
+        return "({}) {} {}".format(self.pk, self.artist_id, self.type_id)
