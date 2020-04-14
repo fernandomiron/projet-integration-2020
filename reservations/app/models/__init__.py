@@ -9,3 +9,4 @@ from app.models.Roles import *
 from app.models.Collaborations import *
 from app.models.Artist_type import *
 from app.models.representations import *
+from app.models.representation_user import *

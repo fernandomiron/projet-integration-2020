@@ -8,3 +8,4 @@ from app.admin.roles import *
 from app.admin.artist_type import *
 from app.admin.collaborations import *
 from app.admin.Representations import *
+from app.admin.representation_user import *
