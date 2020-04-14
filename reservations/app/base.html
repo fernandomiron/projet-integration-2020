@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="style.css" />
+   <title>{% block title %} Projet Reservations {% endblock %}</title>
+</head>
+<body>
+<header> Reservations </header>
+    <nav>
+       {% block nav %}
+       <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/">Prochains spectacles</a></li>
+            <li><a href="/">Mon profil</a></li>
+            <li><a href="/">Mes reservations</a></li>
+            <li><a href="/">Administration</a></li>
+       </ul>
+       {% endblock %}
+   </nav>
+   <section id="content">
+       {% block content %}{% endblock %}
+   </section>
+</body>
+</html>
