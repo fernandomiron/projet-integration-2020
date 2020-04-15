@@ -1,9 +1,14 @@
 # Untrack virtualenv-files
 env/
 
+# Untrack environment variables
+reservations/reservations/.env
+
 # Untrack python-cache-files in main directory
 __pycache__/
 *.pyc
-.vscode/settings.json
-reservations/.vscode/settings.json
-reservations/reservations/.env
+
+
+# Untrack other non-project related directories
+.vscode/
+.idea/
