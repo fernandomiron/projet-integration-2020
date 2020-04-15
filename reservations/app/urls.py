@@ -1,12 +1,13 @@
 from django.urls import re_path, include
-from django.conf.urls import url
 
 from .views import views
 
-from app.views import show
+from app.views import views, show
 
 app_name = 'app'
 urlpatterns = [
-    url(r'^$', views.home, name='home'),  # Test homepage
+    re_path(r'^$', views.HomeView.as_view(), name='home'),  # Homepage
+
     re_path(r'^shows-index/$', show.ListView.as_view(), name='shows-list'), # ShowList page
+    re_path(r'^show/(?P<pk>[0-9]+)/$', show.DetailView.as_view(), name='show-detail'), # ShowDetail page
 ]
