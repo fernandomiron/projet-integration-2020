@@ -7,3 +7,4 @@ from app.models.show import *
 from app.models.collaboration import *
 from app.models.role import *
 from app.models.user import *
+from app.models.representation import *
