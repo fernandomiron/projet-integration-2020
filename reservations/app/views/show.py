@@ -24,5 +24,4 @@ class DetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context['title'] = f"show n°{ self.Show.pk }"
         return context
