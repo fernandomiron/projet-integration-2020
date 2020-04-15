@@ -9,3 +9,4 @@ from app.admin.role import *
 from app.admin.user import *
 from app.admin.representation import *
 from app.admin.user_profile import *
+from app.admin.representation_user import *
