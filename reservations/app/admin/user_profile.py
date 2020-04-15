@@ -14,15 +14,12 @@ class UserProfileInline(admin.StackedInline):
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = (UserProfileInline,)
-    list_display = ('username', 'email', 'first_name', 'last_name', 'get_group', 'get_language')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'get_language')
     list_select_related = ('userprofile', )
 
-
-    
-
-    def get_group(self, instance):
+    """ def get_group(self, instance):
         return instance.groups.all()[0].name
-    get_group.short_description = 'Role'
+    get_group.short_description = 'Role' """
 
     def get_language(self, instance):
         return instance.userprofile.langue.upper()
