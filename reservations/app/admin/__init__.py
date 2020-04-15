@@ -8,3 +8,4 @@ from app.admin.collaboration import *
 from app.admin.role import *
 from app.admin.user import *
 from app.admin.representation import *
+from app.admin.user_profile import *
