@@ -6,11 +6,11 @@ class UserProfile(models.Model):
     langue = models.CharField(max_length=2)
 
     class Meta:
-        """Meta definition for UserProfile."""
+        #Meta definition for UserProfile.
 
         verbose_name = 'User\'s profile'
         verbose_name_plural = 'User\'s profiles'
 
     def __str__(self):
-        """Unicode representation of UserProfile."""
-        return f'({self.pk}) Profile n° ({self.user.pk}) - {self.user.username}"'
+        #Unicode representation of UserProfile.
+        return f'({self.pk}) Profile n° ({self.user.pk}) - {self.user.username}'
