@@ -1,16 +1,17 @@
 from django.db import models
 
-class Shows (models.Model) : 
+class Show (models.Model) : 
     """model definition of Shows"""
 
-    slug = models.CharField(max_length = 60, unique=True)
+    
     title = models.CharField(max_length = 255)
-    poster_url = models.CharField(max_length = 255)
-    bookable = models.BooleanField()
+    slug = models.SlugField(max_length = 60, unique=True)
+    
+    description = models.TextField()
+    date_created = models.DateField(auto_now_add=True,null=True,blank=True)
+    poster_url = models.CharField(max_length = 255, null=True,blank=True)
+    bookable = models.BooleanField(default=True)
     price = models.FloatField()
-    description = models.CharField(max_length = 500)
-    created_at = models.DateField()
-    location_id = models.ForeignKey('Locations',on_delete=models.CASCADE)
     
 
     class Meta:

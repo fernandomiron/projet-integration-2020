@@ -1,9 +1,9 @@
 from django.db import models
 
-class Localities (models.Model):
+class locality (models.Model):
     """model definition Localities"""
 
-    postal_code= models.CharField(max_length = 6, unique = True)
+    zipcode= models.CharField(max_length = 6, unique = True)
     locality = models.CharField(max_length = 60, unique = True)
 
     class Meta:
@@ -18,4 +18,4 @@ class Localities (models.Model):
     def __str__(self) :
         """representation of MODELNAME"""
 
-        return "({}) {} {}".format(self.pk, self.postal_code, self.locality)
+        return "({}) {} {}".format(self.pk, self.zipcode, self.locality)

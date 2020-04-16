@@ -1,9 +1,9 @@
 from django.db import models
 
-class Locations (models.Model) : 
+class Location (models.Model) : 
     """model definition of Locations"""
 
-    locality_id = models.ForeignKey('Localities',on_delete=models.CASCADE)
+    locality_id = models.ForeignKey('Locality',on_delete=models.CASCADE)
     slug = models.CharField(max_length = 60, unique=True)
     designation = models.CharField(max_length = 60)
     adress = models.CharField(max_length = 255)

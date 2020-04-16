@@ -1,9 +1,9 @@
 from django.db import models
 
-class Types (models.Model) : 
+class Type(models.Model) : 
     """model definition of types"""
 
-    type = models.CharField(max_length = 60)
+    types = models.CharField(max_length = 60)
 
     class Meta:
         """meta for type."""
@@ -16,4 +16,4 @@ class Types (models.Model) :
     def __str__(self) :
         """representation of MODELNAME"""
 
-        return "({}) {}".format(self.pk, self.type)
+        return "({}) {}".format(self.pk, self.types)
