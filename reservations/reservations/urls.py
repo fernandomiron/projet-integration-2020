@@ -25,7 +25,8 @@ from app.views import views
 
 urlpatterns = [
     url(r'^admin/?', admin.site.urls, name="admin"),
-    url(r'^', include('app.urls')),
+    url(r'^$', views.home, name='home'),  # Test homepage
+    url(r'^app/', include('app.urls')),
 ]
 
 if settings.DEBUG:

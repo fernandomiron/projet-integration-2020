@@ -10,15 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import environ
 import os
-
-
-# Set casting, default value
-env = environ.Env(DEBUG=(bool, False))
-
-# Reading .env file
-environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,8 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '^9u_3#-u^q%v15@1_l*idtao6f8ha6&hlxst2nhua8e6xg-d&7'
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = '^9u_3#-u^q%v15@1_l*idtao6f8ha6&hlxst2nhua8e6xg-d&7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,11 +82,11 @@ WSGI_APPLICATION = 'reservations.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DATABASE_NAME"),
-        'USER': env("DATABASE_USER"),
-        'PASSWORD': env("DATABASE_PASSWORD"),
-        'HOST': env("DATABASE_HOST"),
-        'PORT': env("DATABASE_PORT"),
+        'NAME': 'reservations',
+        'USER': 'pid_admin',
+        'PASSWORD': 'PID_2020pass',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -144,30 +135,3 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-
-# SMTP config
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-
-
-# Cache mode
-
-if DEBUG:
-    CACHES = {
-        'default': {
-            'BACKEND': "django.core.cache.dummy.DummyCache",
-        }
-    }
-else:
-    CACHES = {
-        'default': {
-            'BACKEND': "django.core.cache.LocMemCache",
-            'LOCATION': "projet-integration-2020_cache"
-        }
-    }
