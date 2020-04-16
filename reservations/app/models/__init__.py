@@ -7,3 +7,4 @@ from .location import *
 from .collaboration import *
 from .role import *
 from .user_profile import *
+from .representation import *
