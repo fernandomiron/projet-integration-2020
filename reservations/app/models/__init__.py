@@ -1,5 +1,5 @@
 from .artist import *
-from .type import *
+from .types import *
 from .artist_type import *
 from .show import *
 from .locality import *

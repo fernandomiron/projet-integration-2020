@@ -1,8 +1,22 @@
 from django.db import models
 
-class ArtistType(models.Model):
-    artist_id = models.ForeignKey('Artist', on_delete=models.SET_NULL,null=True)
-    type_id = models.ForeignKey("Type", on_delete=models.SET_NULL,null=True)
+from .artist import Artist
+from .types import Types
+
+
+class ArtistTypes(models.Model):
+    """ Definition of model ArtistTypes"""
+
+    artist_id = models.ForeignKey(Artist, on_delete=models.CASCADE, null=True)
+    types_id = models.ForeignKey(Types, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        """ Behavior of the model Artist Types"""
+
+        verbose_name = "Artist Type"
+        verbose_name_plural = "Artist Types"
 
     def __str__(self):
-        return self.pk + ' artist id = ' + self.artist_id + 'type id = ' + self.type_id
+        """ conversion of Artist Types object to String """
+
+        return self.pk + ' Artist id = ' + self.artist_id + 'type id = ' + self.types_id
