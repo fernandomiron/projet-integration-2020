@@ -7,7 +7,7 @@ class RepresentationUser(models.Model):
     """ Representation_user model definition """
     user = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
     representation = models.ForeignKey("Representation", on_delete=models.CASCADE)
-    places = models.IntegerField(max_length=11)
+    places = models.IntegerField()
     
     """ Representation_user meta definition """
     class Meta:
