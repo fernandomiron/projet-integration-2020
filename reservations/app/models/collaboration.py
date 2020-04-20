@@ -4,8 +4,8 @@ from django.db import models
 
 class Collaboration(models.Model):
     """ Collaboration model definition """
-    artist_type_id = models.ForeignKey("Artist_type", on_delete=models.CASCADE)
-    show_id = models.ForeignKey("Show", on_delete=models.CASCADE)    
+    artist_type = models.ForeignKey("Artist_type", on_delete=models.CASCADE)
+    show = models.ForeignKey("Show", on_delete=models.CASCADE)    
 
     """ Collaboration meta definition """
     class Meta:
