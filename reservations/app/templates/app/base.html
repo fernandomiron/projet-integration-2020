@@ -13,76 +13,28 @@
     <title>{% block title %}Temlpalte{% endblock %}</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <div id="Top-bar" class="container-fluid bg-light">
-        <nav class="navbar navbar-expand-lg navbar-light container">
-            <a class="navbar-brand" href="{% url 'app:home' %}">PID</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link text-primary" href="{% url 'app:home' %}">Accueil<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link text-primary" href="#">Prochains spectacles</a>
-                    </li>
-                        
-                </ul>
-                <ul id='menu-user' class="navbar-nav mr-auto">
-
-                    {% if user.is_authenticated %}
-                        <div class="dropdown">
-                            
-                            <a class="d-flex align-items-center justify-content-center nav-link text-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="d-flex align-items-center">
-                                    {{ user.username.capitalize }}
-                                </div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="d-flex justify-content-center dropdown-item nav-link bg-light text-primary dropdown-link" href="#">Mon Profil</a>
-
-                                {% if perms.app %}
-                                    <a class="d-flex justify-content-center dropdown-item nav-link bg-light text-primary dropdown-link" href="/admin/">Administration</a>
-                                {% endif %}
-
-                                <a class="d-flex justify-content-center dropdown-item nav-link bg-light text-primary dropdown-link" href="#">Mes reservations</a>
-
-                                <a class="d-flex justify-content-center dropdown-item nav-link bg-light text-red dropdown-link" href="#">Se déconnecter</a>
-                            </div>
-                        </div>
-                    {%  else %}
-                        <li class="nav-item d-flex justify-content-center login-link">
-                            <a class="nav-link text-primary" href="#">Se connecter</a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center login-link">
-                            <a class="nav-link text-primary" href="#">S'inscrire</a>
-                        </li>
-                    {% endif %}
-
-                </ul>
-        </nav>
-    </div>
+    
+    {% include "app/include/navigation.html" %}
 
     {% block body %}   
-    <div id="Content-wrapper" class="container mt-3 wrapper flex-grow-1">
-        <div class="row">
-            <article class="col mt-2">
+        <div id="Content-wrapper" class="container mt-3 wrapper flex-grow-1">
+            <div class="row">
+                <article class="col mt-2">
 
-                {% if messages %}
+                    {% if messages %}
 
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
 
-                {% endif %}
+                    {% endif %}
 
-                {% block alert %}<div id="Content" class="bg-light container my-3 p-4">{% block content %}{% endblock %}</div>{% endblock alert %}
-            </article>
+                    {% block alert %}<div id="Content" class="bg-light container my-3 p-4">{% block content %}{% endblock %}</div>{% endblock alert %}
+                </article>
+            </div>
         </div>
-    </div>
     {% endblock body %}
 
     <footer id="Footer" class="container-fluid bg-light text-primary mt-4">
