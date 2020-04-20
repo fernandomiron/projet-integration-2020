@@ -5,8 +5,8 @@ from django.urls import reverse
 class RepresentationUser(models.Model):
 
     """ Representation_user model definition """
-    user_id = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
-    representation_id = models.ForeignKey("Representation", on_delete=models.CASCADE)
+    user = models.ForeignKey("UserProfile", on_delete=models.CASCADE)
+    representation = models.ForeignKey("Representation", on_delete=models.CASCADE)
     places = models.IntegerField()
     
     """ Representation_user meta definition """

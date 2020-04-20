@@ -4,14 +4,13 @@ from datetime import date
 class Show(models.Model):
 
     # Show model definition 
-    location_id = models.ForeignKey("Location", on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(max_length=60, unique=True)
     title = models.CharField(max_length=255)
-    poster_url = models.CharField(max_length=255, null=True)
+    poster_url = models.URLField(max_length=200, null=True)
     bookable = models.BooleanField()
     price = models.FloatField()
     description = models.TextField()
-    created_at = models.DateField(auto_now=False, auto_now_add=False, default=date.today, null=True)
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=False, default=date.today, null=True)
 
     # Show meta definition 
     class Meta:
