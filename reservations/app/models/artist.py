@@ -5,6 +5,7 @@ class Artist(models.Model):
     """ Artist model definition """
     firstname = models.CharField(max_length=60)
     lastname = models.CharField(max_length=60)
+    types = models.ManyToManyField("Type")
 
     """ Artist meta definition """
     class Meta:
