@@ -3,8 +3,8 @@ from django.db import models
 class Artist_type(models.Model):
 
     """ Artist_type model definition """
-    artist_id = models.ForeignKey("Artist", on_delete=models.CASCADE)
-    type_id = models.ForeignKey("Type", on_delete=models.CASCADE)
+    artist = models.ForeignKey("Artist", on_delete=models.CASCADE)
+    type = models.ForeignKey("Type", on_delete=models.CASCADE)
 
     """ Artist_type meta definition """
     class Meta:

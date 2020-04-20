@@ -4,7 +4,7 @@ from django.urls import reverse
 class Location(models.Model):
 
     """ Location model definition """
-    locality_id = models.ForeignKey("Locality", on_delete=models.SET_NULL, null=True)
+    locality = models.ForeignKey("Locality", on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(max_length=60, unique=True)
     designation = models.CharField(max_length=60)
     address = models.CharField(max_length=255, null=True)
