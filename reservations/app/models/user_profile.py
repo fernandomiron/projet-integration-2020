@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     """ UserProfile model """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    role_id = models.ForeignKey('Role', on_delete=models.CASCADE)
     langue = models.CharField(max_length=2)
 
     class Meta:

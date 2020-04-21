@@ -5,6 +5,7 @@ class RepresentationUser(models.Model):
 
     representation_id = models.ForeignKey("Representation", on_delete=models.CASCADE)
     user_id = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    seats = models.IntegerField(default=0)
 
 
     class Meta:
@@ -12,4 +13,4 @@ class RepresentationUser(models.Model):
         verbose_name_plural = "Representation Users"
 
     def __str__(self):
-        return f'({self.pk}) Representation ID: ({self.representation_id})  {self.user_id}'
+        return " {} {} {} {}".format(self.pk, self.representation_id, self.user_id, self.seats)
