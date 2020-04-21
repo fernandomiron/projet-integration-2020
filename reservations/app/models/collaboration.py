@@ -1,7 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from app.models.artistType import ArtistType
-from app.models.show import Show
 
 class Collaboration(models.Model):
     """Collaboration model"""

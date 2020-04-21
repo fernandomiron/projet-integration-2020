@@ -1,6 +1,4 @@
 from django.db import models
-from app.models.artist import Artist
-from app.models.types import Type
 
 class ArtistType(models.Model):
     """ artist type model """
