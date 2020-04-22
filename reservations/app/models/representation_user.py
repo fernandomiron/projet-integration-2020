@@ -9,7 +9,7 @@ class RepresentationUser(models.Model):
 
     representation_id = models.ForeignKey(Representation, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    seat = models.IntegerField(help_text="Number of seats ")
+    seats = models.IntegerField(max_length=11, help_text="Number of seats ")
 
     class Meta:
         """ Behavior of the model Representation """
@@ -20,4 +20,4 @@ class RepresentationUser(models.Model):
     def __str__(self):
         """ Conversion of RepresentationUser object to String """
 
-        return self.seat
+        return "pk: {} seats: {} repre_user {} - {}".format(self.pk, self.seats, self.representation_id,self.user_id)

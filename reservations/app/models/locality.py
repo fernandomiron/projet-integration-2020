@@ -16,5 +16,4 @@ class Locality(models.Model):
     def __str__(self):
         """ Conversion of Locality object to String  """
 
-        return self.locality + ' ' + self.zip_code
-
+        return '{} - {}'.format(self.zip_code, self.locality)

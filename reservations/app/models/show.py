@@ -22,4 +22,4 @@ class Show(models.Model):
     def __str__(self):
         """ Conversion of Show object to String """
 
-        return "(" + self.pk + ") " + self.title
+        return "{} - {}".format(self.pk, self.title)

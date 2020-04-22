@@ -21,4 +21,4 @@ class Location(models.Model):
 
     def __str__(self):
         """ Conversion of Locality object to String """
-        return self.locality_id + 'Slug = ' + self.slug
+        return "{} - {}".format(self.pk, self.designation)

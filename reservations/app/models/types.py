@@ -15,4 +15,4 @@ class Types(models.Model):
     def __str__(self):
         """ conversion of Types object to String """
 
-        return self.types
+        return "pk: {} - type: {}".format(self.pk, self.types)

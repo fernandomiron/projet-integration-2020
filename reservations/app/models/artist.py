@@ -13,7 +13,6 @@ class Artist(models.Model):
         verbose_name = "Artist"
         verbose_name_plural = "Artists"
 
-    @property
     def __str__(self):
         """ conversion of Artist object to String """
 
