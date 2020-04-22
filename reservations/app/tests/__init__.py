@@ -1,1 +1,1 @@
-from reservations.app.tests import *
+from .views import *
