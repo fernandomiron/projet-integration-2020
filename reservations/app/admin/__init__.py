@@ -1,1 +1,1 @@
-from app.admin import *
+from .admin import *
