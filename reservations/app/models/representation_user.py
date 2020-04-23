@@ -9,7 +9,7 @@ class RepresentationUser(models.Model):
 
     representation_id = models.ForeignKey(Representation, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    seats = models.IntegerField(max_length=11, help_text="Number of seats ")
+    seats = models.IntegerField(help_text="Number of seats ")
 
     class Meta:
         """ Behavior of the model Representation """
