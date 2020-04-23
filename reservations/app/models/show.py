@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+import datetime
 
 class Show(models.Model):
 
@@ -10,7 +10,7 @@ class Show(models.Model):
     bookable = models.BooleanField()
     price = models.FloatField()
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now=False, auto_now_add=False, default=date.today, null=True)
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=False, default=datetime.datetime.now, null=True)
 
     # Show meta definition 
     class Meta:
