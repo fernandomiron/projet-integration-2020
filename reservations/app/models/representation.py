@@ -1,4 +1,6 @@
 from django.db import models
+from .show import Show
+from .location import Location
 
 class Representation (models.Model) : 
     """model definition of Representations"""

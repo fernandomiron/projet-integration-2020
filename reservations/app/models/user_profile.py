@@ -5,7 +5,6 @@ class UserProfile (models.Model) :
     """model definition of Users"""
 
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    role=models.ForeignKey('Role',on_delete=models.CASCADE)
     langue=models.CharField(max_length=2)
     
 

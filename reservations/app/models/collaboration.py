@@ -1,4 +1,5 @@
 from django.db import models
+from .artist_type import ArtistTypes
 
 class Collaboration (models.Model):
     """model definition collaborations"""

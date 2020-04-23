@@ -9,7 +9,7 @@ from .views import booking
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
-    url(r'^shows_list',shows_list.shows_list),
-    url(r'^shows/(?P<id_article>.+)', show_detail.show),
-    url(r'^booking',booking.booking)
+    url(r'^shows_list',shows_list.shows_list, name='listeshows'),
+    url(r'^shows/(?P<id_article>.+)', show_detail.show, name='show'),
+    url(r'^booking',booking.booking,name='booking')
 ]

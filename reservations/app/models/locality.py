@@ -1,6 +1,6 @@
 from django.db import models
 
-class locality (models.Model):
+class Locality (models.Model):
     """model definition Localities"""
 
     zipcode= models.CharField(max_length = 6, unique = True)

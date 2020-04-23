@@ -2,7 +2,7 @@ from app.admin import *
 from app.admin.artist import *
 from app.admin.type import *
 from app.admin.show import *
-from app.admin.localities import *
+from app.admin.locality import *
 from app.admin.user_profile import *
 from app.admin.artist_type import *
 from app.admin.collaboration import *

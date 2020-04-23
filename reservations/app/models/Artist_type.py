@@ -1,10 +1,12 @@
 from django.db import models
+from .artist import Artist
+from .type import Type
 
 class ArtistTypes (models.Model):
     """model definition Artist_type"""
 
-    artist= models.ForeignKey('artist',on_delete=models.CASCADE)
-    types = models.ForeignKey('Types',on_delete=models.CASCADE)
+    artist= models.ForeignKey('Artist',on_delete=models.CASCADE)
+    types = models.ForeignKey('Type',on_delete=models.CASCADE)
 
     class Meta:
         """meta for Artist_type."""

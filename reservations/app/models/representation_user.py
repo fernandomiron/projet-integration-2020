@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
+from .representation import Representation
 
 class Representation_user (models.Model):
     """model definition Representation_user"""
 
-    representation = models.ForeignKey('Representations',on_delete=models.CASCADE)
-    user = models.ForeignKey('User',on_delete=models.CASCADE)
-    seats =models.IntegerField(max_length=11)
+    representation = models.ForeignKey('Representation',on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    seats =models.IntegerField()
 
     class Meta:
         """meta for Representations_user."""
