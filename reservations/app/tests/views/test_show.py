@@ -4,12 +4,12 @@ import datetime
 
 from app.models.show import Show 
 
-class TestShowlistViews(TestCase):
+class TestShowListViews(TestCase):
     # Set up non-modified objects used by all test methods
     @classmethod
     def setUpTestData(cls):
-        numbers_of_shows = 15
-        for pk in range(numbers_of_shows):
+        number_of_shows = 15
+        for pk in range(number_of_shows):
             Show.objects.create(
                 slug = f"show-{pk}",
                 title = f"The show n°{pk}",
