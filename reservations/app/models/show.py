@@ -12,6 +12,7 @@ class Show (models.Model) :
     poster_url = models.CharField(max_length = 255, null=True,blank=True)
     bookable = models.BooleanField(default=True)
     price = models.FloatField()
+
     
 
     class Meta:
