@@ -1,0 +1,82 @@
+[
+    {
+        "model": "app.artist_type",
+        "pk": 1,
+        "fields": {
+            "artist_id": 1,
+            "type_id" : 2
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 2,
+        "fields": {
+            "artist_id": 2,
+            "type_id": 2
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 3,
+        "fields": {
+            "artist_id": 3,
+            "type_id": 2
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 4,
+        "fields": {
+            "artist_id": 4,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 5,
+        "fields": {
+            "artist_id": 5,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 6,
+        "fields": {
+            "artist_id": 6,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 7,
+        "fields": {
+            "artist_id": 7,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 8,
+        "fields": {
+            "artist_id": 8,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 9,
+        "fields": {
+            "artist_id": 9,
+            "type_id": 1
+        }
+    },
+    {
+        "model": "app.artist_type",
+        "pk": 10,
+        "fields": {
+            "artist_id": 10,
+            "type_id": 2
+        }
+    }
+]

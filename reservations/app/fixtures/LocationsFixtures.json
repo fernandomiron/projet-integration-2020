@@ -1,0 +1,122 @@
+[
+    {
+        "model": "app.location",
+        "pk": 1,
+        "fields": {
+            "locality_id": 4,
+            "slug": "salle-reine-elisabeth",
+            "designation": "Salle Reine Elisabeth",
+            "address": "Place Reine Astrid 26",
+            "website": "https://www.koninginelisabethzaal.be/fr/",
+            "phone": "+32 3 233 84 44"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 2,
+        "fields": {
+            "locality_id": 4,
+            "slug": "jazzcafe-de-muze",
+            "designation": "Jazzcafe de Muze",
+            "address": "Melkmarkt 10",
+            "website": "https://jazzcafedemuze.be/",
+            "phone": "+32 3 226 01 26"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 3,
+        "fields": {
+            "locality_id": 1,
+            "slug": "theatre-national-de-la-communaute-française",
+            "designation": "Théâtre National de la Communauté Française",
+            "address": "Avenue Emile Jacqmain 111/115",
+            "website": "https://www.theatrenational.be/fr/",
+            "phone": "+32 203 41 55"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 4,
+        "fields": {
+            "locality_id": 1,
+            "slug": "theatre-royal-du-parc",
+            "designation": "Théâtre Royal du Parc",
+            "address": "Rue de la Loi 3",
+            "website": "http://www.theatreduparc.be/",
+            "phone": "+32 505 30 30"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 5,
+        "fields": {
+            "locality_id": 2,
+            "slug": "theatre-de-la-toison-d-or",
+            "designation": "Théâtre de la Toison d'or",
+            "address": "Galeries de la Toison d'Or 396-398",
+            "website": "http://www.ttotheatre.be/",
+            "phone": "+32 510 05 10"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 6,
+        "fields": {
+            "locality_id": 2,
+            "slug": "varia",
+            "designation": "Varia",
+            "address": "Rue du Sceptre 78",
+            "website": "http://www.varia.be/",
+            "phone": "+32 640 82 58"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 7,
+        "fields": {
+            "locality_id": 3,
+            "slug": "theatre-de-namur",
+            "designation": "Théâtre de Namur",
+            "address": "Place du Théâtre 2",
+            "website": "http://www.theatredenamur.be/",
+            "phone": "+32 81 22 60 26"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 8,
+        "fields": {
+            "locality_id": 3,
+            "slug": "theatre-jardin-passion",
+            "designation": "Théâtre Jardin Passion",
+            "address": "Rue Marie-Henriette 39",
+            "website": "http://www.theatrejardinpassion.be/",
+            "phone": "+32 472 96 53 16"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 9,
+        "fields": {
+            "locality_id": 5,
+            "slug": "ancien-palais-de-justice",
+            "designation": "Ancien palais de Justice",
+            "address": "Place Léopold",
+            "website": "http://www.palaisarlon.be/",
+            "phone": "+32 63 23 53 97"
+        }
+    },
+    {
+        "model": "app.location",
+        "pk": 10,
+        "fields": {
+            "locality_id": 5,
+            "slug": "l-entrepot",
+            "designation": "L'Entrepôt",
+            "address": "Rue Zénobe Gramme 2",
+            "website": "http://www.entrepotarlon.be/",
+            "phone": "+32 63 45 60 84"
+        }
+    }
+]

@@ -1,0 +1,183 @@
+[
+    {
+        "model": "app.show",
+        "pk": 1,
+        "fields": {
+            "slug": "pierre-laurent-aimard-brengt-beethoven",
+            "title": "Pierre-Laurent Aimard brengt Beethoven",
+            "poster_url": "https://zupimages.net/up/20/13/zvb0.png",
+            "bookable": true,
+            "price": 18,
+            "description": "‘Beethovens Vierde symfonie is als een slanke Griekse maagd tussen twee Noorse goden’, aldus Robert Schumann. Dat is treﬀend omschreven: terwijl je aan zijn Derde en Vijfde symfonie enig gevoel voor bombast kan toeschrijven, is zijn Vierde symfonie een bijzonder sprankelend en humoristisch werk. Pierre-Laurent Aimard laat met het Vijfde pianoconcerto van Beethoven (met zijn meedogenloos mooie tweede deel) horen dat hoewel zijn gehoor de componist in de steek liet, hij nog tot grootse composities in staat was. Als opener van deze concertavond: de ouverture van Cherubini’s opera Médée, een werk waarover Beethoven – tegen de stroom in – laaiend enthousiast was.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+
+    {
+        "model": "app.show",
+        "pk": 2,
+        "fields": {
+            "slug": "antwerp-symphony-orchestra",
+            "title": "Antwerp Symphony Orchestra",
+            "poster_url": "https://zupimages.net/up/20/13/ha3w.png",
+            "bookable": true,
+            "price": 15,
+            "description": "Guy Cassiers ensceneert het gedicht Tiresias van de Britse spoken word dichteres Kate Tempest. Katelijne Damen neemt de rol van verteller voor haar rekening. Met Katelijne Damen maakte Guy Cassiers enkele seizoenen geleden de voorstelling Orlando naar de roman van Virginia Woolf. Orlando vertelde toen, net als Tiresias nu, het verhaal van een transformatie van man naar vrouw en stelde daarbij vragen naar identiteit. Bij Tiresias gaat dat transformatieproces nog een stap verder: van man over vrouw naar ziener die een inzicht verwerft in de menselijke existentie. Tegenover de stem van de verteller staat de Achtste symfonie van Dmitri Sjostakovitsj, live uitgevoerd door het Antwerp Symphony Orchestra. De muziek van Sjostakovitsj – geschreven tijdens de Tweede Wereldoorlog – zit vol spanningen en vragen over identiteit en toekomst, en spiegelt op die manier de conﬂicten binnen de ﬁguur van Tiresias.\nIn coproductie met Toneelhuis.\nGerealiseerd met de steun van de Tax Shelter van de Belgische Federale Overheid. Casa Kafka Pictures Tax Shelter Empowered by Belfius.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+
+    {
+        "model": "app.show",
+        "pk": 3,
+        "fields": {
+            "slug": "jazz-jam",
+            "title": "JAZZ JAM",
+            "poster_url": "https://zupimages.net/up/20/13/a7ji.jpg",
+            "bookable": true,
+            "price": 0,
+            "description": "Un événement annuel, sans aucun but lucratif, destiné à réunir, après tous les stages d’été et les festivals, ainsi qu’avant la reprise des cours d’académie, tous les musiciens amateurs et professionnels de jazz belges et parfois même étrangers pour le plaisir des spectateurs que vous serez !",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+
+    {
+        "model": "app.show",
+        "pk": 4,
+        "fields": {
+            "slug": "j-abandonne-une-partie-de-moi-que-j-adapte",
+            "title": "J'abandonne une partie de moi que j'adapte",
+            "poster_url": "https://zupimages.net/up/20/13/wrp5.jpg",
+            "bookable": true,
+            "price": 20,
+            "description": "Êtes-vous heureux ? Comment vivez-vous ? Quelle place le travail prend-il dans vos vies aujourd'hui ? Questions brûlantes que vous pose Justine Lequette dans cette première création marquée par le film documentaire tourné par Edgar Morin et Jean Rouch en 1960, 'Chronique d'un été'. Ppremière expérience française de cinéma-vérité, Justine Lequette et ses quatre comédiens en reprennent les questions-clés, adressées à des passants, étudiants, ouvriers, employés, immigrés, dont l'entretien se prolongeait parfois dans un cadre plus intime. Ces questions, qui portent sur le bonheur, la vie, le travail, les utopies etc., ils se les posent aujourd'hui dans une société qui, cinquante-sept ans plus tard, est à la fois restée la même et a beaucoup changé. Mettant les deux époques en perspective, ils insistent, en se nourrissant aussi de séquences documentaires de Pierre Carles, d'extraits de pièces d'Alexandra Badea ainsi que d'écritures de plateau, sur la question du sens que nous donnons à nos vies, dans une esthétique inspirée du réel mais qui toujours développe un point de vue et une dimension ludique. Un projet initié et mis en scène par Justine Lequette Avec Rémi Faure, Benjamin Lichou, Jules Puibaraud, Léa Romagny Production Création Studio Théâtre National Wallonie-Bruxelles Coproduction Group Nabla Le spectacle J'abandonne une partie de moi que j'adapte inclut des extraits de : - La pièce Je te regarde d'Alexandra Badea. - Des textes des films Attention Danger Travail et Volem Rien Foutre al pais réalisés par Pierre Carles, Christophe Coello et Stéphane Goxe. - Des textes et images du film documentaire Chronique d'un été, réalisé par Jean Rouch et Edgar Morin.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+
+    {
+        "model": "app.show",
+        "pk": 5,
+        "fields": {
+            "slug": "discours-a-la-nation",
+            "title": "Discours à la nation",
+            "poster_url": "https://zupimages.net/up/20/13/q7dc.jpg",
+            "bookable": true,
+            "price": 20,
+            "description": "Avec sa langue inimitable, à la poésie sautillante, à l’humour ravageur ; avec sa conscience politique et un véritable amour des « petites gens » ; avec son sens aigu de la musicalité des mots ; avec tout ça, Ascanio Celestini a construit en quelques années une grande œuvre de théâtre.\nEvoquant une nouvelle fois la relation entre la classe dominante et la classe dominée, Celestini renverse ici son point de vue : ce sont à présent les puissants qui parlent.\nAu milieu d’un tas de caissettes en bois, avec férocité et un plaisir ostensible, David Murgia donne vie à ces politiciens ou chefs d’entreprise dont le discours, débarrassé de son vernis de respectabilité, se pare d’un grotesque aussi comique qu’effrayant. La docilité du peuple, la démission des syndicats, le marché globalisé, tout cela est salué par des personnages hilares et dénués du moindre remords",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 6,
+        "fields": {
+            "slug": "going-home",
+            "title": "Going Home",
+            "poster_url": "https://zupimages.net/up/20/13/xcm1.jpg",
+            "bookable": true,
+            "price": 16,
+            "description": "L’histoire commence à Hambourg. Dans un parc et sous la neige. Il y a là un homme noir égaré, avec 5.000 euros à ses pieds. Le braquage a foiré, la police est venue l’arrêter. Tout le monde le regarde. Il se demande ce qu’il fait là. En quelques mots, le décor est planté: l’histoire de 'Michalak l’éthiopien' s’offre à nous.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 7,
+        "fields": {
+            "slug": "cyrano-de-bergerac",
+            "title": "Cyrano de Bergerac",
+            "poster_url": "https://zupimages.net/up/20/13/usqq.jpg",
+            "bookable": true,
+            "price": 30,
+            "description": "Quel bonheur de vous proposer ce chef-d’œuvre immortel ! C’est Bernard Yerlès qui prêtera son nez au rôle-titre, entraînant avec lui une joyeuse équipe de 19 comédiens. Venez découvrir ce spectacle en famille. La langue de Rostand est sublime et notre splendide salle est l’écrin idéal pour la mettre en valeur.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 8,
+        "fields": {
+            "slug": "bibot-distinguee-cirque-royal",
+            "title": "BIBOT DISTINGUÉE – CIRQUE ROYAL",
+            "poster_url": "https://zupimages.net/up/20/13/noi1.png",
+            "bookable": true,
+            "price": 28,
+            "description": "La Jeannie Longo du rire (comme elle se qualifie elle-même) a de quoi filer des complexes à la jeunesse. Drôle, émouvante et d’une inégalée aisance scénique, Laurence Bibot se renouvelle encore avec cette seconde incursion dans l’univers du stand up, après le succès de « Bibot Debout ». Elle est toute seule dans sa catégorie : celle des femmes qui ont un chien fou mais qui n’hésitent pourtant pas à lever la patte sur tout ce qui passe à leur portée. Avec ses manières d’aristo et saillies de chauffeur poids lourd, Laurence Bibot manie avec dextérité l’art consommé du décalage entre l’élégance de l’emballage et la crudité du propos. Irrésistible, comme toujours.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 9,
+        "fields": {
+            "slug": "retours-sur-un-fils-de-notre-temps",
+            "title": "Retours sur un fils de notre temps",
+            "poster_url": "https://zupimages.net/up/20/13/5vig.jpg",
+            "bookable": true,
+            "price": 18,
+            "description": "Des élèves du Collège Saint Hubert, de l’Institut Saint julien Parnasse, de l’Athénée Royal Jean Absil, de l’Athénée Joseph Bracops et de L’autre côté de l’école font « Une proposition politique des fils et des filles de notre temps pour le monde de demain ». Résultat des ateliers menés par le Théâtre de la Chute autour d’Un fils de notre temps qui ont consisté à ce que chaque classe dénonce 3 dysfonctionnements du monde d’aujourd’hui et propose 3 mesures concrètes pour y remédier. Chaque classe a débattu de la thématique et a travaillé collectivement pour faire de cette réflexion un discours qu’un élève délégué par classe donnera au Petit Varia.\nLes élèves délégués se succèderont à la tribune, tels des orateurs. Chaque classe pourra soutenir son candidat par une campagne de promotion (affiches, tracts, slogans, etc.). Il y aura un vote, et un dépouillement sous le contrôle d’assesseurs tirés au hasard, un temps de négociation, et un débriefing général.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 10,
+        "fields": {
+            "slug": "sweet-and-swing",
+            "title": "Sweet and Swing",
+            "poster_url": "https://zupimages.net/up/20/13/514y.png",
+            "bookable": true,
+            "price": 8,
+            "description": "Personnage rare et décalé, rempli d’humour, de poésie, de fantaisie, Mlle Lily rentre chez elle les bras chargés de trésors glanés au dehors. Méticuleuse, un peu rétro, elle berce son quotidien de chants puisés dans le répertoire jazz et se construit un monde féérique. Mais les objets qui l’entourent en ont décidé autrement…",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 11,
+        "fields": {
+            "slug": "antoine-hénaut",
+            "title": "Antoine Hénaut",
+            "poster_url": "https://zupimages.net/up/20/13/ng6m.jpg",
+            "bookable": true,
+            "price": 8,
+            "description": "Après un passé de jongleur, le voilà sur les planches, accompagné de ses comparses musiciens. Antoine Hénaut nous emmène aux sons doux et enivrants dans un répertoire de chansons françaises. Paroles subtiles et drôles, il aborde les thèmes du quotidien, sans épargner personne, attirant dès les premières paroles la sympathie du public.",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 12,
+        "fields": {
+            "slug": "dena",
+            "title": "D E N A",
+            "poster_url": "https://zupimages.net/up/20/13/4lpy.jpg",
+            "bookable": true,
+            "price": 12,
+            "description": "Cette Bruxelloise aux origines iraniennes a commencé l'humour, il y a trois ans. Elle se fraye un chemin en plusieurs langues et participe à des plateaux d'humour dans toute la Belgique !\nD E N A s'est immédiatement faite remarquer grâce à ses anecdotes personnelles et ses observations frappantes. Elle fait du stand-up, entremêlé de personnages. Sa famille, ses origines, ses relations, son travail et sa vie hors du commun infusent ses sketchs. Un sens de l'humour énorme qui vous fera exploser de rire !",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "app.show",
+        "pk": 13,
+        "fields": {
+            "slug": "sons-of-disaster",
+            "title": "SONS OF DISASTER",
+            "poster_url": "https://zupimages.net/up/20/13/hjgh.jpeg",
+            "bookable": true,
+            "price": 12,
+            "description": "C'est en 2010 qu'à « Bxhell Rock City » s'est formé Sons Of Disaster, du « High Octane Rock'n'roll » dopé aux riffs surpuissants accompagnés de percussions tonitruantes, de lignes de basses impardonnables et des textes d'une fluidité limpide aux relents de vieux bourbon, dans la plus pure lignée de la tradition Rock'N'Roll. C'est donc sous cette appellation que Greg, Gilles, Selim, Yoni et JT ont décidé de s'affirmer dans l'histoire du Rock. Ils vivent chacun de leurs concerts comme si c'était leur dernier. Qu'il y ait 10 ou 1000 personnes, les Sons of Disaster donnent tout ce qu'ils ont dans le ventre pour transmettre au maximum, l'énergie de leurs morceaux !",
+            "created_at": "2020-06-16T17:41:28+00:00"
+        }
+    }
+
+
+
+
+
+
+
+    
+]

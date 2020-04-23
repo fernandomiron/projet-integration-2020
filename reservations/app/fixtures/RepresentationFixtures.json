@@ -1,0 +1,57 @@
+[
+    {
+        "model": "app.representation",
+        "pk": 1,
+        "fields": {
+            "show": 1,
+            "when": "",
+            "location": 2,
+            "total_seats": 400,
+            "available_seats" : 300
+        }
+    },
+    {
+        "model": "app.representation",
+        "pk": 2,
+        "fields": {
+            "show": 2,
+            "when": "",
+            "location": 1,
+            "total_seats": 300,
+            "available_seats": 100
+        }
+    },
+    {
+        "model": "app.representation",
+        "pk": 3,
+        "fields": {
+            "show": 3,
+            "when": "",
+            "location": 3,
+            "total_seats": 600,
+            "available_seats": 550
+        }
+    },
+    {
+        "model": "app.representation",
+        "pk": 4,
+        "fields": {
+            "show": 4,
+            "when": "",
+            "location": 4,
+            "total_seats": 300,
+            "available_seats": 10
+        }
+    },
+    {
+        "model": "app.representation",
+        "pk": 5,
+        "fields": {
+            "show": 5,
+            "when": "",
+            "location": 5,
+            "total_seats": 3000,
+            "available_seats": 1300
+        }
+    }
+]
