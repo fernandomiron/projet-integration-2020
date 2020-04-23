@@ -1,9 +1,10 @@
 from django.conf.urls import url
 from django.urls import path
+from django.shortcuts import render
 
 
 from .views import views
-from .views import shows_list
+"""from app.views import shows_list"""
 from .views import show_detail
 from .views import booking
 

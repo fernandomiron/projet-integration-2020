@@ -7,16 +7,18 @@
 <!-- Add additional CSS in static file -->
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<title>{ % block title %}  {% endblock title%}</title>
 </head>
 <body>
     Page test
 <div class="container-fluid">
+    <header>{block header %} {%endblock header%} </header>
   <div class="row">
     <div class="col-sm-2">
         {% block sidebar %}
          <ul class="sidebar-nav">
-             <li><a href="">Tous les spectacles</a></li>
-             <li><a href="">Tous les artistes</a></li>
+             <li><a href="listeshows">Tous les spectacles</a></li>
+             <li><a href="show">Un show particulier</a></li>
          </ul>
         {% endblock sidebar %}
     </div>
