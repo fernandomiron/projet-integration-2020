@@ -20,9 +20,9 @@
     <div class="row ml-2">
         <div class="col">
             <p>{{ show.description }}</p>
-            <p>{{ show.bookable }}</p>
-            <p>{{ show.price }}</p>
-            <p>{{ show.created_at }}</p>
+            <p>Reservation disponible : {% if show.bookable %} Oui {% else %} Non {% endif%} </p>
+            <p>Prix : {{ show.price }}€</p>
+            <p>Date de création : {{ show.created_at }}</p>
         </div>
     </div>
 

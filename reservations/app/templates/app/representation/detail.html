@@ -1,0 +1,45 @@
+{% extends "app/base.html" %}
+
+{% block title %}{{ representation.show.title }}{% endblock title %}
+
+{% block content %}
+    <div class="row ml-2">
+        <div class="col">
+            <h1>{{ representation.show.title }}</h1>
+        </div>
+    </div>
+
+    <div class="row ml-2">
+        <div class="col">
+            <div class="img-wrapper">
+                <img href='{{ representation.show.poster_url }}'>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-2">
+        <div class="col">
+            <h2>Informations</h2>
+            <p>Date : {{ representation.when }}</p>
+            <p>Lieu : {{ representation.location.desigantion }} {{ representation.location.locality.zipcode }} {{ representation.location.locality.locality }}</p>
+            <p>Prix : {{ representation.show.price }}€</p>
+            <p>{{ representation.created_at }}</p>
+        </div>
+    </div>
+
+    <div class="row ml-2">
+        <div class="col">
+            <a class="btn btn-primary" href={% url 'app:home' %}>Réserver</a>
+        </div>
+    </div>
+
+    <div class="row ml-2 mt-4">
+        <div class="col">
+            <p class="">
+                <a class="btn btn-secondary" href={% url 'app:home' %}>Retour</a>
+            </p>
+        </div>
+        
+    </div>
+    
+{% endblock content %}

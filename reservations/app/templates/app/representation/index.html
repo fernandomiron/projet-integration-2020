@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <ul>
+    {% for representation in representations %}
+        <li><a href="{% url 'app:representation-detail' representation.pk %}">{{ representation.show.title}}</a></li>
+    {% endfor %}
+    </ul>
+        
+    {% include "app/include/pagination.html" %}
+
+{% endblock content %}
