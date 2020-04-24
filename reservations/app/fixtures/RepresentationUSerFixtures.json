@@ -1,0 +1,20 @@
+[
+    {
+        "model": "app.representation_user",
+        "pk": 1,
+        "fields": {
+            "representation": 1,
+            "user" : 1,
+            "places" : 2
+        }
+    },
+    {
+        "model": "app.representation_user",
+        "pk": 1,
+        "fields": {
+            "representation": 1,
+            "user": 1,
+            "places": 2
+        }
+    },
+]

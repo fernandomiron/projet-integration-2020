@@ -1,0 +1,106 @@
+[
+    {
+        "model": "app.collaboration",
+        "pk": 1,
+        "fields": {
+            "artist_type_id": 1,
+            "show_id": 1
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 2,
+        "fields": {
+            "artist_type_id": 2,
+            "show_id": 2
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 3,
+        "fields": {
+            "artist_type_id": 3,
+            "show_id": 3
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 4,
+        "fields": {
+            "artist_type_id": 4,
+            "show_id": 4
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 5,
+        "fields": {
+            "artist_type_id": 5,
+            "show_id": 5
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 6,
+        "fields": {
+            "artist_type_id": 6,
+            "show_id": 6
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 7,
+        "fields": {
+            "artist_type_id": 7,
+            "show_id": 7
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 8,
+        "fields": {
+            "artist_type_id": 8,
+            "show_id": 8
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 9,
+        "fields": {
+            "artist_type_id": 9,
+            "show_id": 9
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 10,
+        "fields": {
+            "artist_type_id": 4,
+            "show_id": 10
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 11,
+        "fields": {
+            "artist_type_id": 10,
+            "show_id": 11
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 12,
+        "fields": {
+            "artist_type_id": 8,
+            "show_id": 12
+        }
+    },
+    {
+        "model": "app.collaboration",
+        "pk": 13,
+        "fields": {
+            "artist_type_id": 3,
+            "show_id": 13
+        }
+    }
+]
