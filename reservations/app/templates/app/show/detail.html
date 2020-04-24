@@ -3,22 +3,22 @@
 {% block title %}{{ show.title }}{% endblock title %}
 
 {% block content %}
-    <div class="row ml-2">
+    <div class="row ml-2 detail-title">
         <div class="col">
             <h1>{{ show.title }}</h1>
         </div>
     </div>
 
     <div class="row ml-2">
-        <div class="col">
+        <div class="col detail-img">
             <div class="img-wrapper">
-                <img href='{{ show.poster_url }}'>
+                <img src='{{ show.poster_url }}'>
             </div>
         </div>
     </div>
 
     <div class="row ml-2">
-        <div class="col">
+        <div class="col detail-content">
             <p>{{ show.description }}</p>
             <p>Reservation disponible : {% if show.bookable %} Oui {% else %} Non {% endif%} </p>
             <p>Prix : {{ show.price }}€</p>
@@ -26,7 +26,9 @@
         </div>
     </div>
 
-    <p class="mt-4 ml-2">
-        <a class="btn btn-secondary" href={% url 'app:shows-list' %}>Retour</a>
-    </p>
+    <div class='row mt-4 ml-2'>
+        <div class='col'>
+            <a class="btn btn-secondary" href={% url 'app:shows-list' %}>Retour</a>
+        </div>
+    </div>
 {% endblock content %}

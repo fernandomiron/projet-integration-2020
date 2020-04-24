@@ -39,3 +39,25 @@ img.profile-img{
 .text-red{
     color:#8c0000db!important;
 }
+
+.detail-img .img-wrapper{
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.detail-img img{
+    width: 100%;
+    margin: 20px 0;
+    object-fit: cover;
+    object-position: top;
+    height: 400px;
+}
+
+.detail-title h1{
+    text-align: center;
+}
+
+.detail-content p{
+    text-align: justify;
+}
