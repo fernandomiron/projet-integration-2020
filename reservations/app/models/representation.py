@@ -5,7 +5,7 @@ class Representation(models.Model):
 
     """ Representation model definition """
     show = models.ForeignKey("Show", on_delete=models.CASCADE)
-    when = models.DateField(auto_now=False, auto_now_add=False)
+    when = models.DateTimeField(auto_now=False, auto_now_add=False)
     location = models.ForeignKey("Location", on_delete=models.CASCADE)
     users = models.ManyToManyField("UserProfile", through='RepresentationUser')
     
