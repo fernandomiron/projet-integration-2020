@@ -40,7 +40,7 @@ img.profile-img{
     color:#8c0000db!important;
 }
 
-.detail-img .img-wrapper{
+.detail-img i.mg-wrapper{
     width: 100%;
     margin: 0 auto;
 
@@ -54,10 +54,29 @@ img.profile-img{
     height: 400px;
 }
 
-.detail-title h1{
+.title h1{
     text-align: center;
 }
 
 .detail-content p{
     text-align: justify;
+}
+
+.list-items .img-wrapper{
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.list-items img{
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    height: 200px;
+    transition: .3s ease-in-out;
+}
+
+.list-items img:hover{
+    transform: scale(1.1);
+    transition: .3s ease-in-out;
 }
