@@ -1,0 +1,15 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+    <section class="content">
+
+      {% for un_show in dico %}
+          <h2>Titre : {{un_show.title}}</h2>
+          <img src="{{ un_show.poster_url }}">
+          <h2>Prix: {{un_show.price}}</h2>
+          <a href="#">{{ un_show.bookable }}</a>
+      {% endfor %}
+    </section>
+
+{% endblock content %}
