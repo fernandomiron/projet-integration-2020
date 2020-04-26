@@ -10,4 +10,18 @@
             <h2><a href="{% url 'app:shows-list' %}">Liste des shows</a></h2>
         </div>
     <div>
+    <div class="row">
+        <div class="col">
+            {% for show in shows %}
+                
+                <div class="col-4 my-2 item">
+                    <div class="my-2 img-wrapper">
+                        <a href="{% url 'app:show-detail' show.pk %}"><img src='{{ show.poster_url }}'></a>
+                    </div>
+                    <a href="{% url 'app:show-detail' show.pk %}">{{ show.title}}</a>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}
