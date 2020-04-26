@@ -1,11 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import HttpResponse
-from app.models import *
+from django.views.generic import ListView, DetailView
 
-def shows_list(request):
+from app.models import Show
 
-    """Shows all the shows"""
+# Show ListView Class definitio
+class Listshows(ListView):
+    """explication"""
+    model = Show
+    template_name = 'app/shows/shows_list.html'
+    context_object_name = 'shows'
+    paginate_by = 10
 
-    list_show = Show.object.all()
-    context = {list_show : list_show}
-    render (request,'app/shows_list.html', context)
+    def get_context_data(self, **kwargs):
+        """def context"""
+        context = super(Listshows, self).get_context_data(**kwargs)
+        context['title'] = "Liste des spectacles"
+        return context

@@ -2,13 +2,13 @@ from django.conf.urls import url
 from django.urls import path
 from django.shortcuts import render
 from .views.booking import booking
-from .views.show_detail import show_detail
-from .views.shows_list import shows_list
 from .views import booking
 from .views.views import home
+from app.views import views, shows_list , show_detail
 
 """from app.views import shows_list"""
 
+app_name = 'app'
 
 urlpatterns = [
     url(r'^$', home, name='home'),  # Test homepage

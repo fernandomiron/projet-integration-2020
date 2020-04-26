@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} {{show.title}} {% endblock title}
+{% block content %}
+
+<h1>{{ show.title }}</h1>
+
+<div class="row ml-2">
+    <div class="col">
+        <p>{{ show.description }}</p>
+        <p>Reservation disponible : {% if show.bookable %} Oui {% else %} Non {% endif%} </p>
+        <p>Prix : {{ show.price }}€</p>
+        <p>Date de création : {{ show.created_at }}</p>
+    </div>
+</div>
+
+<p class="mt-4 ml-2">
+    <a class="btn btn-secondary" href={% url 'app:shows-list' %}>Retour</a>
+</p>
+{% endblock content %}
