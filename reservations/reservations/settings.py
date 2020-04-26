@@ -40,6 +40,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'app.apps.AppConfig',  # Project app module
+
+    'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
-    'app',  # Project app module
 ]
 
 MIDDLEWARE = [
@@ -171,3 +174,18 @@ else:
             'LOCATION': "projet-integration-2020_cache"
         }
     }
+
+
+#Login redirection url
+
+LOGIN_REDIRECT_URL = 'app:home'
+
+
+#Login default redirect url (redirect when login_required not met)
+
+LOGIN_URL = 'login'
+
+
+#Crispy forms CSS FRAMEWORK
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
