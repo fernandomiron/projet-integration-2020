@@ -1,4 +1,5 @@
 from app.views import *
 
-from app.views.show import *
-
+from .show import *
+from .representation import *
+from .user import *
