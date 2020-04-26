@@ -9,5 +9,5 @@ class CustomLoginView(LoginView):
 
     def form_valid(self, form):
         if form.is_valid():
-            messages.warning(self.request, "Vous êtes bien connecté")
+            messages.success(self.request, "Vous êtes bien connecté")
         return super().form_valid(form)
