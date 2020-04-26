@@ -1,0 +1,19 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+    <section class="content">
+
+      {% for rep in dico %}
+          <h2>Titre : {{rep.show_id.title}}</h2>
+          <img src="{{rep.show_id.poster_url}}">
+          <h2> Representation à lieu le {{rep.time}} a {{rep.location_id.designation}}</h2>
+          <h2> Code postal : {{rep.location_id.locality_id.postal_code}}</h2>
+          <h3> Contact : {{rep.location_id.phone}}</h3>
+          <h2> Siège libre : {{rep.available_seats}}</h2>
+
+
+      {% endfor %}
+    </section>
+
+{% endblock content %}
