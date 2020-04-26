@@ -1,2 +1,21 @@
-<h1>This is a test page !</h1>
-<p>If you see this, you have been correctly rooted by the <strong>urls.py</strong> files</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+  </head>
+  <body>
+  <header> Show details </header>
+      <nav>
+         {% block nav %}{% endblock %}
+     </nav>
+     <section id="content">
+         {% block content %}{% endblock %}
+     </section>
+  </body>
+  </html>

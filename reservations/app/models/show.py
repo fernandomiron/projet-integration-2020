@@ -19,6 +19,4 @@ class Show(models.Model):
         ordering = ['pk']
     def __str__ (self):
         """Overloading __str__ method"""
-        return self.name
-    def get_absolute_url(self):
-        return reverse("Location_detail", kwargs={"pk": self.pk})
+        return " {} {}".format(self.pk, self.title)
