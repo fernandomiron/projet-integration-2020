@@ -31,7 +31,13 @@
 
                     {% endif %}
 
-                    {% block alert %}<div id="Content" class="bg-light container my-3 p-4">{% block content %}{% endblock %}</div>{% endblock alert %}
+                    {% block alert %}
+                        <div id="Content" class="bg-light container my-3 p-4">
+                            
+                            {% block content %}{% endblock %}
+                        </div>
+                    {% endblock alert %}
+
                 </article>
             </div>
         </div>

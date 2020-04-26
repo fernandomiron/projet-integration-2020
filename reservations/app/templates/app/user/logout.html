@@ -1,0 +1,12 @@
+{% extends "app/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block alert %}
+    <div class="alert alert-info">
+        Vous êtes déconnecté
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted"><a class="ml-2" href="{% url 'app:login' %}">Se reconnecter</a></small>
+    </div>
+{% endblock alert %}
