@@ -4,11 +4,12 @@
 
     <section class="content">
 
-      {% for un_show in dico %}
-          <h2>Titre : {{un_show.title}}</h2>
-          <img src="{{ un_show.poster_url }}">
-          <h2>Prix: {{un_show.price}}</h2>
-          <h2> chat: {{un_show.location_id.adress}}</h2>
+      {% for rep in dico %}
+          <h2>Titre : {{rep.show_id.title}}</h2>
+          <img src="{{ rep.show_id.poster_url }}">
+          <h2>Prix: {{rep.show_id.price}}</h2>
+          <h2> Le spectacle à lieu : {{rep.time}}</h2>
+          <h2> Le spectacle à lieu à : {{rep.location_id.designation}} </h2>
       {% endfor %}
     </section>
 

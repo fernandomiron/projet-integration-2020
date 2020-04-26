@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from app.models.show import Show
+from app.models.representation import Representation
 
 def ShowDetailView(request):
     """ Detailed view """
 
-    shows = Show.objects.all()
+    rep = Representation.objects.all()
     #dicoReturn = {'listShows' : shows, 'lisRep' : rep, 'listLoc':loc}
-    return render(request, 'app/show_detail.html', {'dico':shows})
+    return render(request, 'app/show_detail.html', {'dico':rep})
