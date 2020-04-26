@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-import datetime
+from django.utils import timezone
 
 from app.models.show import Show 
 
@@ -17,7 +17,7 @@ class TestShowListViews(TestCase):
                 bookable = True,
                 price = 10,
                 description = f"description n°{pk}",
-                created_at = datetime.datetime.now()
+                created_at = timezone.now()
             )
         
     # setup clean data for every test method
