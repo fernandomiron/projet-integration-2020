@@ -1,16 +1,18 @@
 {% extends "app/base.html" %}
 
+{% block header %} <h2> Reservations ! </h2> {% endblock header %}
+
 {% block content %}
 
     <section class="content">
 
       {% for rep in dico %}
-          <h2>Titre : {{rep.show_id.title}}</h2>
+          <h3>Titre : {{rep.show_id.title}}</h3>
           <img src="{{rep.show_id.poster_url}}">
-          <h2> Representation à lieu le {{rep.time}} a {{rep.location_id.designation}}</h2>
-          <h2> Code postal : {{rep.location_id.locality_id.postal_code}}</h2>
+          <h3> Representation à lieu le {{rep.time}} a {{rep.location_id.designation}}</h3>
+          <h3> Code postal : {{rep.location_id.locality_id.postal_code}}</h3>
           <h3> Contact : {{rep.location_id.phone}}</h3>
-          <h2> Siège libre : {{rep.available_seats}}</h2>
+          <h3> Siège libre : {{rep.available_seats}}</h3>
           <h4><a href="#">Réservez ici !</a></h4>
 
 

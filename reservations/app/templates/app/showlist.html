@@ -1,5 +1,7 @@
 {% extends "app/base.html" %}
 
+{% block header %} <h2> Listes des spectacles ! </h2> {% endblock header %}
+
 {% block content %}
 
     <section class="content">
@@ -7,8 +9,7 @@
       {% for un_show in dico %}
           <h2><a href="{% url 'showPkDetailView' %}">{{ un_show.title }}</a></h2>
           <img src="{{ un_show.poster_url }}">
-          <h2>Prix: {{un_show.price}}</h2>
-          <a href="#">{{ un_show.bookable }}</a>
+          <h3>Reservarble : <a href="#">{{ un_show.bookable }}</a></h3>
       {% endfor %}
     </section>
 

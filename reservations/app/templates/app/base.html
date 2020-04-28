@@ -8,15 +8,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
 
+   <title> Univers des spectacles ! </title>
+
   </head>
   <body>
+     <header> {% block header %}{% endblock header %} </header>
 
-  <header> Spectacles </header>
       <nav>
          {% block nav %}{% endblock %}
      </nav>
      <section id="content">
-         {% block content %}{% endblock %}
+       {% if messages %}
+         {% for messages in messages %}
+           <div class="alert alert- {{message.tags}}">
+             {{message}}
+           </div>
+         {%endfor%}
+       {%endif%}
+       {% block content %}{% endblock %}
      </section>
   </body>
   </html>
