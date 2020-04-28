@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -171,3 +172,6 @@ else:
             'LOCATION': "projet-integration-2020_cache"
         }
     }
+
+#getting bootstrap4 instead of bootstrap2
+CRISPY_TEMPLATES_PACK = 'bootstrap4'
