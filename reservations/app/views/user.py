@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
-from app.forms.user import CustomAuthenticationForm, UserRegisterForm
+from app.forms.user import CustomAuthenticationForm, UserRegisterForm, UserUpdateForm, UserProfileUpdateForm, CustomPasswordChangeForm
 
 # Custom login generic view 
 class CustomLoginView(LoginView):
@@ -32,3 +33,25 @@ def register(request):
     }
 
     return render(request, 'app/user/register.html', context)
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user) #with the instance arg we can get the origin value on the form's fields 
+        user_profile_form = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile) # request.FILES = file data comming with the request
+        if (user_form.is_valid() and user_profile_form.is_valid()):
+            user_form.save()
+            user_profile_form.save()
+            messages.success(request, f'Votre compte a bien été mis à jour!')
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        user_profile_form = UserProfileUpdateForm(instance=request.user.userprofile)
+
+    context = {
+        'user_form' : user_form,
+        'user_profile_form' : user_profile_form,
+    }
+
+    return render(request, 'app/user/profile.html', context)
+
