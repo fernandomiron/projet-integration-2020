@@ -16,3 +16,6 @@ class Locality(models.Model):
     def __str__(self):
         return f'({self.pk}) {self.postal_code} {self.locality}'
 
+    def get_absolute_url(self):
+        return reverse("app:locality-detail", kwargs={"pk": self.pk})
+

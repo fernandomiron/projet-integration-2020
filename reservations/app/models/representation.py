@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Representation(models.Model):
@@ -17,3 +18,8 @@ class Representation(models.Model):
     """ String representation of Representation """
     def __str__(self):
         return f'({self.pk})'
+
+    def get_absolute_url(self):
+        return reverse("app:representation-detail", kwargs={"pk": self.pk})
+
+    
