@@ -26,6 +26,7 @@ from app.views import views
 urlpatterns = [
     url(r'^admin/?', admin.site.urls, name="admin"),
     url(r'^', include('app.urls')),
+    url(r'^', include('app.registration_urls')),
 ]
 
 if settings.DEBUG:
