@@ -8,3 +8,4 @@ from .type import *
 from .user_profile import *
 from .representation import *
 from .representation_user import *
+from .admin import *
