@@ -1,0 +1,11 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+  <h2> T'as été deconnecté ^^ </h2>
+  <div class=" content-section">
+      <small class="text-muted">
+        <a class="ml-2" href=" {% url 'login' %}"> Se connecter à nouveau </a>
+      </small>
+    </div>
+
+{% endblock content %}

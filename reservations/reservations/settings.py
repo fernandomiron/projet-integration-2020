@@ -175,3 +175,9 @@ else:
 
 #getting bootstrap4 instead of bootstrap2
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
+
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'login'
