@@ -176,6 +176,11 @@ else:
     }
 
 
+#setting userprofile module
+
+AUTH_PROFILE_MODULE = 'app.model.userprofile'
+
+
 #Login redirection url
 
 LOGIN_REDIRECT_URL = 'app:home'
@@ -189,3 +194,8 @@ LOGIN_URL = 'login'
 #Crispy forms CSS FRAMEWORK
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
