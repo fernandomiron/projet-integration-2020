@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -14,3 +15,6 @@ class UserProfile(models.Model):
     def __str__(self):
         #Unicode representation of UserProfile.
         return f'({self.pk}) Profile n° ({self.user.pk}) - {self.user.username}'
+
+    def get_absolute_url(self):
+        return reverse("profile")

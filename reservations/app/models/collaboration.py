@@ -1,6 +1,7 @@
 """ artist_type_show """
 
 from django.db import models
+from django.urls import reverse
 
 class Collaboration(models.Model):
     """ Collaboration model definition """
@@ -14,4 +15,7 @@ class Collaboration(models.Model):
 
     """ String representation of Collaboration """
     def __str__(self):
-        return f'({self.pk}) Artist_type ID : {self.artist_type_id}, Show ID : {self.show_id}'
+        return f'({self.pk}) Artist_type ID : {self.artist_type}, Show ID : {self.show}'
+
+    def get_absolute_url(self):
+        return reverse("app:collaboration-detail", kwargs={"pk": self.pk})

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Artist_type(models.Model):
 
@@ -13,4 +14,8 @@ class Artist_type(models.Model):
 
     """ String representation of Artist_type """
     def __str__(self):
-        return f'({self.pk}) Artist : {self.artist_id}, Type :  {self.type_id}'
+        return f'({self.pk}) Artist : {self.artist}, Type :  {self.type}'
+
+
+    def get_absolute_url(self):
+        return reverse("app:artist-type-detail", kwargs={"pk": self.pk})

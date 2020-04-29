@@ -19,3 +19,6 @@ class Location(models.Model):
     """ String representation of Location """
     def __str__(self):
         return f'({self.pk}) {self.designation}'
+
+    def get_absolute_url(self):
+        return reverse("app:location-detail", kwargs={"pk": self.pk})
