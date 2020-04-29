@@ -22,7 +22,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Votre compte a été créé { username }! Vous pouvez maintenant vous connectez.')
-            return redirect('app:login')
+            return redirect('login')
     else :
         form = UserRegisterForm()
 
