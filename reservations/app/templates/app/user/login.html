@@ -15,13 +15,13 @@
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-primary" type="submit">Se connecter</button>
-            {% comment %} <small class="text-muted ml-2">                
-                <a href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
-            </small> {% endcomment %}
+            <small class="text-muted ml-2">                
+                <a href="{% url 'app:password_reset' %}">Mot de passe oublié ?</a>
+            </small>
             </div>
         </form>
-        {% comment %} <div class="border-top pt-3">
-            <small class="text-muted">Vous n'avez pas encore de compte ?<a class="ml-2" href="{% url 'register' %}">Créez-en un !</a></small>
-        </div> {% endcomment %}
+        <div class="border-top pt-3">
+            <small class="text-muted">Vous n'avez pas encore de compte ?<a class="ml-2" href="{% url 'app:register' %}">Créez-en un !</a></small>
+        </div>
     </div>
 {% endblock content %}
