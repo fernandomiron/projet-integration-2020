@@ -1,9 +1,27 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from django.template import loader
+from ..models.show import Show
 
 
 def show(request):
-
     """Default test homepage with base-template"""
+    template = loader.get_template('app/show_list.html')
+    shows = Show.objects.all()
+    context = {
+        'title': 'Dani Daniels Aka Sucking All the D ',
+        'shows': shows,
+    }
+    return HttpResponse(template.render(context, request))
 
-    return HttpResponse("""Je fais des test sur mes show """)
+
+def show_details(request, id):
+    template = loader.get_template('app/show_details.html')
+    try:
+        showdetails = Show.objects.get(id=id)
+    except Show.DoesNotExist:
+        raise Http404
+    context = {
+        'showdetails': showdetails,
+    }
+    return HttpResponse(template.render(context, request))

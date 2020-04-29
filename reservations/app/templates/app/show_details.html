@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<!-- Portfolio Item Heading -->
+  <h1 class="my-4">{{showdetails.title}}</h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{showdetails.poster_url|safe}}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3">Show Description</h3>
+      <p>{{showdetails.description}}</p>
+      <h3 class="my-3">Show details</h3>
+      <ul>
+        <li>price : {{showdetails.price}}</li>
+        <li>bookable : {{showdetails.bookable}}</li>
+        <li>slug: {{showdetails.slug}}</li>
+        <li>Show indentification : {{showdetails.pk}}</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+{% endblock content %}

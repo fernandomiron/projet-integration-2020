@@ -1,0 +1,29 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>Key</th>
+        <th>title</th>
+        <th>price</th>
+        <th>description</th>
+        <th>bookable</th>
+        <th>poster</th>
+    </tr>
+    {% for show in shows %}
+    <a href="{% url 'show_details' show.pk %}">
+        <tr>
+            <td>{{show.pk}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.price}}</td>
+            <td>{{show.description}}</td>
+            <td>{{show.bookable}}</td>
+            <td><a href="{% url 'show_details' show.pk %}"><img src="{{show.poster_url|safe}}"></a></td>
+        </tr>
+    </a>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
