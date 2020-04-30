@@ -80,3 +80,19 @@ img.profile-img{
     transform: scale(1.1);
     transition: .3s ease-in-out;
 }
+
+/* PROFILE */
+.media .img-profile-wrapper{
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.hide{
+    display: none;
+}
+
+#div_id_image{
+    overflow: auto;
+}
