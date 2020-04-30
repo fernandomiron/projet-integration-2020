@@ -13,10 +13,8 @@ app_name = 'app'
 urlpatterns = [
     url(r'^$', home, name='home'),  # Test homepage
 
-    #url(r'^shows_list', shows_list, name='listeshows'),
-    #url(r'^shows/(?P<id_article>.+)', show_detail, name='show'),
-    re_path(r'shows-index/$', shows_list.ListView.as_view(), name='shows-list'), # ShowList page
-    re_path(r'show/(?P<pk>[0-9]+)/$', show_detail.DetailView.as_view(), name='show-detail'), # ShowDetail page
+    re_path(r'^shows_list', shows_list.Listshows.as_view(), name='listeshows'),
+    re_path(r'^shows/(?P<pk>[0-9]+)/$', show_detail.DetailShow.as_view(), name='show'),
 
     url(r'^booking', booking.booking, name='booking') 
 ]

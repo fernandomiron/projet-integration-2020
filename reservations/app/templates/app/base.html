@@ -10,15 +10,14 @@
 <title>{% block title %}  {% endblock title %}</title>
 </head>
 <body>
-    Page test
+    
 <div class="container-fluid">
     <header>{% block header %} {%endblock %} </header>
   <div class="row">
     <div class="col-sm-2">
         {% block sidebar %}
          <ul class="sidebar-nav">
-             <li><a href="listeshows">Tous les spectacles</a></li>
-             <li><a href="show">Un show particulier</a></li>
+             <li><a href={% url 'app:listeshows' %}>Tous les spectacles</a></li>
          </ul>
         {% endblock %}
     </div>

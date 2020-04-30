@@ -1,12 +1,12 @@
-{% extends "base.html" %}
-{% block title %} {{title}} {% endblock title}
+{% extends "app/base.html" %}
+{% block title %} {{title}} {% endblock %}
 {% block content %}
 
 <h1>{{ title }}</h1>
 
 <ul>
 {% for show in shows %}
-    <li><a href="{% url 'app:show-detail' show.pk %}">{{ show.title}}</a></li>
+    <li><a href="{% url 'app:show' show.pk %}">{{ show.title}}</a></li>
 {% endfor %}
 </ul>
 

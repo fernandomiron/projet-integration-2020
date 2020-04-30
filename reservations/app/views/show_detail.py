@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView
 
 from app.models import Show
 
-"""# Show DetailView Class definition
+# Show DetailView Class definition
 class DetailShow(DetailView):
     model = Show
     template_name = 'app/shows/show_detail.html'
@@ -11,4 +11,4 @@ class DetailShow(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailShow, self).get_context_data(**kwargs)
-        return context"""
+        return context
