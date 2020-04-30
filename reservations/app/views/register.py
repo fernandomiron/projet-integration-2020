@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 #Using this for flash message alert
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 #Class I created in forms.py that'll handle all the user's entries
 
 from django.contrib.auth.decorators import login_required
@@ -28,4 +28,21 @@ def Register(request):
 
 @login_required
 def Profile(request):
-    return render (request, 'app/profile.html')
+#To update and save the new data of the user
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance = request.user)
+        p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.userprofile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Ton compte a été modifié ')
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance = request.user)
+        p_form = ProfileUpdateForm(instance=request.user.userprofile)
+
+    context = {
+    'u_form': u_form,
+    'p_form': p_form
+    }
+    return render (request, 'app/profile.html', context)

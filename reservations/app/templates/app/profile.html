@@ -11,6 +11,18 @@
     </div>
 
   </div>
+    <form method="POST" enctype="multipart/form-data"> <!-- to save image in the background-->
+      {%csrf_token %} <!-- Django constraint to make the form works -->
+      <fieldset class=" form-group">
+        <legend class= " border-bottom mb-4"> Info de profile </legend>
+        {{ u_form | crispy }}
+        {{ p_form | crispy }} <!-- Using crispy style to handle style "properly" -->
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type ="submit"> Modier le prolfile </button>
+      </div>
+    </form>
+
 
 </div>
 
