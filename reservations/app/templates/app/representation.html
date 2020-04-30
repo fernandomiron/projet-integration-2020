@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<!-- Portfolio Item Heading -->
+  <h1 class="my-4">{{representation.show.title}}</h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{representation.show.poster_url|safe}}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3">Representation details</h3>
+      <ul>
+        <li>location : {{representation.location_id.name}}</li>
+        <li>available seats : {{representation.available_seats}}</li>
+        <li>total seats : {{representation.total_seats}}</li>
+        <li>representation identification : {{representation.pk}}</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+{% endblock content %}

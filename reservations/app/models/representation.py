@@ -9,7 +9,7 @@ class Representation(models.Model):
 
     show_id = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
     time = models.DateTimeField(help_text="Representation schedule", null=True)
-    location_id = models.ForeignKey("Location", on_delete=models.SET_NULL, null=True)
+    location_id = models.ForeignKey("Location", on_delete=models.CASCADE, null=True)
     total_seats = models.IntegerField(help_text="Total number of seats", null=True)
     available_seats = models.IntegerField(help_text="Number of available seats", null=True)
 

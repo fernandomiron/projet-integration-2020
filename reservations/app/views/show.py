@@ -9,7 +9,7 @@ def show(request):
     template = loader.get_template('app/show_list.html')
     shows = Show.objects.all()
     context = {
-        'title': 'Dani Daniels Aka Sucking All the D ',
+        'title': 'un title  ',
         'shows': shows,
     }
     return HttpResponse(template.render(context, request))
