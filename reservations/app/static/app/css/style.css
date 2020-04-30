@@ -96,3 +96,15 @@ img.profile-img{
 #div_id_image{
     overflow: auto;
 }
+
+/* HOME */
+
+#section-shows .my-2.img-wrapper {
+    width: 500px;
+    height: 300px;
+}
+
+#section-shows img {
+    width: 100%;
+    height: 100%;
+}
