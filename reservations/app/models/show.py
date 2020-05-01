@@ -47,8 +47,8 @@ class Representation(models.Model):
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     time = models.DateTimeField()
-    total_seats = models.IntegerField()
-    available_seats = models.IntegerField()
+    total_seats = models.PositiveIntegerField()
+    available_seats = models.PositiveIntegerField()
 
     class Meta:
         """Meta definition for Representation."""
