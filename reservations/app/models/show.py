@@ -1,6 +1,6 @@
 from django.db import models
 
-from app.models import Location
+from app.models.location import Location
 
 
 class Show(models.Model):
