@@ -16,7 +16,10 @@ LANGUAGES = [
 
 
 class UserProfile(models.Model):
-    """Model definition for UserProfile."""
+    """Model definition for UserProfile.
+    
+    The related name of the model is by default "userprofile".
+    """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     language = models.CharField(max_length=2, choices=LANGUAGES)

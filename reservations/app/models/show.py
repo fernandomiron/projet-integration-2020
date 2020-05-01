@@ -21,6 +21,7 @@ class Show(models.Model):
 
         verbose_name = 'Spectacle'
         verbose_name_plural = 'Spectacles'
+        ordering = ['-date_created']
 
     def __str__(self):
         """Unicode representation of Show."""
@@ -50,10 +51,10 @@ class Show(models.Model):
         """Generate a slug based on the title of the show
 
         If the slug is already taken, one or two digits will be added at the
-         end of the slug and will increment as long as the slug already exist
-          until reaching a non-existant result.
+        end of the slug and will increment as long as the slug already exist
+        until reaching a non-existant result.
         The slug is truncated to 57 character in order to add the unique digits
-         at the end of it.
+        at the end of it.
         """
 
         max_length = self._meta.get_field('slug').max_length - 3
