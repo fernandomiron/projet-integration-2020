@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils.text import slugify
+
+import itertools
 
 from app.models.location import Location
 
@@ -27,18 +30,43 @@ class Show(models.Model):
     def save(self, *args, **kwargs):
         """Save method for Show.
 
+        Generate a slug based on the title if the show doesn't exist yet.
         Rounds the price to 2 decimals.
         """
 
+        if not self.pk:
+            self._generate_slug()
+
         self.price = round(self.price, 2)
-        super(Show, self).save(*args, **kwargs)
+
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         """Return absolute url for Show."""
 
         return ('')  # TODO: Define absolute url + url name
 
-    # TODO: Define custom methods here
+    def _generate_slug(self):
+        """Generate a slug based on the title of the show
+
+        If the slug is already taken, one or two digits will be added at the
+         end of the slug and will increment as long as the slug already exist
+          until reaching a non-existant result.
+        The slug is truncated to 57 character in order to add the unique digits
+         at the end of it.
+        """
+
+        max_length = self._meta.get_field('slug').max_length - 3
+        value = self.title
+        slug_result = slug_original = \
+            slugify(value, allow_unicode=True)[:max_length]
+
+        for i in itertools.count(1):
+            if not Show.objects.filter(slug=slug_result).exists():
+                break
+            slug_result = '{}-{}'.format(slug_original, i)
+
+        self.slug = slug_result
 
 
 class Representation(models.Model):
