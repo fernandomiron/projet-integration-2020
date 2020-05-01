@@ -1,1 +1,2 @@
-from app.admin import *
+from .artist import *
+from .show import *

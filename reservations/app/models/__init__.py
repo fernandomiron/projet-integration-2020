@@ -1,1 +1,2 @@
-from .models import *
+from .artist import *
+from .show import *
