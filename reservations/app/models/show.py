@@ -1,5 +1,7 @@
 from django.db import models
 
+from app.models import Location
+
 
 class Show(models.Model):
     """Model definition for Show."""
@@ -14,8 +16,8 @@ class Show(models.Model):
     class Meta:
         """Meta definition for Show."""
 
-        verbose_name = 'Show'
-        verbose_name_plural = 'Shows'
+        verbose_name = 'Spectacle'
+        verbose_name_plural = 'Spectacles'
 
     def __str__(self):
         """Unicode representation of Show."""
@@ -33,6 +35,36 @@ class Show(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Show."""
+
+        return ('')  # TODO: Define absolute url + url name
+
+    # TODO: Define custom methods here
+
+
+class Representation(models.Model):
+    """Model definition for Representation."""
+
+    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    time = models.DateTimeField()
+    total_seats = models.IntegerField()
+    available_seats = models.IntegerField()
+
+    class Meta:
+        """Meta definition for Representation."""
+
+        verbose_name = 'Représentation'
+        verbose_name_plural = 'Représentations'
+        ordering = ['time', 'show']
+
+    def __str__(self):
+        """Unicode representation of Representation."""
+
+        return "[{}] {} le {} à {}".format(self.pk, self.show.title, self.time,
+                                           self.location.designation)
+
+    def get_absolute_url(self):
+        """Return absolute url for Representation."""
 
         return ('')  # TODO: Define absolute url + url name
 
