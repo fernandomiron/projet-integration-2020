@@ -6,8 +6,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 class ApiGetView (APIView) :
-    def get(self,request, *args, **kwargs) :
+    def get(self, request, *args, **kwargs):
         data = {
-            'age' : 23
+            'name': 'john',
+            'age': 23
         }
-        return Response(data)
+        return Response(data,)

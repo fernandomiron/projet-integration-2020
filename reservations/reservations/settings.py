@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
     'app',  # Project app module
+    'rest_framework'# app for API
 ]
 
 MIDDLEWARE = [
