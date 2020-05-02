@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models.artist import *
+from app.models.artist import ArtistType,Types,Artist
 from django import forms
 
 class ArtistSerializer(serializers.ModelSerializer):

@@ -5,10 +5,21 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from app.serializers.artists import ArtistSerializer
+from models.artist import Artist,ArtistType,Types
+
 class ApiGetView (APIView) :
     def get(self, request, *args, **kwargs):
-        data = {
-            'name': 'john',
-            'age': 23
-        }
-        return Response(data)
+        qsArtist = Artist.objects.all()
+        qsTypes = Types.objects.all()
+        serializer = PostSerializer(qsArtist,qsTypes, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, *args, **kwargs):
+        serializer = ArtistSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response (serializer.data)
+        return Response(serializer.errors)
+
+

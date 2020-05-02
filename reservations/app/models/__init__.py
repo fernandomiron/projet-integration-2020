@@ -1,4 +1,4 @@
-from .artist import *
+from models.artist import *
 from .collaboration import *
 from .location import *
 from .profile import *
