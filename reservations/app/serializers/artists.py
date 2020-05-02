@@ -6,7 +6,5 @@ from django import forms
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
-        fields = {
-            'firstname',
-            'lastname'
-        }
+        fields = '__all__' #all model fields will be included
+        
