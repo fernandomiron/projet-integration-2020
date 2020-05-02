@@ -11,4 +11,4 @@ class ApiGetView (APIView) :
             'name': 'john',
             'age': 23
         }
-        return Response(data,)
+        return Response(data)
