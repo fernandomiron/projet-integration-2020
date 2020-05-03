@@ -5,13 +5,13 @@ from django.dispatch import receiver
 
 
 LANGUAGES = [
-    ('EN', 'English'),
-    ('FR', 'French'),
-    ('NL', 'Dutch'),
-    ('GE', 'German'),
-    ('SP', 'Spanish'),
-    ('IT', 'Italian'),
-    ('PO', 'Portuguese'),
+    ('EN', 'Anglais'),
+    ('FR', 'Français'),
+    ('NL', 'Néerlandais'),
+    ('GE', 'Allemand'),
+    ('SP', 'Espagnol'),
+    ('IT', 'Italien'),
+    ('PO', 'Portugais'),
 ]
 
 
