@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from app.models.user_profile import User
 
 from django.contrib import messages
 #Using this for flash message alert
@@ -31,7 +32,7 @@ def Profile(request):
 #To update and save the new data of the user
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance = request.user)
-        p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.userprofile)
+        p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
@@ -39,7 +40,7 @@ def Profile(request):
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance = request.user)
-        p_form = ProfileUpdateForm(instance=request.user.userprofile)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
     'u_form': u_form,
