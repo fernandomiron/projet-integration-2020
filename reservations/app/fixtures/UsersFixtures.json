@@ -3,7 +3,7 @@
     "model": "auth.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$180000$8IesNe4yCDNb$M+gU3NG/+G/G/tauqfG25M/4natDSg8POeR12vaeIMM=",
+        "password": "pbkdf2_sha256$180000$EmeclgtSK838$+VWFjXx9LB+ipGfj60Zvg8Qm1P6O1vQ1N/VgZWqlp0s=",
         "last_login": "2020-05-03T16:12:43Z",
         "is_superuser": true,
         "username": "PIDAdmin",
@@ -139,9 +139,44 @@
         "is_active": true,
         "date_joined": "2020-05-03T16:19:42Z",
         "groups": [
-            2
+            3
         ],
-        "user_permissions": []
+        "user_permissions": [
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            61,
+            62,
+            63,
+            64,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            60,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            12
+        ]
     }
 },
 {
