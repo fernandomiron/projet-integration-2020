@@ -22,7 +22,7 @@ class UserProfile(models.Model):
     """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    language = models.CharField(max_length=2, choices=LANGUAGES)
+    language = models.CharField(max_length=2, choices=LANGUAGES, default='FR')
 
     class Meta:
         """Meta definition for UserProfile."""

@@ -11,6 +11,7 @@ class Show(models.Model):
 
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=60, unique=True)
+    description = models.TextField()
     poster = models.URLField(max_length=255, null=True, blank=True)
     bookable = models.BooleanField(default=True)
     price = models.FloatField()
