@@ -135,7 +135,7 @@
         "first_name": "Yvette",
         "last_name": "Istelle",
         "email": "ivyIs@yopmail.com",
-        "is_staff": false,
+        "is_staff": true,
         "is_active": true,
         "date_joined": "2020-05-03T16:19:42Z",
         "groups": [
@@ -185,12 +185,12 @@
     "fields": {
         "password": "pbkdf2_sha256$180000$GGW5Q3vkvQ48$CiNvl2i8P7V209PIJDRBEYAsLpR/v/4ISVC+KFfdFJw=",
         "last_login": null,
-        "is_superuser": false,
+        "is_superuser": true,
         "username": "lola291",
         "first_name": "Laura",
         "last_name": "Kestern",
         "email": "kesla@yopmail.com",
-        "is_staff": false,
+        "is_staff": true,
         "is_active": true,
         "date_joined": "2020-05-03T16:20:40Z",
         "groups": [
