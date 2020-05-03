@@ -10,11 +10,29 @@
     },
     {
         "model": "app.representation_user",
-        "pk": 1,
+        "pk": 2,
         "fields": {
             "representation": 1,
-            "user": 1,
-            "places": 2
+            "user": 3,
+            "places": 8
+        }
+    },
+    {
+        "model": "app.representation_user",
+        "pk": 3,
+        "fields": {
+            "representation": 2,
+            "user": 4,
+            "places": 5
+        }
+    },
+    {
+        "model": "app.representation_user",
+        "pk": 4,
+        "fields": {
+            "representation": 5,
+            "user": 5,
+            "places": 5
         }
     }
 ]
