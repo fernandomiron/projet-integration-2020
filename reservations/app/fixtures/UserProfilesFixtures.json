@@ -1,0 +1,50 @@
+[
+{
+    "model": "app.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "langue": "FR"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "langue": "FR"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "langue": "NL"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "langue": "GE"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "langue": "SP"
+    }
+},
+{
+    "model": "app.userprofile",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "langue": "PO"
+    }
+}
+]
