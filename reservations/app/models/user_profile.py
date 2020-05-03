@@ -11,8 +11,8 @@ class UserProfile(models.Model):
     class Meta:
         """ Behavior of the model Representation """
 
-        verbose_name = "Representation"
-        verbose_name_plural = "Representations"
+        verbose_name = "User Profile"
+        verbose_name_plural = "User Profiles"
 
     def __str__(self):
         """ Conversion of Representation object to String """
