@@ -6,5 +6,5 @@ from .feedrss import LastShowFeed
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
- 
+    url(r'^showrss/',LastShowFeed(), name='showrss'),
 ]
