@@ -1,2 +1,26 @@
-<h1>This is a test page !</h1>
-<p>If you see this, you have been correctly rooted by the <strong>urls.py</strong> files</p>
+<!doctype  html>
+<html  lang="en">
+<head>
+<link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+<title>Site De Réservations</title>
+</head>
+{% block header %} 
+<!--logout link added to base.html -->
+<form class="logout-link" action={% url 'logout' %} method="post">
+{% csrf_token %}
+<!--logout button added to te base.html -->
+<button type="submit">Logout</button>
+</form>
+{% endblock header  %}
+<body>
+  <div  class="container">
+    <div  class="row justify-content-center">
+      <div  class="col-4">
+      <h1  class="text-center">Site de Réservations</h1>
+      {% block main %}
+      {% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
