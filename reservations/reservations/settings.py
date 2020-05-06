@@ -170,3 +170,4 @@ else:
             'LOCATION': "projet-integration-2020_cache"
         }
     }
+LOGIN_REDIRECT_URL ='/' # added redirection to root page
