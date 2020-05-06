@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from import_export import resources
-from import_export.admin import ImportExportActionModelAdmin
+from import_export.admin import ImportExportModelAdmin
 
 from app.models import Artist, Types
 
@@ -16,7 +16,7 @@ class ArtistResource(resources.ModelResource):
     
 
 #  Admin integration 
-class ArtistAdmin(ImportExportActionModelAdmin):
+class ArtistAdmin(ImportExportModelAdmin):
    resource_class = ArtistResource
 
 admin.site.register(Artist, ArtistAdmin)
