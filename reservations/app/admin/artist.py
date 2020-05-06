@@ -11,7 +11,13 @@ class ArtistResource(resources.ModelResource):
 
     class Meta:
         model = Artist
-        import_id_fields = ('firstname',)
+        skip_unchanged = True
+
+#  Describe how Artist resources can be imported or exported:
+class TypesResource(resources.ModelResource):
+
+    class Meta:
+        model = Types
         skip_unchanged = True
     
 
@@ -19,6 +25,9 @@ class ArtistResource(resources.ModelResource):
 class ArtistAdmin(ImportExportModelAdmin):
    resource_class = ArtistResource
 
+class TypesAdmin(ImportExportModelAdmin):
+   resource_class = TypesResource
+
 admin.site.register(Artist, ArtistAdmin)
-admin.site.register(Types)
+admin.site.register(Types, TypesAdmin)
 
