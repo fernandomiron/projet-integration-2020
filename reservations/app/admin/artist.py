@@ -13,7 +13,7 @@ class ArtistResource(resources.ModelResource):
         model = Artist
         skip_unchanged = True
 
-#  Describe how Artist resources can be imported or exported:
+#  Describe how Type resources can be imported or exported:
 class TypesResource(resources.ModelResource):
 
     class Meta:
