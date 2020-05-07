@@ -1,4 +1,4 @@
-from app.models.show import Show
+from app.models.show import Show, Representation
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 
@@ -21,3 +21,14 @@ def show_list(request):
         'shows': page
     }
     return render(request, 'app/show_list.html', context)
+
+def show_detail(request, pk):
+    """ this Class allow to display show details"""
+    show = Show.objects.get(pk=pk)
+    representations = Representation.objects.filter(show=pk)
+    print(show)
+    context = {
+        'show': show,
+        'representations': representations
+    }
+    return render(request, 'app/show_detail.html', context)
