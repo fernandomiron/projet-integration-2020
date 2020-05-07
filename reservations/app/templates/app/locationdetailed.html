@@ -13,7 +13,8 @@
       <h3> {{location.locality.postal_code}} </h3>
       <h3> {{location.locality.locality}} </h3>
       <h3>{{location.phone}}</h3>
-      <h4>{{location.website}} </h4>
+      <h4>{{ location.website|urlize }}</h4>
+      <h4><a href="{% url 'LocationListView' %}">Retour aux emplacements</a></h4>
       <h3>***********************************************</h3>
       <h2> Representions</h2>
 
