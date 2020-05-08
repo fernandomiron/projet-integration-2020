@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
     path('show/', show.show_list, name='show'),
     path('show/<int:pk>/', show.show_detail, name='show_detail'),
+    url(r'^locationlist/$', LocationListView, name = 'LocationListView'),
+    url(r'^locationdet/$', LocationDetailedView, name = 'LocationDetailedView'),
+    url(r'^location/(?P<slug>.*)/$',LocationDetailedView, name = 'LocationPkView')
 ]
