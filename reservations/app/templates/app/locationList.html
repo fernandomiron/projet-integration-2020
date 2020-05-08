@@ -3,6 +3,7 @@
 {% block header %} <h2> Emplacements des spectacles ! </h2> {% endblock header %}
 
 {% block content %}
+    <!-- the search bar button with bootstrap customization-->
     <form class="form-inline my-2 my-lg-1">
       <input name="search" placeholder=" Rechercher.. " value="{{search_term}}">
       <button class="btn btn-success" type="submit">
@@ -17,7 +18,7 @@
           <h2><a href='{{ une_loc.get_absolute_url }}'> {{ une_loc.designation }}</a></h2>
 
       {% endfor %}
-
+      <!--pagination part -->
       <div class="pagination">
       {% if locations.has_previous %}
         <a class="btn btn-outline-info mb-5" href="?page=1">début</a>

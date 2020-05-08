@@ -8,6 +8,7 @@ def LocationDetailedView(request,slug):
 
     location = Location.objects.get(slug=slug)
     #get the object with the specified slug that will be shown in the URL.
+
     representation = Representation.objects.all()
     replist = []
     for i in representation:
