@@ -1,0 +1,34 @@
+{% extends "app/base.html" %}
+
+<!-- {% block header %} <h2>  </h2> {% endblock header %} -->
+
+{% block content %}
+
+    <section class="content">
+
+
+
+      <h1>{{location.designation}}</h1>
+      <h3> {{location.address}}</h3>
+      <h3> {{location.locality.postal_code}} </h3>
+      <h3> {{location.locality.locality}} </h3>
+      <h3>{{location.phone}}</h3>
+      <h4>{{ location.website|urlize }}</h4>
+      <h4><a href="{% url 'LocationListView' %}">Retour aux emplacements</a></h4>
+      <h3>***********************************************</h3>
+      <h2> Representions</h2>
+
+    {% for rep in repdico %}
+      <h3>***********************************************</h3>
+      <h2> Spectacle: {{rep.show.title}}</h2>
+      <h3> Quand: {{rep.time}}</h3>
+      <h3> Sièges: {{rep.total_seats}} </h3>
+      <h3> Sièges libres: {{rep.available_seats}}</h3>
+      <h3>***********************************************</h3>
+
+    {% endfor %}
+
+
+    </section>
+
+{% endblock content %}
