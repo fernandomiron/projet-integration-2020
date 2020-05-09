@@ -21,7 +21,7 @@ class LastShowFeed(Feed):
 class RepresentationFeed(Feed):
     title = "Représentations "
     link = "/representationrss/"
-    description = "last representation on the site"
+    description = "All representation on the site"
 
     def items(self):
         return Representation.objects.order_by('location')
