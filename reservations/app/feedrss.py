@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
-from app.models import Show
+from app.models import Show, Representation
 
 # Show the 2 last shows
 class LastShowFeed(Feed):
