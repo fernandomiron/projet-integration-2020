@@ -7,9 +7,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 
+#don't forget adding url_filter in settings
 from url_filter.integrations.drf import DjangoFilterBackend
 
-
+#information import about Artist
 from app.serializers.artists import ArtistSerializer
 from app.models.artist import Artist
 
