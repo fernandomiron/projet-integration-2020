@@ -14,6 +14,9 @@ from url_filter.integrations.drf import DjangoFilterBackend
 from app.serializers.artists import ArtistSerializer
 from app.models.artist import Artist
 
+#informations import about Representation
+from app.serializers.representation import RepresentationSerializer
+from app.models.show import Representation
 
 class ArtistApiView (generics.ListAPIView):
 
@@ -21,3 +24,9 @@ class ArtistApiView (generics.ListAPIView):
     serializer_class = ArtistSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id','lastname')
+
+class representationApiView (generics.ListAPIView):
+    queryset = Representation.objects.all()
+    serializer_class = RepresentationSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ('id', 'location')
