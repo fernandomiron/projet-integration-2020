@@ -17,14 +17,14 @@ class LastShowFeed(Feed):
     def item_description(self, item):
         return item.description
 
-#show the last representation
-class LastRepresentationFeed(Feed):
-    title = "Dernière représentation encodée"
-    link = "/showrss/"
-    description = "last show on the site"
+#show representation
+class RepresentationFeed(Feed):
+    title = "Représentations "
+    link = "/representationrss/"
+    description = "last representation on the site"
 
     def items(self):
-        return Show.objects.order_by('-date_created')[:2]
+        return Representation.objects.order_by('location')
 
     def item_title(self,item):
         return item.title
