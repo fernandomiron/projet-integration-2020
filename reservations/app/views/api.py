@@ -7,6 +7,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 
+from url_filter.integrations.drf import DjangoFilterBackend
+
+
 from app.serializers.artists import ArtistSerializer
 from app.models.artist import Artist
 
@@ -15,4 +18,5 @@ class ArtistApiView (generics.ListAPIView):
 
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
-    filter_fields = ('id',)
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ('id','lastname')
