@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'password-reset/done/$', auth_views.PasswordResetDoneView.as_view(template_name = "app/password_reset_done.html"), name='password_reset_done'),#password reset done url
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name = "app/password_reset_confirm.html"), name='password_reset_confirm'), # password reset confirm url
     url(r'reset/done/$', auth_views.PasswordResetCompleteView.as_view(template_name = "app/password_reset_complete.html"), name='password_reset_complete'),# password reset complete url
+    url(r'password-change/$', auth_views.PasswordChangeView.as_view(template_name = "app/password_change_form.html"), name='password_change'),# url for password change
+    url(r'password-change/done/$', auth_views.PasswordChangeDoneView.as_view(template_name = "app/password_change_done.html"), name='password_change_done'),#confirmation url for password change
 ]
