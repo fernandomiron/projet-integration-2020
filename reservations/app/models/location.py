@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 import itertools
@@ -65,7 +66,7 @@ class Location(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Location."""
 
-        return ('')  # TODO: Define absolute url + url name
+        return reverse('LocationPkView_slug', kwargs={'slug': self.slug})
 
     def _generate_slug(self):
         """Generate a slug based on the designation of the location

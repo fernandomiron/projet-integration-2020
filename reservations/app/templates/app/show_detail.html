@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{show.title}}
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="{{show.poster|default:'http://placehold.it/700x500'}}" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Description</h3>
+            <p>{{show.description}}</p>
+            <h3 class="my-3">Information pratiques</h3>
+            <ul>
+                <li>Disponible : {{show.bookable}}</li>
+                <li>Prix : {{show.price}}</li>
+                <li>date de création : {{show.date}}</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <h3 class="my-4">Related Projects</h3>
+
+    <div class="row">
+
+        {% for representation in representations %}
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ representation.location.designation}}</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>Date et heure : {{ representation.time }}</li>
+                        <li>Place restante : {{ representation.available_seats }}</li>
+                        <li>Place disponible :{{ representation.total_seats }}</li>
+                        <li>Adresse : {{ representation.location.address }}</li>
+                        <li>Localité {{ representation.location.locality.locality }} {{representation.location.locality.postal_code}}</li>
+                    </ul>
+                    </p>
+                    <a href="#" class="btn btn-primary">Réserver</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+{% endblock %}
