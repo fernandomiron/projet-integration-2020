@@ -17,7 +17,7 @@ LANGUAGES = [
 
 class UserProfile(models.Model):
     """Model definition for UserProfile.
-    
+
     The related name of the model is by default "userprofile".
     """
 
@@ -49,8 +49,11 @@ def create_user_profile(sender, instance, created, **kwargs):
     The UserProfile instance is linked to the created User.
     """
 
-    if created:
+    if created and UserProfile.objects.filter(user=instance.pk).count() == 0:
         UserProfile.objects.create(user=instance)
+    else:
+        raise Exception("UserProfile for {} aleady exist"
+                        .format(instance.username))
 
 
 @receiver(post_save, sender=User)
