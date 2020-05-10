@@ -65,7 +65,7 @@ class Location(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Location."""
 
-        return ('')  # TODO: Define absolute url + url name
+        return f"/location/{self.slug}"  # TODO: Define absolute url + url name
 
     def _generate_slug(self):
         """Generate a slug based on the designation of the location
