@@ -1,48 +1,73 @@
 from django.contrib.syndication.views import Feed
-from django.urls import reverse
-from app.models import Show, Representation, Location
+from django.urls import reverse_lazy
 
-# Show the 2 last shows
+from app.models import Location, Representation, Show
+
+
 class LastShowFeed(Feed):
-    title = "Derniers shows encodés"
-    link = "/showrss/"
+    """RSS Feed definition for Show"""
+
+    title = "Spectacles"
+    link = reverse_lazy('rss_show')
     description = "last show on the site"
 
     def items(self):
-        return Show.objects.order_by('-date_created')[:2]
+        """Feed item definition"""
+
+        return Show.objects.order_by('-date_created')
 
     def item_title(self,item):
+        """Feed item title"""
+
         return item.title
 
     def item_description(self, item):
+        """Feed item description"""
+
         return item.description
 
-#show representation
+
 class RepresentationFeed(Feed):
-    title = "Représentations "
-    link = "/representationrss/"
+    """RSS Feed definition for Representation"""
+
+    title = "Représentations"
+    link = reverse_lazy('rss_representation')
     description = "All representation on the site"
 
     def items(self):
+        """Feed item definition"""
+
         return Representation.objects.order_by('location')
 
     def item_title(self,item):
+        """Feed item title"""
+
         return item.show.title
 
     def item_description(self, item):
+        """Feed item description"""
+
         return item.show.description
 
-#show location
+
 class LocationFeed(Feed):
-    title = "Localisations "
-    link = "/locationrss/"
+    """RSS Feed definition for Location"""
+
+    title = "Localisations"
+    link = reverse_lazy('rss_location')
     description = "All location"
 
     def items(self):
+        """Feed item definition"""
+
         return Location.objects.order_by('locality')
 
     def item_title(self,item):
+        """Feed item title"""
+
         return item.designation
 
     def item_description(self, item):
+        """Feed item description"""
+
         return item.address
