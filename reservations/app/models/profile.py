@@ -49,11 +49,8 @@ def create_user_profile(sender, instance, created, **kwargs):
     The UserProfile instance is linked to the created User.
     """
 
-    if created and UserProfile.objects.filter(user=instance.pk).count() == 0:
+    if created:
         UserProfile.objects.create(user=instance)
-    else:
-        raise Exception("UserProfile for {} aleady exist"
-                        .format(instance.username))
 
 
 @receiver(post_save, sender=User)
