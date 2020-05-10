@@ -1,38 +1,38 @@
 [
-    {
-        "model": "app.reservation",
-        "pk": 1,
-        "fields": {
-            "representation": 1,
-            "user": 1,
-            "seats": 2
-        }
-    },
-    {
-        "model": "app.reservation",
-        "pk": 2,
-        "fields": {
-            "representation": 1,
-            "user": 3,
-            "seats": 8
-        }
-    },
-    {
-        "model": "app.reservation",
-        "pk": 3,
-        "fields": {
-            "representation": 2,
-            "user": 4,
-            "seats": 5
-        }
-    },
-    {
-        "model": "app.reservation",
-        "pk": 4,
-        "fields": {
-            "representation": 5,
-            "user": 5,
-            "seats": 5
-        }
+{
+    "model": "app.reservation",
+    "pk": 1,
+    "fields": {
+        "representation": 1,
+        "user": 1,
+        "seats": 2
     }
+},
+{
+    "model": "app.reservation",
+    "pk": 2,
+    "fields": {
+        "representation": 1,
+        "user": 3,
+        "seats": 8
+    }
+},
+{
+    "model": "app.reservation",
+    "pk": 3,
+    "fields": {
+        "representation": 2,
+        "user": 4,
+        "seats": 5
+    }
+},
+{
+    "model": "app.reservation",
+    "pk": 4,
+    "fields": {
+        "representation": 5,
+        "user": 5,
+        "seats": 5
+    }
+}
 ]
