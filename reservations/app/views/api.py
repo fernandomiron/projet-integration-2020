@@ -34,7 +34,7 @@ class RepresentationApiView (generics.ListAPIView):
 
 
 class ShowApiView (generics.ListAPIView):
-    queryset = Representation.objects.all()
-    serializer_class = RepresentationSerializer
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ('id', 'location')
+    filter_fields = ('id', 'title')
