@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
+    'rest_framework',
     'app',  # Project app module
 ]
 
