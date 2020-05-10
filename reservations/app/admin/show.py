@@ -1,31 +1,41 @@
 from django.contrib import admin
-
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 from app.models import Representation, Show
 
-#  Describe how Representation resources can be imported or exported:
+
 class RepresentationResource(resources.ModelResource):
+    """Describe how Representation resources can be imported or exported"""
 
     class Meta:
+        """Meta definition for RepresentationResource."""
+
         model = Representation
         skip_unchanged = True
 
-#  Describe how Type resources can be imported or exported:
+
 class ShowResource(resources.ModelResource):
+    """Describe how Type resources can be imported or exported"""
 
     class Meta:
+        """Meta definition for ShowResource."""
+
         model = Show
         skip_unchanged = True
-    
 
-#  Admin integration 
+
 class RepresentationAdmin(ImportExportModelAdmin):
-   resource_class = RepresentationResource
+    """Representation admin register class"""
+
+    resource_class = RepresentationResource
+
 
 class ShowAdmin(ImportExportModelAdmin):
-   resource_class = ShowResource
+    """Show admin register class"""
+
+    resource_class = ShowResource
+
 
 admin.site.register(Show, ShowAdmin)
 admin.site.register(Representation, RepresentationAdmin)
