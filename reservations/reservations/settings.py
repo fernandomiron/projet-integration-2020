@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
     'app',  # Project app module
+    'import_export',  # django-import-export==2.1.0
 ]
 
 MIDDLEWARE = [
