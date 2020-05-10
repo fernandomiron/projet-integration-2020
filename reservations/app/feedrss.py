@@ -27,10 +27,10 @@ class RepresentationFeed(Feed):
         return Representation.objects.order_by('location')
 
     def item_title(self,item):
-        return item.title
+        return item.show.title
 
     def item_description(self, item):
-        return item.description
+        return item.show.description
 
 #show location
 class LocationFeed(Feed):
@@ -42,7 +42,7 @@ class LocationFeed(Feed):
         return Location.objects.order_by('locality')
 
     def item_title(self,item):
-        return item.title
+        return item.designation
 
     def item_description(self, item):
-        return item.description
+        return item.address
