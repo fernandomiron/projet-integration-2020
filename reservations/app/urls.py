@@ -1,5 +1,6 @@
 from django.conf.urls import url
 
+from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import views, show
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
@@ -16,10 +17,14 @@ urlpatterns = [
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
-    # url(r'^locationdet/$', LocationDetailedView,
-    #     name='LocationDetailedView'),  # DetailView
     url(r'^location/(?P<pk>[0-9]+)/?$', LocationDetailedView,
         name='LocationPkView_pk'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/?$', LocationDetailedView,
         name='LocationPkView_slug'),
+
+    # RSS Feeds
+    url(r'^rss/show/?', LastShowFeed(), name='rss_show'),
+    url(r'^rss/representation/?', RepresentationFeed(),
+        name='rss_representation'),
+    url(r'^rss/location/?', LocationFeed(), name='rss_location'),
 ]
