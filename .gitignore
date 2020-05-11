@@ -12,5 +12,3 @@ __pycache__/
 # Untrack other non-project related directories
 .vscode/
 .idea/
-runserver.sh
-settings.py
