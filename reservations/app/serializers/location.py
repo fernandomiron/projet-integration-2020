@@ -1,9 +1,13 @@
 from rest_framework import serializers
 
 from app.models.location import Location
-from django import forms
+
 
 class LocationSerializer(serializers.ModelSerializer):
+    """Generic model serializer on Location."""
+
     class Meta:
+        """Meta definition for serializer."""
+
         model = Location
-        fields = '__all__' #all model fields will be included
+        fields = '__all__'

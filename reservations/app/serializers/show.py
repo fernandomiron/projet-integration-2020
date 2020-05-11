@@ -1,9 +1,13 @@
 from rest_framework import serializers
 
 from app.models.show import Show
-from django import forms
+
 
 class ShowSerializer(serializers.ModelSerializer):
+    """Generic model serializer on Show."""
+
     class Meta:
+        """Meta definition for serializer."""
+
         model = Show
-        fields = '__all__' #all model fields will be included
+        fields = '__all__'
