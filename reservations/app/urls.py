@@ -5,6 +5,10 @@ from app.views import views, show
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 
+from app.views.api import (
+    ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
+    )
+
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
@@ -21,6 +25,13 @@ urlpatterns = [
         name='LocationPkView_pk'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/?$', LocationDetailedView,
         name='LocationPkView_slug'),
+
+    # API
+    url(r'^api/artist/', ArtistApiView.as_view(), name='api_artist'),
+    url(r'^api/show/', ShowApiView.as_view(), name='api_show'),
+    url(r'^api/representation/', RepresentationApiView.as_view(),
+        name='api_representation'),
+    url(r'^api/location/', LocationApiView.as_view(), name='api_location'),
 
     # RSS Feeds
     url(r'^rss/show/?', LastShowFeed(), name='rss_show'),
