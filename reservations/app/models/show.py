@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 import itertools
@@ -46,7 +47,7 @@ class Show(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Show."""
 
-        return ('')  # TODO: Define absolute url + url name
+        return reverse('show_detail_slug', kwargs={'slug': self.slug})
 
     def _generate_slug(self):
         """Generate a slug based on the title of the show
