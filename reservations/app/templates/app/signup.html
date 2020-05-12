@@ -1,11 +1,15 @@
-<!--psignup/registration url-->
+<!--signup/registration url-->
 {% extends 'app/base.html' %}
 
 {% block main %}
   <h2>Sign up</h2>
   <form method="post">
+  <!-- csrf_token protection-->
     {% csrf_token %}
-    {{ form }}
+    <!--user_form instead of form-->
+    {{ user_form }}
+    <!--user_profile_form instead of form-->
+    {{ user_profile_form }}
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}
