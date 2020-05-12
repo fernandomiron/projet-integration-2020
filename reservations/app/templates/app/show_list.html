@@ -7,6 +7,9 @@
     <form method="get" action="/show/">
         <input type="text" name='query' placeholder="Search">
     </form>
+    {% if request.user.is_staff %} <!-- hidded if you can't connect to the admin-->
+      <a href="{% url 'ShowCrud' %}"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
+    {% endif %}
 </div>
 
 <div class="mescartes">
@@ -22,6 +25,16 @@
                 </div>
                 <div class="card-footer">
                     <a href="{% url 'show_detail' show.pk %}" class="btn btn-primary">Find Out More!</a>
+                    {% if request.user.is_staff %}
+                      <a href="{% url 'UpdateShow' show.slug %}" class="btn btn-link"> Modifier show </a>
+                      <form action="{% url 'DeleteShow' show.slug %}" method="post">
+                          {% csrf_token %}
+                          <button type="submit" class= "btn btn-link" onclick="return confirm('Sûr de vouloir faire ça ?')">
+                              supprimer
+                          </button>
+                      </form>
+
+                    {% endif %}
                 </div>
             </div>
         </div>

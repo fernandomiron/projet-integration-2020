@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+
+{% block header %} <h2> CRUD DES SHOW ! </h2> {% endblock header %}
+
+{% block content %}
+
+<!-- The form to update or create a show-->
+<form class="form-inline my-2 my-lg-1" method="post">
+  {%csrf_token %}
+  {{ createform }}
+  {{ updateform }}
+  <button class="btn btn-info" type ="submit">Enregistrer </button>
+</form>
+
+
+{% endblock content %}

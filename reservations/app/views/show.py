@@ -1,8 +1,12 @@
 from app.models.show import Show, Representation
+from django.contrib.auth.models import Group #
+
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
+from app.decorateur import allowed_users
 
 
+#@allowed_users(allowed_roles=['admin']) 
 def show_list(request):
     """ This methode allow to list all shows """
     # use get GET.get to prevent error
