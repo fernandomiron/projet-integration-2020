@@ -44,6 +44,11 @@ def profileUpdate(request):
         user_update_form = UserUpdateForm(request.POST, instance=request.user) #with the instance arg we can get the origin value on the form's fields 
         user_profile_update_form = UserProfileUpdateForm(request.POST, instance=request.user.userprofile) # request.FILES = file data comming with the request
         if (user_update_form.is_valid() and user_profile_update_form.is_valid()):
+            username = user_update_form.cleaned_data.get('username')
+            first_name = user_update_form.cleaned_data.get('first_name')
+            last_name = user_update_form.cleaned_data.get('last_name')
+            email = user_update_form.cleaned_data.get('email')
+            language = user_profile_update_form.cleaned_data.get('language')
             user_update_form.save()
             user_profile_update_form.save()
             return redirect('profile')
