@@ -1,9 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm #import of UserCreationForm generic view
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 
 from app.forms.user import UserSignupForm, UserProfileSignupForm
-
 
 
 def signup(request):
@@ -32,3 +32,10 @@ def signup(request):
         'user_profile_form': user_profile_form
     }    
     return render(request, 'app/signup.html', context)
+
+
+class ProfileView(TemplateView):
+    # User profile View
+    template_name = 'app/profile.html'
+
+
