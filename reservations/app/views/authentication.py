@@ -1,9 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm #import of UserCreationForm generic view
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
 
-from app.forms.user import UserSignupForm, UserProfileSignupForm
+from app.forms.user import UserSignupForm, UserProfileSignupForm, UserUpdateForm, UserProfileUpdateForm 
 
 
 def signup(request):
@@ -38,4 +38,22 @@ class ProfileView(TemplateView):
     # User profile View
     template_name = 'app/profile.html'
 
+def profileUpdate(request):
+    # User update profile view
+    if request.method == 'POST':
+        user_update_form = UserUpdateForm(request.POST, instance=request.user) #with the instance arg we can get the origin value on the form's fields 
+        user_profile_update_form = UserProfileUpdateForm(request.POST, instance=request.user.userprofile) # request.FILES = file data comming with the request
+        if (user_update_form.is_valid() and user_profile_update_form.is_valid()):
+            user_update_form.save()
+            user_profile_update_form.save()
+            return redirect('profile')
+    else:
+        user_update_form = UserUpdateForm(instance=request.user)
+        user_profile_update_form = UserProfileUpdateForm(instance=request.user.userprofile)
 
+    context = {
+        'user_update_form' : user_update_form,
+        'user_profile_update_form' : user_profile_update_form,
+    }
+
+    return render(request, 'app/profile_update.html', context)
