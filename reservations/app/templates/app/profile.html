@@ -10,7 +10,7 @@
                 <p>E-mail : {{ user.email }}</p>
                 <p>Langue : {{ user.userprofile.language }}</p>
                 <p>Rôle : {{ user.groups.all.0.name }}</p>
-                <a href='{% url "profile-update" %}' type="button">Modifier</a>
+                <a href='{% url "profile-update" %}'>Modifier</a>
                 <a href="{% url 'admin:index' %}">Administration</a>
             </div>
         </div>
