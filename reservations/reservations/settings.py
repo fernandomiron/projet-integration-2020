@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'debug_toolbar',  # django-debug-toolbar==2.2
     'django_extensions',  # django-extensions==2.2.8
     'app',  # Project app module
+    'import_export',  # django-import-export==2.1.0
+    'rest_framework',  # djangorestframework==3.11.0
+    'url_filter'  # django-url-filter==0.3.15
+
 ]
 
 MIDDLEWARE = [
@@ -172,7 +176,7 @@ else:
             'BACKEND': "django.core.cache.LocMemCache",
             'LOCATION': "projet-integration-2020_cache"
         }
-    }
+}
 
 #getting bootstrap4 instead of bootstrap2
 CRISPY_TEMPLATES_PACK = 'bootstrap4'

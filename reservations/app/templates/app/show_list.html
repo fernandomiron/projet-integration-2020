@@ -4,12 +4,15 @@
 
 <h1> Liste des spectacles </h1>
 <div style="margin-bottom:10px;">
-    <form method="get" action="/show/">
+    <form method="get" action="{% url 'show' %}">
         <input type="text" name='query' placeholder="Search">
     </form>
-    {% if request.user.is_staff %} <!-- hidded if you can't connect to the admin-->
+    
+    <!-- hidden if you can't connect to the admin -->
+    {% if request.user.is_staff %}
       <a href="{% url 'ShowCrud' %}"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
     {% endif %}
+
 </div>
 
 <div class="mescartes">
@@ -24,7 +27,10 @@
                     <p class="card-text">{{show.description|safe|truncatewords:20}}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{% url 'show_detail' show.pk %}" class="btn btn-primary">Find Out More!</a>
+                    <!-- a href="{% url 'show_detail_pk' show.pk %}" class="btn btn-primary">Find Out More!</a -->
+                    <a href="{{ show.get_absolute_url }}" class="btn btn-primary">Find Out More!</a>
+
+                    <!-- Connection as staff required ! -->
                     {% if request.user.is_staff %}
                       <a href="{% url 'UpdateShow' show.slug %}" class="btn btn-link"> Modifier show </a>
                       <form action="{% url 'DeleteShow' show.slug %}" method="post">
@@ -33,8 +39,8 @@
                               supprimer
                           </button>
                       </form>
-
                     {% endif %}
+
                 </div>
             </div>
         </div>

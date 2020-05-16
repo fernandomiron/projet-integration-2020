@@ -17,7 +17,7 @@ LANGUAGES = [
 
 class UserProfile(models.Model):
     """Model definition for UserProfile.
-    
+
     The related name of the model is by default "userprofile".
     """
 
