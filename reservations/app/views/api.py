@@ -74,7 +74,7 @@ def external_api_show_view(request):
                     title = r.json()['hydra:member'][i]['name']
                     slug = r.json()['hydra:member'][i]['slug']
                     description = r.json()['hydra:member'][i]['excerpt']
-                    poster = r.json()['hydra:member'][i]['image']['contentUrl']['noProcess']
+                    poster = r.json()['hydra:member'][i]['image']
                     bookable = r.json()['hydra:member'][i]['ticketingOpen']
                     price = r.json()['hydra:member'][i]['priceRange']
                     date_created = r.json()['hydra:member'][i]['ticketingOpening']
