@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Artist(models.Model):
     """Model definition for Artist."""
 
@@ -8,6 +7,7 @@ class Artist(models.Model):
     lastname = models.CharField(max_length=60)
 
     class Meta:
+
         """Meta definition for Artist."""
 
         verbose_name = 'Artiste'

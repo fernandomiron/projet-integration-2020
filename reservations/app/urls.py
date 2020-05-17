@@ -1,12 +1,24 @@
 from django.conf.urls import url
-
-from app.views import views, show, reservation
+from django.urls import path
+from .views.locationList import LocationListView
+from .views.locationdetailed import LocationDetailedView
+from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
+from app.views import views, show
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
-from django.urls import path
+from .views.showCRUD import CreateShow,UpdateShow, DeleteShow
+from app.views.api import (
+    ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
+    )
+
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
+
+    #Crudshow
+    url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
+    url(r'^showcrud/(?P<slug>.*)/$',UpdateShow, name = 'UpdateShow'),
+    url(r'^showcruddelete/(?P<slug>.*)/$',DeleteShow, name = 'DeleteShow'),
 
     # Shows
     url(r'^show/?$', show.show_list, name='show'),
@@ -16,13 +28,22 @@ urlpatterns = [
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
-    # url(r'^locationdet/$', LocationDetailedView,
-    #     name='LocationDetailedView'),  # DetailView
     url(r'^location/(?P<pk>[0-9]+)/?$', LocationDetailedView,
         name='LocationPkView_pk'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/?$', LocationDetailedView,
         name='LocationPkView_slug'),
 
-    # Reservation
-    path('reservation/', reservation.reservation_view, name='reservation_view'),
+    # API
+    url(r'^api/artist/', ArtistApiView.as_view(), name='api_artist'),
+    url(r'^api/show/', ShowApiView.as_view(), name='api_show'),
+    url(r'^api/representation/', RepresentationApiView.as_view(),
+        name='api_representation'),
+    url(r'^api/location/', LocationApiView.as_view(), name='api_location'),
+
+    # RSS Feeds
+    url(r'^rss/show/?', LastShowFeed(), name='rss_show'),
+    url(r'^rss/representation/?', RepresentationFeed(),
+        name='rss_representation'),
+    url(r'^rss/location/?', LocationFeed(), name='rss_location'),
+
 ]

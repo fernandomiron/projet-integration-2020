@@ -1,7 +1,9 @@
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
+from app.decorateur import allowed_users
 
 from app.models.show import Show, Representation
+
 
 
 def show_list(request):
