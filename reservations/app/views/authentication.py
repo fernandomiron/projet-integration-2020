@@ -4,24 +4,23 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, UpdateView
 
 from app.forms.user import UserSignupForm, UserProfileSignupForm, UserUpdateForm, UserProfileUpdateForm 
-
+from app.models.profile import UserProfile
 
 def signup(request):
     if request.method == 'POST':
         user_form = UserSignupForm(request.POST)
         user_profile_form = UserProfileSignupForm(request.POST)
         if user_form.is_valid() and user_profile_form.is_valid() :
+            user_form.username = user_form.cleaned_data.get('username')
+            user_form.first_name = user_form.cleaned_data.get('first_name')
+            user_form.last_name = user_form.cleaned_data.get('last_name')
+            user_form.email = user_form.cleaned_data.get('email')
+            user_form.raw_password = user_form.cleaned_data.get('password1')
+            user_form.raw_password2 = user_form.cleaned_data.get('password2')
             user_form.save()
-            user_profile_form.save()
-            username = user_form.cleaned_data.get('username')
-            first_name = user_form.cleaned_data.get('first_name')
-            last_name = user_form.cleaned_data.get('last_name')
-            email = user_form.cleaned_data.get('email')
-            raw_password = user_form.cleaned_data.get('password1')
-            raw_password2 = user_form.cleaned_data.get('password2')
-            language = user_profile_form.cleaned_data.get('language')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
+            user_profile = UserProfile.objects.get(user__username=user_form.username)
+            user_profile.language = user_profile_form.cleaned_data.get('language')
+            user_profile.save()
             return redirect('home')
     else:
         user_form = UserSignupForm()
