@@ -6,7 +6,12 @@ from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 
 from app.views.api import (
-    ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
+    ArtistApiView, 
+    LocationApiView, 
+    RepresentationApiView, 
+    ShowApiView, 
+    external_api_show_view,
+    external_api_view_test
     )
 
 
@@ -33,6 +38,11 @@ urlpatterns = [
     url(r'^api/representation/', RepresentationApiView.as_view(),
         name='api_representation'),
     url(r'^api/location/', LocationApiView.as_view(), name='api_location'),
+
+    #External API
+    url(r'^external-api/show2', external_api_view_test , name='ext-api-show-2'),
+    url(r'^external-api/show', external_api_show_view, name='ext-api-show'),
+    
 
     # RSS Feeds
     url(r'^rss/show/?', LastShowFeed(), name='rss_show'),
