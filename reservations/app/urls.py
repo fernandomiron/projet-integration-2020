@@ -1,9 +1,9 @@
 from django.conf.urls import url
 
-from app.views import views, show
+from app.views import views, show, reservation
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
-
+from django.urls import path
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),  # Test homepage
@@ -22,4 +22,7 @@ urlpatterns = [
         name='LocationPkView_pk'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/?$', LocationDetailedView,
         name='LocationPkView_slug'),
+
+    # Reservation
+    path('reservation/', reservation.reservation_view, name='reservation_view'),
 ]
