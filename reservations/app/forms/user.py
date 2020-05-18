@@ -1,16 +1,16 @@
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
+from django.contrib.auth.models import User
 
-from app.models import UserProfile # import of UserProfile
+from app.models import UserProfile
 
-'''
-UserSignupForm custom made class
-'''
 
 class UserSignupForm(UserCreationForm):
+    """UserSignupForm custom made class"""
 
-    class Meta: #meta for model user
+    class Meta:
+        """Meta definition of UserSignupForm"""
+
         model = User
         fields = [
             'username',
@@ -21,22 +21,23 @@ class UserSignupForm(UserCreationForm):
             'password2',
         ]
 
-'''
-UserProfileSignupForm custom made class
-'''
+
 class UserProfileSignupForm(forms.ModelForm):
+    """UserProfileSignupForm custom made class"""
 
     class Meta:
+        """Meta definition of UserProfileSignupForm"""
+
         model = UserProfile
         fields = ['language']
 
-'''
-UserUpdateForm custom made class
-'''
 
 class UserUpdateForm(UserChangeForm):
+    """UserUpdateForm custom made class"""
 
     class Meta:
+        """ Meta definitioon of UserUpdateForm"""
+
         model = User
         fields = [
             'last_name',
@@ -45,11 +46,12 @@ class UserUpdateForm(UserChangeForm):
             'email',
         ]
 
-'''
-UserProfileUpdateForm custom made class
-'''
+
 class UserProfileUpdateForm(forms.ModelForm):
+    '''UserProfileUpdateForm custom made class'''
 
     class Meta:
+        """Meta definition of UserProfileUpdateForm"""
+
         model = UserProfile
         fields = ['language']
