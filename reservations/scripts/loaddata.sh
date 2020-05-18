@@ -13,7 +13,7 @@ fi
 
 for file in app/fixtures/*
 do
-    python3 manage.py loaddata $file
+    py manage.py loaddata $file
     status=$?
 
     if [ $status -ne 0 ] ;then
