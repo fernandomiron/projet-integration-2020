@@ -147,7 +147,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # Login redirection
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 
 # SMTP config
