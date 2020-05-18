@@ -25,5 +25,5 @@ do
     fi
 done
 
-printf "------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully imported \n------------------------------------------------------"
+printf "\n------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully imported \n------------------------------------------------------"
 exit 0
