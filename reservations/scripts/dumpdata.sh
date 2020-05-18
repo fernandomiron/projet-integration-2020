@@ -132,5 +132,5 @@ else
     printf "(a_reservation.json)\n>>> SUCCESS: Fixture JSON-data successfully exported\n"
 fi
 
-printf "\n------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully exported \n------------------------------------------------------"
+printf "\n------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully exported \n------------------------------------------------------\n"
 exit 0
