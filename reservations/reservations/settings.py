@@ -159,6 +159,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
+#django-paypal settings
+
+PAYPAL_RECEIVER_EMAIL =  'lionel.soupart@gmail.com'
+PAYPAL_TEST = True
 
 # Cache mode
 if DEBUG:
