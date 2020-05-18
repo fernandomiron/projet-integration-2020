@@ -1,0 +1,6 @@
+<!--logout template -->
+{% extends "app/base.html" %}
+{% block main %}
+<p>Vous êtes déconnecté.</p>
+<a  href="{% url 'login' %}">Connectez Vous à nouveau</a>
+{% endblock %}

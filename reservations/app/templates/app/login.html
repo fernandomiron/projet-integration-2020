@@ -1,0 +1,11 @@
+<!--login template -->
+{% extends "app/base.html" %}
+{% block main %}
+<h1>Login</h1>
+<!--CSFR token and form added for login functionality -->
+<form  action={%url 'login'%} method="post">
+{% csrf_token %}
+{{form}}
+<input type="submit" value="Login">
+</form>
+{%  endblock %}
