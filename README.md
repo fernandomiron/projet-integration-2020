@@ -35,12 +35,6 @@ sudo apt-get install python3-pip python3-dev mysql-server libmysqlclient-dev
 
 You will be asked to select and confirm a password for the administrative MySQL account.
 
-After the installation, you can create the database directory structure by typing:
-
-```bash
-sudo mysql_install_db
-```
-
 You can then run through a simple security script by running:
 
 ```bash
@@ -192,7 +186,26 @@ By default, no home page has been created yet but you can access to the admin pa
 
 ## Tools
 
-### ipython
+All scripts must be executed from the reservation/ folder ! (The one that contains the manage.py file)
+
+### Run the advanced development server (runserver_plus)
+
+To run the advanced runserver_plus, run the following command:
+
+```bash
+bash scripts/runserver.sh
+```
+
+The advanced server will run more efficiently and will display more relevant errors.
+A python shell is also available directly from the display error pages by using the PIN-code shown in the terminal.
+
+If you prefer using the classic runserver, run:
+
+```bash
+python3 manage.py runserver
+```
+
+### Run the advanced ipython shell (shell_plus)
 
 It's recommand to use the ipython shell_plus instead of the regular python3 shell. iPython provides a lot of usefull and convenient functions and make the use of the shell more easy.
 
@@ -205,3 +218,20 @@ If you want to use the original python3 shell, you still can with this command:
 ```bash
 python3 manage.py shell
 ```
+
+### Automatic population and/or exportation of your database
+
+If you start from scratch or you want to reset your database, you can (re)populate it with the loaddata script:
+```bash
+bash scripts/loaddata.sh
+```
+
+Keep in mind that you must make your migrations first and that you will loose every data stored in your actual database.
+
+To export the current state of your database models population, use:
+
+```bash
+bash scripts/dumpdata.sh
+```
+
+Your new exports will replace the current ones in the app/fixtures folder.

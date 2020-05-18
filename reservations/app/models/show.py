@@ -94,6 +94,25 @@ class Representation(models.Model):
         return "[{}] {} le {} à {}".format(self.pk, self.show.title, self.time,
                                            self.location.designation)
 
+    def save(self, *args, **kwargs):
+        """Save method for Representation.
+
+        Calculate the number of available seats by taking the total amount and
+        substract the already booked seats off all the completed reservations
+        related to this representation.
+        """
+
+        available_seats = self.total_seats
+        reservations = self.reservation_set.all()
+
+        for reservation in reservations:
+            if reservation.status == "Completed":
+                available_seats -= reservation.seats
+
+        self.available_seats = available_seats
+
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         """Return absolute url for Representation."""
 

@@ -3,13 +3,13 @@
 # Check if the script has been executed from the reservations/ directory
 # Move the current directory to it if not in order to execute the script
 
-# Then loads all the JSON-fixtures available in the reservations/app/fixtures directory with the manage.py utility
-
-
 FILE=../manage.py
 if test -f "$FILE"; then
     cd ..
 fi
+
+
+# Loads all the JSON-fixtures available in the reservations/app/fixtures directory with the manage.py utility
 
 for file in app/fixtures/*
 do
@@ -25,5 +25,5 @@ do
     fi
 done
 
-printf "SUCCESS: All fixture JSON-data successfully imported"
+printf "\n------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully imported \n------------------------------------------------------\n"
 exit 0
