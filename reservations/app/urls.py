@@ -81,6 +81,6 @@ urlpatterns = [
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
 
     #Paypal
-    url(r'paypal/', include('paypal.standard.ipn.urls', name='paypal')),
+    url(r'paypal/', include('paypal.standard.ipn.urls')),
 
 ]
