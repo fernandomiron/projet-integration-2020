@@ -2,6 +2,7 @@ from django.conf.urls import url
 # import of the built-in Django authentication and give it a "auth_views" alias
 from django.contrib.auth import views as auth_views
 
+from django.urls import include
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
 from app.views.locationList import LocationListView
@@ -78,4 +79,8 @@ urlpatterns = [
     url(r'^rss/representation/', RepresentationFeed(),
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
+
+    #Paypal
+    url(r'paypal/', include('paypal.standard.ipn.urls', name='paypal')),
+
 ]
