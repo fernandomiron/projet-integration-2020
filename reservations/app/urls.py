@@ -12,6 +12,7 @@ from app.views.api import (
     ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
     )
 
+from app.views.reservation import ReservationView
 
 urlpatterns = [
     # Home page
@@ -80,6 +81,11 @@ urlpatterns = [
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
 
+
+    # reservation
+
+    url(r'^reservation/$', ReservationView, name='reservation'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', ReservationView, name='reservation_pk'),
     #Paypal
     url(r'paypal/', include('paypal.standard.ipn.urls')),
 
