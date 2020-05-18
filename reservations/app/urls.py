@@ -6,10 +6,10 @@ from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
-
+from .views.showCRUD import CreateShow,UpdateShow, DeleteShow
 from app.views.api import (
     ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
-    )
+)
 
 
 urlpatterns = [
@@ -52,6 +52,11 @@ urlpatterns = [
     url(r'^password/reset/done/$',
         auth_views.PasswordResetCompleteView.as_view(template_name="app/\
             password_reset_complete.html"), name='password_reset_complete'),
+
+    #Crudshow
+    url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
+    url(r'^showcrud/(?P<slug>.*)/$',UpdateShow, name = 'UpdateShow'),
+    url(r'^showcruddelete/(?P<slug>.*)/$',DeleteShow, name = 'DeleteShow'),
 
     # Shows
     url(r'^show/$', show.show_list, name='show'),
