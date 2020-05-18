@@ -4,12 +4,11 @@ from django.contrib.auth import views as auth_views
 
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
+from app.views.api import (ArtistApiView, LocationApiView,
+                           RepresentationApiView, ShowApiView)
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
-from .views.showCRUD import CreateShow,UpdateShow, DeleteShow
-from app.views.api import (
-    ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
-)
+from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
 urlpatterns = [
@@ -53,16 +52,14 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(template_name="app/\
             password_reset_complete.html"), name='password_reset_complete'),
 
-    #Crudshow
-    url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
-    url(r'^showcrud/(?P<slug>.*)/$',UpdateShow, name = 'UpdateShow'),
-    url(r'^showcruddelete/(?P<slug>.*)/$',DeleteShow, name = 'DeleteShow'),
-
     # Shows
     url(r'^show/$', show.show_list, name='show'),
-    url(r'^show/(?P<pk>[0-9]+)/?$', show.show_detail, name='show_detail_pk'),
-    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/?$', show.show_detail_slug,
+    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
+    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
         name='show_detail_slug'),
+    url(r'^show/create/$', CreateShow, name='ShowCrud'),
+    url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
+    url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
