@@ -1,6 +1,6 @@
-<!--login template -->
 {% extends "app/base.html" %}
-{% block main %}
+
+{% block content %}
 <h1>Login</h1>
 <!--CSFR token and form added for login functionality -->
 <form  action={%url 'login'%} method="post">
@@ -8,4 +8,4 @@
 {{form}}
 <input type="submit" value="Login">
 </form>
-{%  endblock %}
+{% endblock %}
