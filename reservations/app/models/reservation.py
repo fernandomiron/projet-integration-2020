@@ -4,13 +4,24 @@ from django.db import models
 from app.models.show import Representation
 
 
+RESERVATION_STATUS = [
+    ('Ongoing', 'En cours'),
+    ('Completed', 'Terminée'),
+    ('Cancelled', 'Annulée'),
+]
+
+
 class Reservation(models.Model):
     """Model definition for Reservation."""
 
     representation = models.ForeignKey(Representation,
                                        on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    time = models.DateField(auto_now_add=True)
     seats = models.PositiveIntegerField()
+    price = models.FloatField()
+    status = models.CharField(max_length=9, choices=RESERVATION_STATUS,
+                              default='Ongoing')
 
     class Meta:
         """Meta definition for Reservation."""
@@ -21,12 +32,31 @@ class Reservation(models.Model):
     def __str__(self):
         """Unicode representation of Reservation."""
 
-        return "[{}] Réservation de {}, le {}, pour {}".format(
+        return "[{}] ({}) Réservation de {}, le {}, pour {} ({} place(s))".format(
                 self.pk,
-                self.representation.show.title,
+                self.status,
+                self.user.username,
                 self.representation.time,
+                self.representation.show.title,
                 self.seats
             )
+
+    def save(self, *args, **kwargs):
+        """Save method for Reservation.
+
+        Save the representation to substract the amount of booked seats for
+        the available seats left of it. This occurs only if the reservation is
+        flagged as "Completed".
+
+        Calculate the total reservation price based on the show price and the
+        number of seats booked.
+        """
+
+        self.representation.save()
+
+        self.price = round(self.representation.show.price * self.seats, 2)
+
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         """Return absolute url for Reservation."""
