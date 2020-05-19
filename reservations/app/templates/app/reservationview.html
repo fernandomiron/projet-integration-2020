@@ -1,0 +1,28 @@
+
+{% extends "app/base.html" %}
+
+
+{% block content %}
+
+<div class ='col-sm-8 col-sm-offset-2'>
+
+<table class='table'>
+
+    <thead>
+        <th> Representation</th>
+        <th> Places libres</th>
+    </thead>
+<tfoot>
+    <tr>
+        <td></td>
+        <td>Total : {{reservation.price }} </td>
+    </tr>
+</tfoot>
+
+
+    <tr> <td> {{ reservation.representation.show.title }} </td>   <td>  {{ reservation.representation.total_seats }} ></td></tr>
+
+</table>
+
+</div>
+{% endblock %}
