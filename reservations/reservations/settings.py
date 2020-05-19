@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,9 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # django-debug-toolbar==2.2
@@ -177,4 +180,13 @@ else:
             'BACKEND': "django.core.cache.LocMemCache",
             'LOCATION': "projet-integration-2020_cache"
         }
-    }
+}
+
+#getting bootstrap4 instead of bootstrap2
+CRISPY_TEMPLATES_PACK = 'bootstrap4'
+
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'login'

@@ -26,13 +26,28 @@ class LocalityResource(resources.ModelResource):
 
 
 class LocationAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class"""
+    """ArtistType admin register class
+
+    Customize the appearance of the table Location in the admin database
+    """
+
+    list_display = ('pk', 'designation')
+    list_display_links = ('pk', 'designation')  # to make field clickable
+    search_fields = ('designation',)
 
     resource_class = LocationResource
 
 
 class LocalityAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class"""
+    """ArtistType admin register class
+
+    Customize the appearance of the table Locality in the admin database
+    """
+    list_display = ('pk', 'postal_code', 'locality')
+    list_display_links = ('pk', 'postal_code', 'locality') # to make field clickable
+    search_fields = ('postal_code', 'locality')
+
+
 
     resource_class = LocalityResource
 

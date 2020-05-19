@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from app.models import *
 from django.shortcuts import redirect, render, HttpResponseRedirect
 from django.urls import reverse
@@ -21,3 +22,10 @@ def add_to reservation(request, slug):
     except:
         pass
     reservation.representation.add(product)
+=======
+from django.shortcuts import render
+
+
+def reservation_view(request):
+    return render(request, "app/reservation_view.html")
+>>>>>>> d4886f816841f381fea9b8d94b5821236f70721b
