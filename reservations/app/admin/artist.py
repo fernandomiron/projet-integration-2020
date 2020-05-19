@@ -15,6 +15,32 @@ class ArtistResource(resources.ModelResource):
         skip_unchanged = True
 
 
+class ArtistAdmin(ImportExportModelAdmin):
+    """Artist admin register class
+
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
+
+    list_display = ('lastname', 'firstname')
+    ordering = ('-lastname', '-firstname', )
+
+    list_filter = ('lastname', 'firstname')
+    search_fields = ('firstname','lastname')
+
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant l\'artiste',
+            'fields': ('lastname', 'firstname')
+        }),
+    )
+
+    resource_class = ArtistResource
+
+
+admin.site.register(Artist, ArtistAdmin)
+
+
 class TypesResource(resources.ModelResource):
     """Describe how Type resources can be imported or exported"""
 
@@ -23,6 +49,33 @@ class TypesResource(resources.ModelResource):
 
         model = Types
         skip_unchanged = True
+
+
+class TypesAdmin(ImportExportModelAdmin):
+    """Types admin register class
+
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
+
+    list_display = ('types', )
+    ordering = ('types', )
+
+    list_filter = ('types', )
+    search_fields = ('types', )
+
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant le type pouvant \
+                être assigné à un artiste',
+            'fields': ('types', )
+        }),
+    )
+
+    resource_class = TypesResource
+
+
+admin.site.register(Types, TypesAdmin)
 
 
 class ArtistTypeResource(resources.ModelResource):
@@ -35,55 +88,42 @@ class ArtistTypeResource(resources.ModelResource):
         skip_unchanged = True
 
 
-class ArtistAdmin(ImportExportModelAdmin):
-    """Artist admin register class
-
-    This will customize the table Artist on the admin database
-    """
-
-    list_display = ('pk', 'firstname', 'lastname')
-    list_display_links = ('pk', 'firstname', 'lastname') # to make field clickable
-    search_fields = ('firstname','lastname')
-
-
-
-    resource_class = ArtistResource
-
-
-class TypesAdmin(ImportExportModelAdmin):
-    """Types admin register class
-
-    This will customize the table Artist on the admin database
-    """
-
-    list_display = ('pk', 'types')
-    list_display_links = ('pk', 'types') # to make field clickable
-    search_fields = ('types',)
-
-    resource_class = TypesResource
-
-
 class ArtistTypeAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class"""
+    """ArtistType admin register class
 
-    list_display = ('pk', 'get_firstname', 'get_lastname', 'types')
-    list_display_links = ('pk', 'get_firstname', 'get_lastname', 'types') # to make field clickable
-    search_fields = ('artist_type__artist__firstname', 'artist_type__artist__lastname')
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
 
-    def get_firstname(self, obj):
-        """ get method for the artist firstname"""
-        return obj.artist_type.artist.firstname
-    get_firstname.short_description = 'firstname'
+    list_display = ('artist_lastname', 'artist_firstname', 'types')
+    ordering = ('types', )
 
-    def get_lastname(self, obj):
-        """ get method for the artist lastname"""
-        return obj.artist_type.artist.lastname
-    get_firstname.short_description = 'lastname'
+    list_filter = ('types', )
+    search_fields = ('artist_lastname', 'artist_firstname', 'types')
 
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant le type \
+                d\'artiste',
+            'fields': ('types', )
+        }),
+    )
+
+    def artist_lastname(self, artist_type):
+        """Display the lastname of the artist"""
+
+        return artist_type.artist.lastname
+
+    artist_lastname.short_description = 'Nom de famille de l\'artiste'
+
+    def artist_firstname(self, artist_type):
+        """Display the firstname of the artist"""
+
+        return artist_type.artist.firstname
+
+    artist_firstname.short_description = 'Prénom de l\'artiste'
 
     resource_class = ArtistTypeResource
 
 
-admin.site.register(Artist, ArtistAdmin)
-admin.site.register(Types, TypesAdmin)
 admin.site.register(ArtistType, ArtistTypeAdmin)
