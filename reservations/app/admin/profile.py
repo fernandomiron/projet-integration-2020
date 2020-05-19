@@ -16,7 +16,7 @@ class UserProfileResource(resources.ModelResource):
 
 
 class UserProfileAdmin(ImportExportModelAdmin):
-    """UserPRofile admin register class
+    """UserProfile admin register class
 
     Custom administration form and list.
     Add the import/export buttom on the top of the entry.
@@ -26,7 +26,7 @@ class UserProfileAdmin(ImportExportModelAdmin):
     ordering = ('user', 'language')
 
     list_filter = ('user', 'language')
-    search_fields = ('user', 'user_lastname', 'user_firstname', 'language')
+    search_fields = ('language',)
 
     fieldsets = (
         ('Information générales', {

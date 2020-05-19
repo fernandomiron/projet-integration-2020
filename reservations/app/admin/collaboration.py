@@ -27,8 +27,6 @@ class CollaborationAdmin(ImportExportModelAdmin):
     ordering = ('show', 'artist_type')
 
     list_filter = ('show', 'artist_type')
-    search_fields = ('show', 'artist_lastname', 'artist_firstname',
-                     'artist_type')
 
     fieldsets = (
         ('Information générales', {

@@ -26,7 +26,7 @@ class ArtistAdmin(ImportExportModelAdmin):
     ordering = ('-lastname', '-firstname', )
 
     list_filter = ('lastname', 'firstname')
-    search_fields = ('firstname','lastname')
+    search_fields = ('firstname', 'lastname')
 
     fieldsets = (
         ('Information générales', {
@@ -99,7 +99,6 @@ class ArtistTypeAdmin(ImportExportModelAdmin):
     ordering = ('types', )
 
     list_filter = ('types', )
-    search_fields = ('artist_lastname', 'artist_firstname', 'types')
 
     fieldsets = (
         ('Information générales', {

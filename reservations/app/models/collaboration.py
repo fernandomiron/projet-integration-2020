@@ -9,7 +9,7 @@ class Collaboration(models.Model):
     artist_type = models.ForeignKey(ArtistType, on_delete=models.CASCADE,
                                     verbose_name="Type dartiste")
     show = models.ForeignKey(Show, on_delete=models.CASCADE,
-                             verbose_name="Spéctacle")
+                             verbose_name="Spectacle")
 
     class Meta:
         """Meta definition for Collaboration."""

@@ -37,7 +37,7 @@ class LocationAdmin(ImportExportModelAdmin):
     ordering = ('designation', 'locality')
 
     list_filter = ('locality', 'designation')
-    search_fields = ('designation', 'locality', 'address', 'website')
+    search_fields = ('designation', 'address', 'website')
 
     fieldsets = (
         ('Information générales', {
