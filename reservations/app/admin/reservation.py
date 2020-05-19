@@ -34,7 +34,7 @@ class ReservationAdmin(ImportExportModelAdmin):
     fieldsets = (
         ('Information générales', {
             'description': 'Informations générales concernant la \
-                collaboration',
+                réservation',
             'fields': ('representation', 'user', 'time', 'seats', 'price', 'status')
         }),
     )
