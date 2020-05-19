@@ -57,7 +57,7 @@ class Location(models.Model):
     def __str__(self):
         """Unicode representation of Location."""
 
-        return "[{}] {}".format(self.pk, self.designation)
+        return "{}".format(self.designation)
 
     def save(self, *args, **kwargs):
         """Save method for Show.

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -25,7 +26,7 @@ class ReservationAdmin(ImportExportModelAdmin):
     list_display = ('show_name', 'user', 'user_lastname', 'user_firstname',
                     'time', 'seats', 'price', 'status')
     readonly_fields = ['price', 'time']
-    ordering = ('-time',)
+    ordering = ('status', '-time')
     date_hierarchy = 'time'
 
     list_filter = ('status', 'user')

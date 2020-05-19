@@ -1,4 +1,5 @@
 from django.db import models
+
 from app.models.artist import ArtistType
 from app.models.show import Show
 

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -67,7 +68,7 @@ class RepresentationAdmin(ImportExportModelAdmin):
     ordering = ('-time',)
     date_hierarchy = 'time'
 
-    list_filter = ('show', 'location')
+    list_filter = ('location', 'show')
 
     fieldsets = (
         ('Information générales', {

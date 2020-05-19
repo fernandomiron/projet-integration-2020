@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -12,16 +13,6 @@ class LocationResource(resources.ModelResource):
         """Meta definition for LocationResource."""
 
         model = Location
-        skip_unchanged = True
-
-
-class LocalityResource(resources.ModelResource):
-    """Describe how Type resources can be imported or exported"""
-
-    class Meta:
-        """Meta definition for LocalityResource."""
-
-        model = Locality
         skip_unchanged = True
 
 
@@ -54,6 +45,16 @@ class LocationAdmin(ImportExportModelAdmin):
 admin.site.register(Location, LocationAdmin)
 
 
+class LocalityResource(resources.ModelResource):
+    """Describe how Type resources can be imported or exported"""
+
+    class Meta:
+        """Meta definition for LocalityResource."""
+
+        model = Locality
+        skip_unchanged = True
+
+
 class LocalityAdmin(ImportExportModelAdmin):
     """Locality admin register class
 
@@ -61,7 +62,7 @@ class LocalityAdmin(ImportExportModelAdmin):
     Add the import/export buttom on the top of the entry.
     """
 
-    list_display = ('postal_code', 'locality')
+    list_display = ('locality', 'postal_code')
     ordering = ('postal_code',)
 
     list_filter = ('postal_code', 'locality')
