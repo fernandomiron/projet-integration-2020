@@ -18,6 +18,14 @@ class UserProfileResource(resources.ModelResource):
 class UserProfileAdmin(ImportExportModelAdmin):
     """UserProfile admin register class"""
 
+    list_display = ('pk','get_username')
+    list_display_links = ('pk', 'get_username')  # to make field clickable
+    search_fields = ('user__username',)
+
+    def get_username(self, obj):
+        return obj.user.username
+    get_username.short_description = 'nom utilisateur'
+
     resource_class = UserProfileResource
 
 

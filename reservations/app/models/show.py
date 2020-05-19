@@ -116,6 +116,6 @@ class Representation(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Representation."""
 
-        return ('')  # TODO: Define absolute url + url name
+        return reverse('show')
 
     # TODO: Define custom methods here
