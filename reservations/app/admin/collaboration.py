@@ -59,8 +59,6 @@ class CollaborationAdmin(ImportExportModelAdmin):
 
     artist_type.short_description = 'Type d\'artiste'
 
-
-
     resource_class = CollaborationResource
 
 

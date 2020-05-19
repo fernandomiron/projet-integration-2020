@@ -16,17 +16,39 @@ class UserProfileResource(resources.ModelResource):
 
 
 class UserProfileAdmin(ImportExportModelAdmin):
-    """UserProfile admin register class"""
+    """UserPRofile admin register class
 
-    list_display = ('pk','get_username')
-    list_display_links = ('pk', 'get_username')  # to make field clickable
-    search_fields = ('user__username',)
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
 
-    def get_username(self, obj):
-        return obj.user.username
-    get_username.short_description = 'nom utilisateur'
+    list_display = ('user', 'user_lastname', 'user_firstname', 'language')
+    ordering = ('user', 'language')
 
-    resource_class = UserProfileResource
+    list_filter = ('user', 'language')
+    search_fields = ('user', 'user_lastname', 'user_firstname', 'language')
+
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant le profile de \
+                l\'utilisateur',
+            'fields': ('user', 'language')
+        }),
+    )
+
+    def user_lastname(self, userprofile):
+        """Display the lastname of the user"""
+
+        return userprofile.user.last_name
+
+    user_lastname.short_description = 'Nom de famille de l\'utilisateur'
+
+    def user_firstname(self, userprofile):
+        """Display the firstname of the user"""
+
+        return userprofile.user.first_name
+
+    user_firstname.short_description = 'Prénom de l\'utilisateur'
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
