@@ -16,29 +16,48 @@ class CollaborationResource(resources.ModelResource):
 
 
 class CollaborationAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class
+    """Artist admin register class
 
-    Customize the appearance of the table Collaboration in the admin database
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
     """
 
-    list_display = ('pk', 'get_firstname', 'get_lastname', 'get_title')
-    list_display_links = ('pk', 'get_firstname', 'get_lastname', 'get_title') # to make field clickable
-    search_fields = ('artist_type__artist__firstname', 'artist_type__artist__lastname')
+    list_display = ('show', 'artist_lastname', 'artist_firstname',
+                    'artist_type')
+    ordering = ('show', 'artist_type')
 
-    def get_firstname(self, obj):
-        """ get method for the artist firstname"""
-        return obj.artist_type.artist.firstname
-    get_firstname.short_description = 'Prenom artiste'
+    list_filter = ('show', 'artist_type')
+    search_fields = ('show', 'artist_lastname', 'artist_firstname',
+                     'artist_type')
 
-    def get_lastname(self, obj):
-        """ get method for the artist lastname"""
-        return obj.artist_type.artist.lastname
-    get_lastname.short_description = 'Nom artiste'
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant la \
+                collaboration',
+            'fields': ('show', 'artist_type')
+        }),
+    )
 
-    def get_title(self, obj):
-        """ get the show title"""
-        return obj.show.title
-    get_title.short_description = 'titre spectacle'
+    def artist_lastname(self, collaboration):
+        """Display the lastname of the artist"""
+
+        return collaboration.artist_type.artist.lastname
+
+    artist_lastname.short_description = 'Nom de famille de l\'artiste'
+
+    def artist_firstname(self, collaboration):
+        """Display the firstname of the artist"""
+
+        return collaboration.artist_type.artist.firstname
+
+    artist_firstname.short_description = 'Prénom de l\'artiste'
+
+    def artist_type(self, collaboration):
+        """Display the firstname of the artist"""
+
+        return collaboration.artist_type.types.types
+
+    artist_type.short_description = 'Type d\'artiste'
 
 
 

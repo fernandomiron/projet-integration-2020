@@ -28,7 +28,7 @@ class Show(models.Model):
     def __str__(self):
         """Unicode representation of Show."""
 
-        return "[{}] {}".format(self.pk, self.title)
+        return "{}".format(self.title)
 
     def save(self, *args, **kwargs):
         """Save method for Show.

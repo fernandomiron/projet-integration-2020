@@ -69,8 +69,8 @@ class ArtistType(models.Model):
     def __str__(self):
         """Unicode representation of ArtistType."""
 
-        return "[{}] {} {} ({})".format(self.pk, self.artist.firstname,
-                                        self.artist.lastname, self.types)
+        return "{} {} ({})".format(self.artist.firstname, self.artist.lastname,
+                                   self.types)
 
     def get_absolute_url(self):
         """Return absolute url for ArtistType."""

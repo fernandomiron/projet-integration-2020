@@ -6,8 +6,10 @@ from app.models.show import Show
 class Collaboration(models.Model):
     """Model definition for Collaboration."""
 
-    artist_type = models.ForeignKey(ArtistType, on_delete=models.CASCADE)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    artist_type = models.ForeignKey(ArtistType, on_delete=models.CASCADE,
+                                    verbose_name="Type dartiste")
+    show = models.ForeignKey(Show, on_delete=models.CASCADE,
+                             verbose_name="Spéctacle")
 
     class Meta:
         """Meta definition for Collaboration."""
