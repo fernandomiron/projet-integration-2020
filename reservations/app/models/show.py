@@ -62,7 +62,7 @@ class Show(models.Model):
         max_length = self._meta.get_field('slug').max_length - 3
         value = self.title
         slug_result = slug_original = \
-            slugify(value, allow_unicode=True)[:max_length]
+            slugify(value, allow_unicode=False)[:max_length]
 
         for i in itertools.count(1):
             if not Show.objects.filter(slug=slug_result).exists():

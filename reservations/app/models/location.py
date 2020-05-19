@@ -8,8 +8,10 @@ import itertools
 class Locality(models.Model):
     """Model definition for Locality."""
 
-    postal_code = models.CharField(max_length=6, unique=True)
-    locality = models.CharField(max_length=60, unique=True)
+    postal_code = models.CharField(max_length=6, unique=True,
+                                   verbose_name="Code postal")
+    locality = models.CharField(max_length=60, unique=True,
+                                verbose_name="Localité")
 
     class Meta:
         """Meta definition for Locality."""
@@ -20,7 +22,7 @@ class Locality(models.Model):
     def __str__(self):
         """Unicode representation of Locality."""
 
-        return "[{}] {} - {}".format(self.pk, self.postal_code, self.locality)
+        return "{} - {}".format(self.postal_code, self.locality)
 
     def get_absolute_url(self):
         """Return absolute url for Locality."""
@@ -33,12 +35,17 @@ class Locality(models.Model):
 class Location(models.Model):
     """Model definition for Location."""
 
-    designation = models.CharField(max_length=60)
+    designation = models.CharField(max_length=60,
+                                   verbose_name="Nom de l'emplacement")
     slug = models.SlugField(max_length=60, unique=True)
-    address = models.CharField(max_length=255, null=True, blank=True)
-    locality = models.ForeignKey(Locality, on_delete=models.CASCADE, null=True, blank=True)
-    phone = models.CharField(max_length=30, null=True, blank=True)
-    website = models.URLField(max_length=255, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True,
+                               verbose_name="Adresse")
+    locality = models.ForeignKey(Locality, on_delete=models.CASCADE, null=True,
+                                 blank=True, verbose_name="Localité")
+    phone = models.CharField(max_length=30, null=True, blank=True,
+                             verbose_name="Téléphone")
+    website = models.URLField(max_length=255, null=True, blank=True,
+                              verbose_name="Site internet")
 
     class Meta:
         """Meta definition for Location."""
@@ -81,7 +88,7 @@ class Location(models.Model):
         max_length = self._meta.get_field('slug').max_length - 3
         value = self.designation
         slug_result = slug_original = \
-            slugify(value, allow_unicode=True)[:max_length]
+            slugify(value, allow_unicode=False)[:max_length]
 
         for i in itertools.count(1):
             if not Location.objects.filter(slug=slug_result).exists():

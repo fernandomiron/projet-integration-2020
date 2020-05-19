@@ -26,31 +26,55 @@ class LocalityResource(resources.ModelResource):
 
 
 class LocationAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class
+    """Location admin register class
 
-    Customize the appearance of the table Location in the admin database
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
     """
 
-    list_display = ('pk', 'designation')
-    list_display_links = ('pk', 'designation')  # to make field clickable
-    search_fields = ('designation',)
+    list_display = ('designation', 'locality', 'phone', 'website')
+    readonly_fields = ['slug']
+    ordering = ('designation', 'locality')
+
+    list_filter = ('locality', 'designation')
+    search_fields = ('designation', 'locality', 'address', 'website')
+
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant \
+                l\'emplacement',
+            'fields': ('designation', 'slug', 'address', 'locality', 'phone',
+                       'website')
+        }),
+    )
 
     resource_class = LocationResource
 
 
-class LocalityAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class
+admin.site.register(Location, LocationAdmin)
 
-    Customize the appearance of the table Locality in the admin database
+
+class LocalityAdmin(ImportExportModelAdmin):
+    """Locality admin register class
+
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
     """
-    list_display = ('pk', 'postal_code', 'locality')
-    list_display_links = ('pk', 'postal_code', 'locality') # to make field clickable
+
+    list_display = ('postal_code', 'locality')
+    ordering = ('postal_code',)
+
+    list_filter = ('postal_code', 'locality')
     search_fields = ('postal_code', 'locality')
 
-
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant la localité',
+            'fields': ('postal_code', 'locality')
+        }),
+    )
 
     resource_class = LocalityResource
 
 
-admin.site.register(Location, LocationAdmin)
 admin.site.register(Locality, LocalityAdmin)

@@ -16,7 +16,7 @@ class CollaborationResource(resources.ModelResource):
 
 
 class CollaborationAdmin(ImportExportModelAdmin):
-    """Artist admin register class
+    """Collaboration admin register class
 
     Custom administration form and list.
     Add the import/export buttom on the top of the entry.
