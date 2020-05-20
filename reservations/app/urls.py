@@ -10,8 +10,8 @@ from app.views.api import (
     LocationApiView, 
     RepresentationApiView, 
     ShowApiView, 
-    external_api_show_view,
-    external_api_view_test
+    ExternalAPI,
+    ExternalAPIShowView
     )
 
 
@@ -40,8 +40,9 @@ urlpatterns = [
     url(r'^api/location/', LocationApiView.as_view(), name='api_location'),
 
     #External API
-    url(r'^external-api/show2', external_api_view_test , name='ext-api-show-2'),
-    url(r'^external-api/show', external_api_show_view, name='ext-api-show'),
+    url(r'^external-api/show2', ExternalAPI.as_view() , name='ext-api-show-2'),
+    url(r'^external-api/show', ExternalAPIShowView.as_view(), name='ext-api-show'),
+   
     
 
     # RSS Feeds
