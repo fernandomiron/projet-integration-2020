@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from app.models.show import Representation
 from app.models.show import Location
-from app.forms.representationForm import RepresentationForm
+from app.forms.representationForm import RepresentationForm, RepresentationFormMod
 
 def CreateRepresentation(request,pk):
     """ Creating a Representation
@@ -30,7 +30,7 @@ def UpdateRepresentation(request, pk):
     This will allow updating a representation """
 
     representation = Representation.objects.get(pk=pk)
-    form = RepresentationForm(request.POST or None, instance=representation)
+    form = RepresentationFormMod(request.POST or None, instance=representation)
     if form.is_valid():
         location = representation.location #getting the location matching the current representation.
         form.save()
@@ -44,11 +44,11 @@ def DeleteRepresentation(request, pk):
     This will allow deleting a representation"""
 
     representation = Representation.objects.get(pk=pk)
+    location = representation.location #getting the location matching the current representation.
     if request.method == 'POST':
     #if the user click on the submit button (displayed by the template)
     #he will post and confirm a delete.
 
-        location = representation.location #getting the location matching the current representation.
         representation.delete()
         return redirect (location)
-    return render (request, 'app/locationdetailed.html',{'representation': representation})
+    return render (request, 'app/deleteRepresentation.html',{'representation': representation, 'location' : location})

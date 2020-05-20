@@ -32,7 +32,7 @@ def UpdateLocation(request,pk):
     if form.is_valid():
         form.save()
         return redirect (location)
-        #because of the model get_absolute_url I can access the view of this specific object. 
+        #because of the model get_absolute_url I can access the view of this specific object.
 
 
     return render(request, 'app/locationCRUD.html', {'updateLocationform':form})
@@ -50,4 +50,4 @@ def DeleteLocation(request, pk):
 
         location.delete()
         return redirect ('LocationListView')
-    return render (request, 'app/locationdetailed.html',{'location': location})
+    return render (request, 'app/deleteLocation.html',{'location': location})

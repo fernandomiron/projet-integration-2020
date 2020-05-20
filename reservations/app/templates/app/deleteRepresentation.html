@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p> Etes vous sûr de supprimer la representation de {{ representation.show.title }} du {{ representation.time }} ? </p>
+
+<form method="POST">
+
+  {% csrf_token %}
+  <a href="{% url 'LocationPkView_pk' location.pk %}"> Annuler </a>
+  <button type "submit" class="btn btn-primary"> Confirmer</button>
+
+</form>
+
+{% endblock content %}

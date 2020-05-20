@@ -93,10 +93,5 @@ urlpatterns = [
     url(r'^rss/show/', LastShowFeed(), name='rss_show'),
     url(r'^rss/representation/', RepresentationFeed(),
         name='rss_representation'),
-<<<<<<< HEAD
-    url(r'^rss/location/?', LocationFeed(), name='rss_location'),
-
-=======
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
->>>>>>> master
 ]

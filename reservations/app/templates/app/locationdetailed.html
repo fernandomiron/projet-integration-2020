@@ -7,10 +7,6 @@
     <section class="content">
 
 
-      <!-- hidden if you can't connect to the admin -->
-      {% if request.user.is_staff %}
-        <a href="{% url 'UpdateLocation' location.pk %}" class="btn btn-link"> Modifier location </a>
-      {% endif %}
 
       <h1>{{location.designation}}</h1>
       <h3> {{location.address}}</h3>
@@ -19,16 +15,12 @@
       <h3>{{location.phone}}</h3>
       <h4>{{ location.website|urlize }}</h4>
       <h4><a href="{% url 'LocationListView' %}">Retour aux emplacements</a></h4>
-
-      <!-- delete button -->
+      <!-- hidden if you can't connect to the admin -->
       {% if request.user.is_staff %}
-        <form action="{% url 'DeleteLocation' location.pk %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class= "btn btn-link" onclick="return confirm('Sûr de vouloir faire ça ?')">
-                supprimer location
-            </button>
-        </form>
+        <a href="{% url 'UpdateLocation' location.pk %}" class="btn btn-primary"> Modifier location </a>
+        <a href="{% url 'DeleteLocation' location.pk %}" class="btn btn-link"> Supprimer location </a>
       {% endif %}
+
 
       <h3>***********************************************</h3>
       <h2> Representions</h2>
@@ -44,18 +36,7 @@
       <h3> Sièges libres: {{rep.available_seats}}</h3>
       {% if request.user.is_staff %}
         <a href="{% url 'UpdateRepresentation' rep.pk %}"> Modifier Representation </a>
-
-        <!-- delete button-->
-        {% if request.user.is_staff %}
-
-          <form action="{% url 'DeleteRepresentation' rep.pk %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class= "btn btn-link" onclick="return confirm('Sûr de vouloir faire ça ?')">
-                  Supprimer representation
-              </button>
-          </form>
-        {% endif %}
-
+        <a href="{% url 'DeleteRepresentation' rep.pk %}"> Supprimer Representation </a>
 
       {% endif %}
 

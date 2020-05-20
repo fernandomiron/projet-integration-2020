@@ -45,4 +45,4 @@ def DeleteShow(request, pk):
 
         a_show.delete()
         return redirect ('show')
-    return render (request, 'app/show_list.html',{'a_show': a_show})
+    return render (request, 'app/deleteShow.html',{'a_show': a_show})
