@@ -20,7 +20,12 @@
         <td> {{ reservation.representation.show.title }} </td>  
         <td> {{ reservation.representation.total_seats }} </td> 
         <td> {{ reservation.representation.show.price }} </td>
-        <td> {{ reservation.representation.show.price }} </td>
+        <td> 
+            <form class='form pull-right' method='GET' action ='{% url "reservationupdate" reservation.pk %}'>
+                <input name='qty'    type='number' />
+                <input type='submit' value='adapter'/> 
+            </form>
+        </td>
         
     </tr>
 

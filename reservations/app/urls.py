@@ -86,7 +86,7 @@ urlpatterns = [
 
     # reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
-    url(r'^reservation/(?P<pk>[0-9]+)/(?P<qty>\d+)/$', reservationview, name='reservationupdate'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
    
     #Paypal
     url(r'paypal/', include('paypal.standard.ipn.urls')),

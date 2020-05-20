@@ -56,11 +56,15 @@ def reservationglobalview(request):
     return render(request, template, context)
 
 
-def reservationview(request,pk,qty):
+def reservationview(request,pk):
 
     
     reservation = Reservation.objects.get(pk=pk)
-    reservation.seats=float(qty)
+    qty = request.GET.get('qty')
+    if qty == '':
+        reservation.seats = 1
+    else:
+        reservation.seats=float(qty)
     
     reservation.save()
     # print(reservation)
