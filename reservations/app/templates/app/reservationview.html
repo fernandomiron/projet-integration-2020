@@ -11,18 +11,30 @@
     <thead>
         <th> Representation</th>
         <th> Places libres</th>
+        <th> Prix par place</th>
+        <th> Nombre de place souhaitées</th>
     </thead>
+
+
+    <tr> 
+        <td> {{ reservation.representation.show.title }} </td>  
+        <td> {{ reservation.representation.total_seats }} </td> 
+        <td> {{ reservation.representation.show.price }} </td>
+        <td> {{ reservation.representation.show.price }} </td>
+        
+    </tr>
+
 <tfoot>
     <tr>
-        <td></td>
+        <td>Sièges : {{reservation.seats }} </td>
+        <td> </td>
         <td>Total : {{reservation.price }} </td>
     </tr>
 </tfoot>
 
-
-    <tr> <td> {{ reservation.representation.show.title }} </td>   <td>  {{ reservation.representation.total_seats }} </td></tr>
-
 </table>
 
+
+<P>Status : {{ reservation.status }} </P>
 </div>
 {% endblock %}

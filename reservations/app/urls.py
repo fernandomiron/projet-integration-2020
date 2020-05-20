@@ -11,7 +11,7 @@ from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
-from app.views.reservation import reservationview
+from app.views.reservation import reservationview, updatereservationview
 
 urlpatterns = [
     # Home page
@@ -86,8 +86,9 @@ urlpatterns = [
 
     # reservation
 
-    url(r'^reservation/$', reservationview, name='reservation'),
-    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservation_pk'),
+    url(r'^reservation/$', reservation.reservationview, name='reservation'),
+    url(r'^reservation/(?P<pk>[0-9]+)/(?P<qty>\d+)/$', reservation.updatereservationview, name='reservationupdate'),
+   
     #Paypal
     url(r'paypal/', include('paypal.standard.ipn.urls')),
 ]

@@ -64,3 +64,4 @@ class Reservation(models.Model):
         return ('')  # TODO: Define absolute url + url name
 
     # TODO: Define custom methods here
+
