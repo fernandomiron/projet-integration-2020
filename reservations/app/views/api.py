@@ -57,28 +57,46 @@ class LocationApiView (generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id', 'designation')
 
-
-
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
-@api_view(('GET',))
-def external_api_show_view(request):
-    if request.method == "GET":
+class ExternalAPIShowView(generics.GenericAPIView):
+    queryset = ''
+    def get(self, request, *args, **kwargs):
+        data_list = []
         attempt_num = 0  # keep track of how many times we've retried
+        external_api_url = "https://api.theatredelaville-paris.com/events" 
+        r = requests.get(external_api_url, timeout=10)
+        data_all = r.json()
         while attempt_num < MAX_RETRIES:
-            dico_data = {}
-            r = requests.get("https://api.theatredelaville-paris.com/events", timeout=10)
-
             if r.status_code == 200:
-                for i in range(len(r.json()['hydra:member'])):
-                    title = r.json()['hydra:member'][i]['name']
-                    slug = r.json()['hydra:member'][i]['slug']
-                    description = r.json()['hydra:member'][i]['excerpt']
-                    poster = r.json()['hydra:member'][i]['image']
-                    bookable = r.json()['hydra:member'][i]['ticketingOpen']
-                    price = r.json()['hydra:member'][i]['priceRange']
-                    date_created = r.json()['hydra:member'][i]['ticketingOpening']
-                    data = {
+                for i in range(len(data_all['hydra:member'])):
+                    title = data_all['hydra:member'][i]['name']
+                    slug = data_all['hydra:member'][i]['slug']
+                    description = data_all['hydra:member'][i]['excerpt']
+                    bookable = data_all['hydra:member'][i]['ticketingOpen']
+                    price = str(data_all['hydra:member'][i]['priceRange'])
+                    date_created = data_all['hydra:member'][i]['ticketingOpening']
+                    image = data_all['hydra:member'][i]['image']
+
+                    if image != None : 
+                        poster = data_all['hydra:member'][i]['image']['contentUrl']['medium']
+
+                    # Extract the price from the string 
+                    if price == 'None':
+                        price = 0
+                    elif price[0] == 'd' or price[0] == 'D':
+                        price = price[3:5].strip()
+                    else :
+                        price = price[:2]
+                        if price[1] == '€':
+                            price = price[0]
+                        else:
+                            price = price.strip()
+                    
+                    #Convert the price in Integer
+                    price = int(price)
+
+                    data_filtered = {
                         'title' : title,
                         'slug' : slug,
                         'description' : description,
@@ -87,32 +105,24 @@ def external_api_show_view(request):
                         'price' : price,
                         'date_created' : date_created,
                     }
-                    dico_data["show-" + str(i)] = data 
-                return Response(dico_data, status=status.HTTP_200_OK)
+                    data_list.append(data_filtered) 
+                return Response(data_list, status=status.HTTP_200_OK)
             else:
-                attempt_num += 1
-                # You can probably use a logger to log the error here
-                time.sleep(5)  # Wait for 5 seconds before re-trying
-        return Response({"error": "Request failed"}, status=r.status_code)
-    else:
-        return Response({"error": "Method not allowed"}, status=status.HTTP_400_BAD_REQUEST)
+                    attempt_num += 1
+                    time.sleep(5)  # Wait for 5 seconds before re-trying
+            return Response({"error": "Request failed"}, status=r.status_code)
 
-
-@api_view(('GET',))
-def external_api_view_test(request):
-    if request.method == "GET":
+class ExternalAPI(generics.ListAPIView):
+    def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
+        external_api_url = "https://api.theatredelaville-paris.com/events" 
+        r = requests.get(external_api_url, timeout=10)
+        data_all = r.json()
         while attempt_num < MAX_RETRIES:
-            params = {}
-            r = requests.get("https://api.theatredelaville-paris.com/events", timeout=10)
             if r.status_code == 200:
-                data = r.json()
+                data = data_all
                 return Response(data, status=status.HTTP_200_OK)
             else:
-                attempt_num += 1
-                # You can probably use a logger to log the error here
-                time.sleep(5)  # Wait for 5 seconds before re-trying
-        return Response({"error": "Request failed"}, status=r.status_code)
-    else:
-        return Response({"error": "Method not allowed"}, status=status.HTTP_400_BAD_REQUEST)
-        
+                    attempt_num += 1
+                    time.sleep(5)  # Wait for 5 seconds before re-trying
+            return Response({"error": "Request failed"}, status=r.status_code)
