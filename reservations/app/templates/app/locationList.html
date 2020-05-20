@@ -11,6 +11,10 @@
       </button>
     </form>
 
+    {% if request.user.is_staff %}
+      <a href="{% url 'CreateLocation' %}"> Ajouter Location </a> <!-- A mettre dans la nav bar-->
+    {% endif %}
+
     <section class="content">
 
       {% for une_loc in locations %}

@@ -7,6 +7,8 @@ from app.views import views, show
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 from .views.showCRUD import CreateShow,UpdateShow, DeleteShow
+from .views.locationCRUD import CreateLocation, UpdateLocation, DeleteLocation
+from .views.representationCRUD import CreateRepresentation, UpdateRepresentation, DeleteRepresentation
 from app.views.api import (
     ArtistApiView, LocationApiView, RepresentationApiView, ShowApiView
     )
@@ -17,8 +19,18 @@ urlpatterns = [
 
     #Crudshow
     url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
-    url(r'^showcrud/(?P<slug>.*)/$',UpdateShow, name = 'UpdateShow'),
-    url(r'^showcruddelete/(?P<slug>.*)/$',DeleteShow, name = 'DeleteShow'),
+    url(r'^showcrud/(?P<pk>[0-9]+)/?$',UpdateShow, name = 'UpdateShow'),
+    url(r'^showcruddelete/(?P<pk>[0-9]+)/?$',DeleteShow, name = 'DeleteShow'),
+
+    #Crudlocation
+    url(r'^locationcrud/$', CreateLocation, name = 'CreateLocation'),
+    url(r'^locationcrud/(?P<pk>[0-9]+)/?$', UpdateLocation, name = 'UpdateLocation'),
+    url(r'^locationcruddelete/(?P<pk>[0-9]+)/?$', DeleteLocation, name = 'DeleteLocation'),
+
+    #CrudRepresentation
+    url(r'^representationcrud/(?P<pk>[0-9]+)/?$', CreateRepresentation, name = 'CreateRepresentation'),
+    url(r'^representationcrudUp/(?P<pk>[0-9]+)/$', UpdateRepresentation, name = 'UpdateRepresentation'),
+    url(r'^representationcruddel/(?P<pk>[0-9]+)/?$', DeleteRepresentation, name = 'DeleteRepresentation'),
 
     # Shows
     url(r'^show/?$', show.show_list, name='show'),
