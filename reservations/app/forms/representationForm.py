@@ -11,7 +11,7 @@ class RepresentationForm(forms.ModelForm):
         fields = ['show', 'location', 'time','total_seats','available_seats']
 
 class RepresentationFormMod(forms.ModelForm):
-    """ Representation Form """
+    """ Representation Form for update """
 
     class Meta:
         model = Representation
