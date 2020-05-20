@@ -7,7 +7,7 @@
 <form method="POST">
 
   {% csrf_token %}
-  <a href="{% url 'LocationPkView_pk' location.pk %}"> Annuler </a>
+  <a href="{% url 'LocationPkView_slug' location.slug %}"> Annuler </a>
   <button type "submit" class="btn btn-primary"> Confirmer</button>
 
 </form>
