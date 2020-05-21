@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^show/(?P<pk>[0-9]+)/?$', show.show_detail, name='show_detail_pk'),
     url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/?$', show.show_detail_slug,
         name='show_detail_slug'),
+    url(r'^external-show/', show.external_api_show_list, name='ext-show-list'),
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
@@ -40,8 +41,8 @@ urlpatterns = [
     url(r'^api/location/', LocationApiView.as_view(), name='api_location'),
 
     #External API
-    url(r'^external-api/show2', ExternalAPI.as_view() , name='ext-api-show-2'),
-    url(r'^external-api/show', ExternalAPIShowView.as_view(), name='ext-api-show'),
+    url(r'^external-api/show2/', ExternalAPI.as_view() , name='ext-api-show-2'),
+    url(r'^external-api/show/', ExternalAPIShowView.as_view(), name='ext-api-show'),
    
     
 
