@@ -18,11 +18,8 @@ def ppalhome(request, **kwargs):
 
     paypal_dict = {
         'business' : settings.PAYPAL_RECEIVER_EMAIL,
-        #reservation = Reservation.objects.get(pk=pk)
-        #"amount" : reservation.price
         "amount" : reservation.price,
         "currency_code": "EUR",
-        #"item_name" : reservation.representation 
         "item_name" : reservation.representation.show.title,
         "invoice": reservation.pk,
         "notify_url": 'http://{}{}'.format(host, reverse('paypal-ipn')),
