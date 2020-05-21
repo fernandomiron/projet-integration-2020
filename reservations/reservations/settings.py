@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,8 +52,7 @@ INSTALLED_APPS = [
     'import_export',  # django-import-export==2.1.0
     'rest_framework',  # djangorestframework==3.11.0
     'url_filter',  # django-url-filter==0.3.15
-    'paypal.standard.ipn', #django-paypal==1.0.0
-
+    'paypal.standard.ipn',  # django-paypal==1.0.0
 ]
 
 MIDDLEWARE = [
@@ -61,9 +60,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # django-debug-toolbar==2.2
@@ -102,7 +100,7 @@ DATABASES = {
         'USER': env("DATABASE_USER"),
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env("DATABASE_HOST"),
-        'PORT': '3308',
+        'PORT': env("DATABASE_PORT"),
     }
 }
 
@@ -150,11 +148,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# Login redirection
-LOGIN_REDIRECT_URL = '/'
+# Login configuration
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 
 
-# SMTP config
+# SMTP configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")
@@ -162,10 +161,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
-#django-paypal settings
 
-PAYPAL_RECEIVER_EMAIL =  'lionel.soupart@gmail.com'
+# PayPal configuration
+PAYPAL_RECEIVER_EMAIL = 'lionel.soupart@gmail.com'
 PAYPAL_TEST = True
+
 
 # Cache mode
 if DEBUG:
@@ -180,13 +180,8 @@ else:
             'BACKEND': "django.core.cache.LocMemCache",
             'LOCATION': "projet-integration-2020_cache"
         }
-}
+    }
 
-#getting bootstrap4 instead of bootstrap2
+
+# Crispy Forms configuration
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
-
-MEDIA_URL = '/media/'
-
-LOGIN_REDIRECT_URL = 'home'
-
-LOGIN_URL = 'login'
