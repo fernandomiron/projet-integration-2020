@@ -89,6 +89,7 @@ urlpatterns = [
 
     #Paypal
     url(r'^payhome/$', ppalhome, name='homepaypal'), # base view for paypal
+    url(r'^payhome/(?P<pk>[0-9]+)/$', ppalhome, name='homepaypalpk'), # base view for paypal
     url(r'^paypalreturn/$', ppalreturn, name='paypalreturn'),
     url(r'^paypalcancel/$', ppalcancel, name='paypalcancel'),
     url(r'^paypalveryhardtofind/', include('paypal.standard.ipn.urls')),

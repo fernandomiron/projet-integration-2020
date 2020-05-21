@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt # permet de selectionner si
 from paypal.standard.forms import PayPalEncryptedPaymentsForm, PayPalPaymentsForm
 from app.models import *
 from django.conf import settings
+from django.contrib import messages
+from decimal import Decimal
 
 def ppalhome(request):
     args = {}
@@ -27,6 +29,26 @@ def ppalhome(request):
     args['form'] = form
     return render(request,'app/ppalhome.html',args)
 
+def ppalhomepk(request,pk):
+    args = {}
+
+    paypal_dict = {
+        'business' : settings.PAYPAL_RECEIVER_EMAIL,
+        #reservation = Reservation.objects.get(pk=pk)
+        #"amount" : reservation.price
+        "amount" : "10.00",
+        "currency_code": "EUR",
+        #"item_name" : reservation.representation 
+        "item_name" : "testlio",
+        "invoice": "testinvoice",
+        "notify_url": "http://localhost:8000/paypalveryhardtofind/",
+        "return_url" : "http://localhost:8000/paypalreturn/",
+        "cancel_return" : "http://localhost:8000/paypalreturn/",
+    }
+
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    args['form'] = form
+    return render(request,'app/ppalhome.html',args)
 @csrf_exempt
 def ppalreturn(request):
     args= {'post' : request.POST,'get' : request.GET}
