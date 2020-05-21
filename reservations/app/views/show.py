@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404, render
 from app.models.show import Show, Representation
 
 
-
 def show_list(request):
     """Render list of shows"""
 

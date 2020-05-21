@@ -1,22 +1,24 @@
-from django.shortcuts import render, redirect
-from app.models.show import Show
+from django.shortcuts import redirect, render
+
 from app.forms.showForm import ShowForm
+from app.models.show import Show
+
 
 def CreateShow(request):
-    """ Creating a show
+    """ Creating a show.
 
     This view will allow creating a show within our app if we got permissions
     """
 
     form = ShowForm(request.POST or None)
-    #when the user will click at save he will POST contents
+    # when the user will click at save he will POST contents
     # if there is something in POST create a form with contents if not create an empty form (NONE)
 
     if form.is_valid():
         form.save()
-        return redirect ('show') #nom de l'url qui correspond à la vue
+        return redirect('show')  #nom de l'url qui correspond à la vue
 
-    return render(request, 'app/showCRUD.html', {'createform':form})
+    return render(request, 'app/showCRUD.html', {'createform': form})
 
 def UpdateShow(request, pk):
     """ Updating a show
@@ -29,9 +31,9 @@ def UpdateShow(request, pk):
 
     if form.is_valid():
         form.save()
-        return redirect ('show') #nom de l'url qui correspond à la vue
+        return redirect('show')  #nom de l'url qui correspond à la vue
 
-    return render(request, 'app/showCRUD.html', {'updateform':form})
+    return render(request, 'app/showCRUD.html', {'updateform': form})
 
 def DeleteShow(request, pk):
     """ Deleting a show

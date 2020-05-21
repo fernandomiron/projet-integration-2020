@@ -21,8 +21,10 @@ class UserProfile(models.Model):
     The related name of the model is by default "userprofile".
     """
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    language = models.CharField(max_length=2, choices=LANGUAGES, default='FR')
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                verbose_name="Utilisateur")
+    language = models.CharField(max_length=2, choices=LANGUAGES, default='FR',
+                                verbose_name="Langue")
 
     class Meta:
         """Meta definition for UserProfile."""

@@ -10,13 +10,15 @@ from app.models.location import Location
 class Show(models.Model):
     """Model definition for Show."""
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name="Titre")
     slug = models.SlugField(max_length=60, unique=True)
-    description = models.TextField()
-    poster = models.URLField(max_length=255, null=True, blank=True)
-    bookable = models.BooleanField(default=True)
-    price = models.FloatField()
-    date_created = models.DateField(auto_now_add=True, null=True, blank=True)
+    description = models.TextField(verbose_name="Déscription")
+    poster = models.URLField(max_length=255, null=True, blank=True,
+                             verbose_name="URL du poster")
+    bookable = models.BooleanField(default=True, verbose_name="Réservable")
+    price = models.FloatField(verbose_name="Prix d'une place (EUR)")
+    date_created = models.DateField(auto_now_add=True, null=True, blank=True,
+                                    verbose_name="Date de création")
 
     class Meta:
         """Meta definition for Show."""
@@ -28,7 +30,7 @@ class Show(models.Model):
     def __str__(self):
         """Unicode representation of Show."""
 
-        return "[{}] {}".format(self.pk, self.title)
+        return "{}".format(self.title)
 
     def save(self, *args, **kwargs):
         """Save method for Show.
@@ -62,7 +64,7 @@ class Show(models.Model):
         max_length = self._meta.get_field('slug').max_length - 3
         value = self.title
         slug_result = slug_original = \
-            slugify(value, allow_unicode=True)[:max_length]
+            slugify(value, allow_unicode=False)[:max_length]
 
         for i in itertools.count(1):
             if not Show.objects.filter(slug=slug_result).exists():
@@ -77,9 +79,11 @@ class Representation(models.Model):
 
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    time = models.DateTimeField()
-    total_seats = models.PositiveIntegerField()
-    available_seats = models.PositiveIntegerField()
+    time = models.DateTimeField(verbose_name="Début de la réprésentation")
+    total_seats = models.PositiveIntegerField(verbose_name="Nombre total \
+        de sièges")
+    available_seats = models.PositiveIntegerField(verbose_name="Nombre de \
+        sièges libres")
 
     class Meta:
         """Meta definition for Representation."""
@@ -94,9 +98,28 @@ class Representation(models.Model):
         return "[{}] {} le {} à {}".format(self.pk, self.show.title, self.time,
                                            self.location.designation)
 
+    def save(self, *args, **kwargs):
+        """Save method for Representation.
+
+        Calculate the number of available seats by taking the total amount and
+        substract the already booked seats off all the completed reservations
+        related to this representation.
+        """
+
+        available_seats = self.total_seats
+        reservations = self.reservation_set.all()
+
+        for reservation in reservations:
+            if reservation.status == "Completed":
+                available_seats -= reservation.seats
+
+        self.available_seats = available_seats
+
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         """Return absolute url for Representation."""
 
-        return f"/representation/{self.pk}/"  # TODO: Define absolute url + url name
+        return reverse('show')
 
     # TODO: Define custom methods here

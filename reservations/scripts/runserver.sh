@@ -14,11 +14,11 @@ fi
 
 while true; do
     if ! python3 manage.py runserver_plus 0.0.0.0:8000; then
-        printf "---------------------------------------------\n RUNSERVER_PLUS EXITED WITH A NON-0 STATUS ! \n      >>> Restarting in 5 seconds <<<      \n---------------------------------------------"
+        printf "\n---------------------------------------------\n RUNSERVER_PLUS EXITED WITH A NON-0 STATUS ! \n      >>> Restarting in 5 seconds <<<      \n---------------------------------------------\n"
         sleep 5;
     else
         break
     fi
 done
 
-printf "--------------------------------\nRUNSERVER_PLUS GRACEFULLY EXITED\n--------------------------------"
+printf "\n----------------------------------\n RUNSERVER_PLUS GRACEFULLY EXITED \n----------------------------------"
