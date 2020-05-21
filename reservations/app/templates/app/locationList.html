@@ -15,7 +15,8 @@
     <h1> Location </h1>
     <div class="list-group">
         {% for une_loc in locations %}
-        <a href='{{ une_loc.get_absolute_url }}' class="list-group-item list-group-item-action">{{ une_loc.designation}}</a>
+        <a href='{{ une_loc.get_absolute_url }}' class="list-group-item list-group-item-action">{{ une_loc.designation
+            }}</a>
         {% endfor %}
     </div>
     </br></br>
