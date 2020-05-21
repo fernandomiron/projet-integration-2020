@@ -9,53 +9,41 @@ from django.contrib import messages
 from decimal import Decimal
 
 def ppalhome(request):
+
+    idreservation = request.GET.get('idreservation')
+    reservation = Reservation.objects.get(pk=idreservation)
+    host = request.get_host()
+
     args = {}
 
     paypal_dict = {
         'business' : settings.PAYPAL_RECEIVER_EMAIL,
         #reservation = Reservation.objects.get(pk=pk)
         #"amount" : reservation.price
-        "amount" : "10.00",
+        "amount" : reservation.price,
         "currency_code": "EUR",
         #"item_name" : reservation.representation 
-        "item_name" : "testlio",
-        "invoice": "testinvoice",
-        "notify_url": "http://localhost:8000/paypalveryhardtofind/",
-        "return_url" : "http://localhost:8000/paypalreturn/",
-        "cancel_return" : "http://localhost:8000/paypalreturn/",
+        "item_name" : reservation.representation.show.title,
+        "invoice": reservation.pk,
+        "notify_url": 'http://{}{}'.format(host, reverse('paypal')),
+        "return_url" : 'http://{}{}/{}'.format(host, reverse('paypalreturn'),reservation.pk),
+        "cancel_return" : 'http://{}{}/{}'.format(host, reverse('paypalcancel'),reservation.pk),
     }
 
     form = PayPalPaymentsForm(initial=paypal_dict)
     args['form'] = form
     return render(request,'app/ppalhome.html',args)
 
-def ppalhomepk(request,pk):
-    args = {}
 
-    paypal_dict = {
-        'business' : settings.PAYPAL_RECEIVER_EMAIL,
-        #reservation = Reservation.objects.get(pk=pk)
-        #"amount" : reservation.price
-        "amount" : "10.00",
-        "currency_code": "EUR",
-        #"item_name" : reservation.representation 
-        "item_name" : "testlio",
-        "invoice": "testinvoice",
-        "notify_url": "http://localhost:8000/paypalveryhardtofind/",
-        "return_url" : "http://localhost:8000/paypalreturn/",
-        "cancel_return" : "http://localhost:8000/paypalreturn/",
-    }
-
-    form = PayPalPaymentsForm(initial=paypal_dict)
-    args['form'] = form
-    return render(request,'app/ppalhome.html',args)
 @csrf_exempt
-def ppalreturn(request):
-    args= {'post' : request.POST,'get' : request.GET}
-    return render (request,'app/paypal_return.html', args)
+def ppalreturn(request,pk):
+    reservation = Reservation.objects.get(pk=pk)
+    
+    return render (request,'app/paypal_return.html',)
 
 
-def ppalcancel(request):
-    args= {'post' : request.POST,'get' : request.GET}
-    return render (request,'app/paypal_cancel.html', args)
+def ppalcancel(request,pk):
+    reservation = Reservation.objects.get(pk=pk)
+
+    return render (request,'app/paypal_cancel.html', )
 

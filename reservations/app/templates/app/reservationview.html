@@ -40,8 +40,9 @@
 </table>
 
 <P> 
-    <form class='form pull-right' method='GET' action ='{% url "homepaypalpk" reservation.pk %}'>
-        <input type='submit' value='payer' />
+    <form class='form pull-right' method='GET' action ='{% url "homepaypal" %}'>
+        <input name="idreservation" type='number' hidden='true' value = '{{reservation.pk}}' />
+        <input type='submit' value='payer'  />
     </form>
 </P>
 
