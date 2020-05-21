@@ -8,7 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from decimal import Decimal
 
-def ppalhome(request):
+def ppalhome(request, **kwargs):
 
     idreservation = request.GET.get('idreservation')
     reservation = Reservation.objects.get(pk=idreservation)
@@ -25,9 +25,9 @@ def ppalhome(request):
         #"item_name" : reservation.representation 
         "item_name" : reservation.representation.show.title,
         "invoice": reservation.pk,
-        "notify_url": 'http://{}{}'.format(host, reverse('paypal')),
-        "return_url" : 'http://{}{}/{}'.format(host, reverse('paypalreturn'),reservation.pk),
-        "cancel_return" : 'http://{}{}/{}'.format(host, reverse('paypalcancel'),reservation.pk),
+        "notify_url": 'http://{}{}'.format(host, reverse('paypal-ipn')),
+        "return_url" : 'http://{}{}'.format(host, reverse('paypalreturn',kwargs={'pk':reservation.pk})),
+        "cancel_return" : 'http://{}{}'.format(host, reverse('paypalcancel',kwargs={'pk':reservation.pk})),
     }
 
     form = PayPalPaymentsForm(initial=paypal_dict)
@@ -38,12 +38,14 @@ def ppalhome(request):
 @csrf_exempt
 def ppalreturn(request,pk):
     reservation = Reservation.objects.get(pk=pk)
-    
+    reservation.status = 'Completed'
+    reservation.save()
     return render (request,'app/paypal_return.html',)
 
 
 def ppalcancel(request,pk):
     reservation = Reservation.objects.get(pk=pk)
-
+    reservation.status = 'Cancelled'
+    reservation.save()
     return render (request,'app/paypal_cancel.html', )
 

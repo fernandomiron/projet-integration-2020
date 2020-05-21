@@ -92,5 +92,5 @@ urlpatterns = [
     url(r'^payhome/(?P<idreservation>[0-9]+)/$', ppalhome, name='homepaypalpk'), # base view for paypal
     url(r'^paypalreturn/(?P<pk>[0-9]+)/$', ppalreturn, name='paypalreturn'),
     url(r'^paypalcancel/(?P<pk>[0-9]+)/$', ppalcancel, name='paypalcancel'),
-    url(r'^paypalveryhardtofind/', include('paypal.standard.ipn.urls'), name='paypal'),
+    url(r'^paypalveryhardtofind/', include('paypal.standard.ipn.urls')),
 ]
