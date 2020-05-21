@@ -5,10 +5,8 @@ import time
 
 #third party imports
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import generics
-from rest_framework import status
+from rest_framework import generics, viewsets, status
 from rest_framework.decorators import api_view
 
 #don't forget adding url_filter in settings
@@ -79,7 +77,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
                     image = data_all['hydra:member'][i]['image']
 
                     if image != None : 
-                        poster = data_all['hydra:member'][i]['image']['contentUrl']['medium']
+                        poster = image['contentUrl']['medium']
 
                     # Extract the price from the string 
                     if price == 'None':
