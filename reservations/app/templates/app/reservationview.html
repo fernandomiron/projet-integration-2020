@@ -22,8 +22,8 @@
         <td> {{ reservation.representation.show.price }} </td>
         <td> 
             <form class='form pull-right' method='GET' action ='{% url "reservationupdate" reservation.pk %}'>
-                <input name='qty'    type='number' />
-                <input type='submit' value='adapter'/> 
+                <input name='qty'    type='number' maxlenghth="4" required='true' value='1'/>
+                <input type='submit' value='adapter' />
             </form>
         </td>
         

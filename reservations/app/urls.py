@@ -1,8 +1,7 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 # import of the built-in Django authentication and give it a "auth_views" alias
 from django.contrib.auth import views as auth_views
 
-from django.urls import include
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
 from app.views.api import (ArtistApiView, LocationApiView,
@@ -11,9 +10,8 @@ from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
-from app.views.reservation import reservationview, reservationglobalview
-
-from app.views.payment import ppalcancel, ppalhome, ppalreturn
+from app.views.payment import ppalreturn,ppalhome, ppalcancel
+from app.views.reservation import reservationglobalview, reservationview
 
 urlpatterns = [
     # Home page
@@ -57,10 +55,10 @@ urlpatterns = [
             password_reset_complete.html"), name='password_reset_complete'),
 
     # Shows
-    url(r'^show/$', show_list, name='show'),
-    url(r'^show/(?P<pk>[0-9]+)/$', show_detail, name='show_detail_pk'),
-    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show_detail_slug,
-    #    name='show_detail_slug'),
+    url(r'^show/$', show.show_list, name='show'),
+    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
+    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
+        name='show_detail_slug'),
     url(r'^show/create/$', CreateShow, name='ShowCrud'),
     url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
     url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
@@ -88,9 +86,10 @@ urlpatterns = [
     # reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
     url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
-]  
+
     #Paypal
-    #url(r'^payhome/$', ppalhome, name='homepaypal'), # base view for paypal
-    #url(r'^paypalreturn/$', ppalreturn, name='paypalreturn'),
-    #url(r'^paypalcancel/$', ppalcancel, name='paypalcancel'),
-    #url(r'^paypalveryhardtofind/$', include('paypal.standard.ipn.urls')),
+    url(r'^payhome/$', ppalhome, name='homepaypal'), # base view for paypal
+    url(r'^paypalreturn/$', ppalreturn, name='paypalreturn'),
+    url(r'^paypalcancel/$', ppalcancel, name='paypalcancel'),
+    url(r'^paypalveryhardtofind/', include('paypal.standard.ipn.urls')),
+]
