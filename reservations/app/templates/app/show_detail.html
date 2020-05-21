@@ -30,34 +30,43 @@
     <!-- /.row -->
 
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
+    <h3 class="my-4">Representation de ce spectable</h3>
 
-    <div class="row">
-
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Titre</th>
+            <th>Date et heure</th>
+            <th>Place restante</th>
+            <th>Place disponible</th>
+            <th>Place disponible</th>
+            <th>Adresse</th>
+            <th>Localité</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for representation in representations %}
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ representation.location.designation}}</h5>
-                    <p class="card-text">
-                    <ul>
-                        <li>Date et heure : {{ representation.time }}</li>
-                        <li>Place restante : {{ representation.available_seats }}</li>
-                        <li>Place disponible :{{ representation.total_seats }}</li>
-                        <li>Adresse : {{ representation.location.address }}</li>
-                        <li>Localité {{ representation.location.locality.locality }} {{representation.location.locality.postal_code}}</li>
-                    </ul>
-                    </p>
-                    <a href="#" class="btn btn-primary">Réserver</a>
-                </div>
-            </div>
-        </div>
-
+        <tr>
+            <td>{{ representation.location.designation}}</td>
+            <td>{{ representation.time }}</td>
+            <td>{{ representation.available_seats }}</td>
+            <td>{{ representation.total_seats }}</td>
+            <td>{{ representation.location.address }}</td>
+            <td>{{ representation.location.locality.locality }} {{representation.location.locality.postal_code}}</td>
+            <a href="/">
+                <td>
+                    <button type="button" class="btn btn-success">Rérserver</button>
+                </td>
+            </a>
+        </tr>
         {% endfor %}
 
-    </div>
-    <!-- /.row -->
+        </tbody>
+    </table>
+
+
+</div>
+<!-- /.table -->
 
 </div>
 <!-- /.container -->
