@@ -13,6 +13,8 @@ from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 from app.views.reservation import reservationview, reservationglobalview
 
+from app.views.payment import ppalcancel, ppalhome, ppalreturn
+
 urlpatterns = [
     # Home page
     url(r'^$', views.home, name='home'),
@@ -58,7 +60,7 @@ urlpatterns = [
     url(r'^show/$', show.show_list, name='show'),
     url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
     url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
-        name='show_detail_slug'),
+    #    name='show_detail_slug'),
     url(r'^show/create/$', CreateShow, name='ShowCrud'),
     url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
     url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
@@ -83,14 +85,13 @@ urlpatterns = [
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
 
-
     # reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
     url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
    
     #Paypal
     url(r'^payhome/$', ppalhome, name='homepaypal'), # base view for paypal
-    url(r'^paypalreturn/$', ppalreturn, name="paypalreturn"),
-    url(r'^paypalcancel/$', ppalcancel, name="paypalcancel"),
+    url(r'^paypalreturn/$', ppalreturn, name='paypalreturn'),
+    url(r'^paypalcancel/$', ppalcancel, name='paypalcancel'),
     url(r'^paypalveryhardtofind/$', include('paypal.standard.ipn.urls')),
 ]
