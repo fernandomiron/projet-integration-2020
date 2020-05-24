@@ -33,7 +33,7 @@ urlpatterns = [
     # User Profile
     url(r'^profile/$', authentication.ProfileView.as_view(), name='profile'),
     url(r'^profile/update$', authentication.profileUpdate,
-        name='profile_update'),
+        name='profile-update'),
 
     # Password Change
     url(r'^password/change/$',
