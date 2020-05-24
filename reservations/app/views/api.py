@@ -58,7 +58,9 @@ class LocationApiView (generics.ListAPIView):
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
 class ExternalAPIShowView(generics.GenericAPIView):
-    queryset = ''
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
+    # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
         data_list = []
         attempt_num = 0  # keep track of how many times we've retried
@@ -69,7 +71,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
             if r.status_code == 200:
                 for i in range(len(data_all['hydra:member'])):
                     title = data_all['hydra:member'][i]['name']
-                    slug = data_all['hydra:member'][i]['slug']
+                    #slug = data_all['hydra:member'][i]['slug']
                     description = data_all['hydra:member'][i]['excerpt']
                     bookable = data_all['hydra:member'][i]['ticketingOpen']
                     price = str(data_all['hydra:member'][i]['priceRange'])
@@ -96,7 +98,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
 
                     data_filtered = {
                         'title' : title,
-                        'slug' : slug,
+                        #'slug' : slug,
                         'description' : description,
                         'poster' : poster,
                         'bookable' : bookable,
@@ -109,11 +111,13 @@ class ExternalAPIShowView(generics.GenericAPIView):
                     attempt_num += 1
                     time.sleep(5)  # Wait for 5 seconds before re-trying
             return Response({"error": "Request failed"}, status=r.status_code)
+    
+
 
 class ExternalAPI(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
-        external_api_url = "https://api.theatredelaville-paris.com/events" 
+        external_api_url = "http://127.0.0.1:8000/external-api/show/" 
         r = requests.get(external_api_url, timeout=10)
         data_all = r.json()
         while attempt_num < MAX_RETRIES:
@@ -124,3 +128,66 @@ class ExternalAPI(generics.ListAPIView):
                     attempt_num += 1
                     time.sleep(5)  # Wait for 5 seconds before re-trying
             return Response({"error": "Request failed"}, status=r.status_code)
+
+
+
+from rest_framework.decorators import api_view, permission_classes
+
+@api_view(['GET'])
+def api_detail_show_view(request, slug):
+    
+    try:
+        show = Show.objects.get(slug=slug)
+    except Show.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = ShowSerializer(show)
+        return Response(serializer.data)
+
+@api_view(['PUT'])
+def api_update_show_view(request, slug):
+    
+    try:
+        show = Show.objects.get(slug=slug)
+    except Show.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'PUT':
+        serializer = ShowSerializer(show, data=request.data)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data["success"] = "Update successful"
+            return Response(data=data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def api_delele_show_view(request, slug):
+    
+    try:
+        show = Show.objects.get(slug=slug)
+    except Show.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'DELETE':
+        operation = show.delete()
+        data = {}
+        if operation:
+            data["success"] = "delete successful"
+        else:
+            data["failure"] = "delete failed"
+        return Response(data=data)
+
+@api_view(['POST', ])
+@permission_classes((IsAuthenticated,))
+def api_create_show_view(request):
+    
+    if request.method == 'POST':
+        serializer = ShowSerializer(Show(), data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

@@ -11,7 +11,7 @@ from app.views.api import (
     RepresentationApiView, 
     ShowApiView, 
     ExternalAPI,
-    ExternalAPIShowView
+    ExternalAPIShowView,
     )
 
 
@@ -20,11 +20,12 @@ urlpatterns = [
     url(r'api-hello-view/$', views.APINameView.as_view()),
 
     # Shows
+    url(r'^update-show-api/$', show.update_show_external_api, name='update-ext-show'),
+    url(r'^show-api/$', show.show_external_api, name='ext-show'),
     url(r'^show/?$', show.show_list, name='show'),
     url(r'^show/(?P<pk>[0-9]+)/?$', show.show_detail, name='show_detail_pk'),
     url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/?$', show.show_detail_slug,
         name='show_detail_slug'),
-    url(r'^external-show/', show.external_api_show_list, name='ext-show-list'),
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
@@ -43,6 +44,7 @@ urlpatterns = [
     #External API
     url(r'^external-api/show2/', ExternalAPI.as_view() , name='ext-api-show-2'),
     url(r'^external-api/show/', ExternalAPIShowView.as_view(), name='ext-api-show'),
+
    
     
 

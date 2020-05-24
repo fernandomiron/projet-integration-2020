@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.urls import reverse
 import requests
 
@@ -60,29 +60,56 @@ def show_detail_slug(request, slug):
 
     return render(request, 'app/show_detail.html', context)
 
-def external_api_show_list(request):
-    """Render list of shows from our api"""
-    api_url = 'http://127.0.0.1:8000' + reverse('ext-api-show')
+def show_external_api(request):
+
+    api_url = "http://127.0.0.1:8000/external-api/show/"
     r = requests.get(api_url, timeout=10)
+    data = r.json()
+
     context = {
-        'shows' : r
+        'data' : data
     }
-    """ i = 0
-    for item in r.json():
-        context[str(i)] = context.update(item)
-        i += 1 """
-    if r.status_code == 200:
-       return render(request, 'app/external_api_show_list.html', context) 
 
-""" class ExternalAPIShowList(ListView):
-    #Render list of shows from our api
-    model = Show
-    api_url = 'http://127.0.0.1:8000' + reverse('ext-api-show')
+    return render(request, 'app/external_api_show.html', context)
+
+def update_show_external_api(request):
+
+    api_url = "http://127.0.0.1:8000/external-api/show/"
     r = requests.get(api_url, timeout=10)
-    paginate_by = 10  # if pagination is desired
+    data = r.json()
+    data_to_create = []
+    data_to_update = []
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['shows'] = r
-        return context
-     """
+    for show in data:
+        if show['description'] == None:
+            show['description'] = 'Pas de description'
+        new_show = Show(
+            title = show['title'],
+            description = show['description'],
+            poster = show['poster'],
+            bookable = show['bookable'],
+            price = show['price'],
+        )
+
+        if not Show.objects.filter(title=show['title']):
+            data_to_create.append(new_show)
+            new_show.save()
+        else:
+            data_to_update.append(show)
+            Show.objects.filter(title=show['title']).update(
+                title = show['title'],
+                description = show['description'],
+                poster = show['poster'],
+                bookable = show['bookable'],
+                price = show['price'],
+            )
+    
+    context = {
+        'data_to_create' : data_to_create,
+        'data_to_update' : data_to_update,
+    }
+
+    return render(request, 'app/update_show.html', context)
+
+    
+        

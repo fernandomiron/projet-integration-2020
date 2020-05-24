@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+    <h1>Récupération des spectacles réussi !</h1>
+    <h2>Créer : </h2>
+        <ol>
+            {% for show in data_to_create %}
+                <li>
+                    <h3>{{show.title|title}}</h3>
+                    <p>Description : {{show.description}}</p>
+                    <p>Poster : {{show.poster}}</p>
+                    <p>Bookable : {{show.bookable}}</p>
+                    <p>Price : {{show.price}}€</p>
+                    <p>Date_created : {{show.date_created}}</p>
+                </lI>
+            {% endfor%}
+        </ol>
+
+    <h2>Mis à jour : </h2>
+        <ol>
+            {% for show in data_to_update %}
+                <li>
+                    <h3>{{show.title}}</h3>
+                    <p>Description : {{show.description}}</p>
+                    <p>Poster : {{show.poster}}</p>
+                    <p>Bookable : {{show.bookable}}</p>
+                    <p>Price : {{show.price}}€</p>
+                    <p>Date_created : {{show.date_created}}</p>
+                </lI>
+                </br>
+            {% endfor%}
+        </ol>
+</div>
+<!-- /.container -->
+
+
+{% endblock %}

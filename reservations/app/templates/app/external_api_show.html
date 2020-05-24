@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+    <h1>Liste des spectacles du théatre de la ville de Paris</h1>
+    <ol>
+    {% for show in data %}
+        <li>
+            <h3>{{show.title|title}}</h3>
+            <p>Description : {{show.description}}</p>
+            <p>Poster : {{show.poster}}</p>
+            <p>Bookable : {{show.bookable}}</p>
+            <p>Price : {{show.price}}€</p>
+            <p>Date_created : {{show.date_created}}</p>
+        </lI>
+    {% endfor%}
+    </ol>
+
+    <a href="{% url 'update-ext-show' %}">Mettre à jour les spectacles</a>
+
+</div>
+<!-- /.container -->
+
+
+{% endblock %}
