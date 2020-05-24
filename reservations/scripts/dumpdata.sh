@@ -3,13 +3,13 @@
 # Check if the script has been executed from the reservations/ directory
 # Move the current directory to it if not in order to execute the script
 
-# Then loads all the JSON-fixtures available in the reservations/app/fixtures directory with the manage.py utility
-
-
 FILE=../manage.py
 if test -f "$FILE"; then
     cd ..
 fi
+
+
+# Loads all the JSON-fixtures available in the reservations/app/fixtures directory with the manage.py utility
 
 python3 manage.py dumpdata auth.group --indent 4 > app/fixtures/0_group.json
 status=$?
@@ -132,5 +132,5 @@ else
     printf "(a_reservation.json)\n>>> SUCCESS: Fixture JSON-data successfully exported\n"
 fi
 
-printf "SUCCESS: All fixture JSON-data successfully exported"
+printf "\n------------------------------------------------------\n SUCCESS: All fixture JSON-data successfully exported \n------------------------------------------------------\n"
 exit 0

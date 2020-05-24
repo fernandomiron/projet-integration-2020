@@ -4,8 +4,11 @@
     "pk": 1,
     "fields": {
         "representation": 1,
-        "user": 1,
-        "seats": 2
+        "user": 5,
+        "time": "2020-05-18",
+        "seats": 2,
+        "price": 38.0,
+        "status": "Completed"
     }
 },
 {
@@ -14,7 +17,10 @@
     "fields": {
         "representation": 1,
         "user": 3,
-        "seats": 8
+        "time": "2020-05-18",
+        "seats": 8,
+        "price": 152.0,
+        "status": "Completed"
     }
 },
 {
@@ -23,7 +29,10 @@
     "fields": {
         "representation": 2,
         "user": 4,
-        "seats": 5
+        "time": "2020-05-18",
+        "seats": 5,
+        "price": 71.0,
+        "status": "Completed"
     }
 },
 {
@@ -32,7 +41,22 @@
     "fields": {
         "representation": 5,
         "user": 5,
-        "seats": 5
+        "time": "2020-05-18",
+        "seats": 5,
+        "price": 94.95,
+        "status": "Completed"
+    }
+},
+{
+    "model": "app.reservation",
+    "pk": 5,
+    "fields": {
+        "representation": 3,
+        "user": 2,
+        "time": "2020-05-18",
+        "seats": 7,
+        "price": 55.23,
+        "status": "Completed"
     }
 }
 ]

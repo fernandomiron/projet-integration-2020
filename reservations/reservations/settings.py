@@ -33,12 +33,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,8 +51,8 @@ INSTALLED_APPS = [
     'app',  # Project app module
     'import_export',  # django-import-export==2.1.0
     'rest_framework',  # djangorestframework==3.11.0
-    'url_filter'  # django-url-filter==0.3.15
-
+    'url_filter',  # django-url-filter==0.3.15
+    'paypal.standard.ipn',  # django-paypal==1.0.0
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -124,7 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'Europe/Brussels'
@@ -138,19 +139,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
 # Media files
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# SMTP config
+# Login configuration
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 
+
+# SMTP configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env("EMAIL_PORT")
@@ -159,8 +162,12 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 
-# Cache mode
+# PayPal configuration
+PAYPAL_RECEIVER_EMAIL = 'lionel.soupart@gmail.com'
+PAYPAL_TEST = True
 
+
+# Cache mode
 if DEBUG:
     CACHES = {
         'default': {
@@ -174,3 +181,7 @@ else:
             'LOCATION': "projet-integration-2020_cache"
         }
     }
+
+
+# Crispy Forms configuration
+CRISPY_TEMPLATES_PACK = 'bootstrap4'

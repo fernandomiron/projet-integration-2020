@@ -4,10 +4,11 @@ from django.db import models
 class Artist(models.Model):
     """Model definition for Artist."""
 
-    firstname = models.CharField(max_length=60)
-    lastname = models.CharField(max_length=60)
+    firstname = models.CharField(max_length=60, verbose_name="Prénom")
+    lastname = models.CharField(max_length=60, verbose_name="Nom de famille")
 
     class Meta:
+
         """Meta definition for Artist."""
 
         verbose_name = 'Artiste'
@@ -30,7 +31,7 @@ class Artist(models.Model):
 class Types(models.Model):
     """Model definition for Types."""
 
-    types = models.CharField(max_length=60)
+    types = models.CharField(max_length=60, verbose_name="Type d'artiste")
 
     class Meta:
         """Meta definition for Types."""
@@ -42,7 +43,7 @@ class Types(models.Model):
     def __str__(self):
         """Unicode representation of Types."""
 
-        return "[{}] {}".format(self.pk, self.types)
+        return "{}".format(self.types)
 
     def get_absolute_url(self):
         """Return absolute url for Types."""
@@ -56,7 +57,8 @@ class ArtistType(models.Model):
     """Model definition for ArtistType."""
 
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    types = models.ForeignKey(Types, on_delete=models.CASCADE)
+    types = models.ForeignKey(Types, on_delete=models.CASCADE,
+                              verbose_name="Type d'artiste")
 
     class Meta:
         """Meta definition for ArtistType."""
@@ -67,8 +69,8 @@ class ArtistType(models.Model):
     def __str__(self):
         """Unicode representation of ArtistType."""
 
-        return "[{}] {} {} ({})".format(self.pk, self.artist.firstname,
-                                        self.artist.lastname, self.types)
+        return "{} {} ({})".format(self.artist.firstname, self.artist.lastname,
+                                   self.types)
 
     def get_absolute_url(self):
         """Return absolute url for ArtistType."""
