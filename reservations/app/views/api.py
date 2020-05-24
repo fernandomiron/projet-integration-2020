@@ -7,7 +7,6 @@ from rest_framework import generics, status
 from rest_framework.permissions import (
     AllowAny, IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from url_filter.integrations.drf import DjangoFilterBackend
 
 from app.models.artist import Artist
