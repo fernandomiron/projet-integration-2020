@@ -36,9 +36,7 @@ urlpatterns = [
         name='profile-update'),
 
     # Password Change
-    url(r'^password/change/$',
-        auth_views.PasswordChangeView.as_view(template_name="app/\
-            password_change_form.html"), name='password_change_form'),
+    url(r'^password/change/$',auth_views.PasswordChangeView.as_view(template_name="app/password_change_form.html"), name='password_change_form'),
     url(r'^password/change/done/$',
         auth_views.PasswordChangeDoneView.as_view(template_name="app/\
             password_change_done.html"), name='password_change_done'),
