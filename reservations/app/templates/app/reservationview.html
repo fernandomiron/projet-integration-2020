@@ -1,0 +1,51 @@
+
+{% extends "app/base.html" %}
+
+
+{% block content %}
+
+<div class ='col-sm-8 col-sm-offset-2'>
+
+<table class='table'>
+
+    <thead>
+        <th> Representation</th>
+        <th> Places libres</th>
+        <th> Prix par place</th>
+        <th> Nombre de place souhaitées</th>
+    </thead>
+
+
+    <tr> 
+        <td> {{ reservation.representation.show.title }} </td>  
+        <td> {{ reservation.representation.total_seats }} </td> 
+        <td> {{ reservation.representation.show.price }} </td>
+        <td> 
+            <form class='form pull-right' method='GET' action ='{% url "reservationupdate" reservation.pk %}'>
+                <input name='qty'    type='number' maxlenghth="4" required='true' value='1' min='1'/>
+                <input type='submit' value='adapter' />
+            </form>
+        </td>
+        
+    </tr>
+
+<tfoot>
+    <tr>
+        <td>Sièges : {{reservation.seats }} </td>
+        <td> </td>
+        <td>Total : {{reservation.price }} </td>
+    </tr>
+</tfoot>
+
+</table>
+
+<P> 
+    <form class='form pull-right' method='GET' action ='{% url "homepaypal" %}'>
+        <input name="idreservation" type='number' hidden='true' value = '{{reservation.pk}}' />
+        <input type='submit' value='payer'  />
+    </form>
+</P>
+
+<P>Status : {{ reservation.status }} </P>
+</div>
+{% endblock %}
