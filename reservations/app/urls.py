@@ -1,7 +1,5 @@
 from django.conf.urls import url, include
-# import of the built-in Django authentication and give it a "auth_views" alias
 from django.contrib.auth import views as auth_views
-
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
 from app.views.api import (
@@ -11,8 +9,18 @@ from app.views.api import (
     ShowApiView
 )
 from app.views.locationList import LocationListView
+from app.views.locationCRUD import (
+    CreateLocation,
+    DeleteLocation,
+    UpdateLocation
+)
 from app.views.locationdetailed import LocationDetailedView
 from app.views.payment import ppalreturn, ppalhome, ppalcancel
+from app.views.representationCRUD import (
+    CreateRepresentation,
+    DeleteRepresentation,
+    UpdateRepresentation
+)
 from app.views.reservation import reservationglobalview, reservationview
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
@@ -57,6 +65,21 @@ urlpatterns = [
     url(r'^password/reset/done/$',
         auth_views.PasswordResetCompleteView.as_view(template_name="app/\
             password_reset_complete.html"), name='password_reset_complete'),
+
+    #Crudshow
+    url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
+    url(r'^showcrud/(?P<pk>[0-9]+)/?$',UpdateShow, name = 'UpdateShow'),
+    url(r'^showcruddelete/(?P<pk>[0-9]+)/?$',DeleteShow, name = 'DeleteShow'),
+
+    #Crudlocation
+    url(r'^locationcrud/$', CreateLocation, name = 'CreateLocation'),
+    url(r'^locationcrud/(?P<pk>[0-9]+)/?$', UpdateLocation, name = 'UpdateLocation'),
+    url(r'^locationcruddelete/(?P<pk>[0-9]+)/?$', DeleteLocation, name = 'DeleteLocation'),
+
+    #CrudRepresentation
+    url(r'^representationcrud/(?P<pk>[0-9]+)/?$', CreateRepresentation, name = 'CreateRepresentation'),
+    url(r'^representationcrudUp/(?P<pk>[0-9]+)/$', UpdateRepresentation, name = 'UpdateRepresentation'),
+    url(r'^representationcruddel/(?P<pk>[0-9]+)/?$', DeleteRepresentation, name = 'DeleteRepresentation'),
 
     # Shows
     url(r'^show/$', show.show_list, name='show'),
