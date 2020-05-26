@@ -89,7 +89,7 @@ urlpatterns = [
         name='show_detail_slug'),
     url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
     url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
-    url(r'^show/pull/view/$', show.show_external_api, name='ext-show'),
+    url(r'^show/pull/read/$', show.show_external_api, name='ext-show'),
     url(r'^show/pull/update/$', show.update_show_external_api,
         name='update-ext-show'),
 
