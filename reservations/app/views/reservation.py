@@ -1,5 +1,5 @@
 from app.models import *
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 
 
@@ -33,3 +33,10 @@ def reservationview(request,pk):
     template = "app/reservationview.html"
 
     return render(request, template, context)
+
+def representation_detail(request, pk):
+
+    representation = get_object_or_404(Representation, pk=pk)
+    context = {"representation": representation}
+
+    return render(request, "app/reservation_view.html", context)

@@ -39,7 +39,6 @@
             <th>Date et heure</th>
             <th>Place restante</th>
             <th>Place disponible</th>
-            <th>Place disponible</th>
             <th>Adresse</th>
             <th>Localité</th>
         </tr>
@@ -53,11 +52,12 @@
             <td>{{ representation.total_seats }}</td>
             <td>{{ representation.location.address }}</td>
             <td>{{ representation.location.locality.locality }} {{representation.location.locality.postal_code}}</td>
-            <a href="/">
-                <td>
-                    <button type="button" class="btn btn-success">Rérserver</button>
-                </td>
-            </a>
+
+            <td>
+                <a href="{% url 'representation_detail' representation.pk %}">
+                    <button type="button" class="btn btn-success">Réserver</button>
+                </a>
+            </td>
         </tr>
         {% endfor %}
 

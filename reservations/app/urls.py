@@ -13,7 +13,7 @@ from app.views.api import (
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 from app.views.payment import ppalreturn, ppalhome, ppalcancel
-from app.views.reservation import reservationglobalview, reservationview
+from app.views.reservation import reservationglobalview, reservationview, representation_detail
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
@@ -97,5 +97,8 @@ urlpatterns = [
     url(r'^rss/representation/', RepresentationFeed(),
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
+
+    #representation_details
+    url(r'^representation/(?P<pk>[0-9]+)/$', representation_detail, name='representation_detail'),
 
 ]
