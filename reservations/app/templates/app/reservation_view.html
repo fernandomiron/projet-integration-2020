@@ -21,9 +21,15 @@
                     <div class="col-6 col-xs6 text-right">
                         <h6><strong><span id="price">{{ representation.show.price }}</span> € <span class="text-muted">x</span></strong></h6>
                     </div>
+                    {% if representation.show.bookable and representation.available_seats > 0 %}
                     <div class="col-4 col-xs-4">
                         <input type="text" id="myQty" class="form-control input-sm" onchange="myFunction()" value="1">
                     </div>
+                    {% else %}
+                    <div class="col-4 col-xs-4">
+                        <input type="text" id="myQty" class="form-control input-sm" disabled value="0">
+                    </div>
+                    {% endif %}
                     <div class="col-2 col-xs-2">
                         <button type="button" class="btn btn-link btn-xs">
                             <span id="trash" class="fa fa-trash"> </span>
@@ -72,8 +78,14 @@
                             <h5 class="font-weight-bold"> € <span id="total"></span></h5>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Paiement</a>
-
+                    {% if representation.show.bookable and representation.available_seats > 0 %}
+                    <button href="#" class="btn btn-success rounded-pill py-2 btn-block">Passage en caisse</button>
+                    {% elif not representation.show.bookable %}
+                    <p style="color: red;"> Les réservations pour ce spectacle ({{ representation.show.title }}) sont désormais indisponibles. </p>
+                    {% else %}
+                    <span style="color: red ;"> Malheureusement, il n'y a plus aucune place de disponible. </span>
+                    <span style="color: red ;" >Mais vous pouvez toujours assiter à une autre représentation du spectacle. <a class="btn btn-success" href="{% url 'show_detail_slug' representation.show.slug %}">Cliquez ici pour voir les autres représentations de {{ representation.show.title }}</a></span>
+                    {% endif %}
                 </div>
             </div>
         </div>
