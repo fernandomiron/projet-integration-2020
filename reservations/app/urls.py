@@ -1,13 +1,19 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 # import of the built-in Django authentication and give it a "auth_views" alias
 from django.contrib.auth import views as auth_views
 
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
-from app.views.api import (ArtistApiView, LocationApiView,
-                           RepresentationApiView, ShowApiView)
+from app.views.api import (
+    ArtistApiView,
+    LocationApiView,
+    RepresentationApiView,
+    ShowApiView
+)
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
+from app.views.payment import ppalreturn, ppalhome, ppalcancel
+from app.views.reservation import reservationglobalview, reservationview
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
@@ -68,7 +74,18 @@ urlpatterns = [
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/$', LocationDetailedView,
         name='LocationPkView_slug'),
 
-    # API
+    # Reservation
+    url(r'^reservation/$', reservationglobalview, name='reservationview'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
+
+    # PayPal
+    url(r'^payhome/$', ppalhome, name='homepaypal'),
+    url(r'^payhome/(?P<idreservation>[0-9]+)/$', ppalhome, name='homepaypalpk'),
+    url(r'^paypalreturn/(?P<pk>[0-9]+)/$', ppalreturn, name='paypalreturn'),
+    url(r'^paypalcancel/(?P<pk>[0-9]+)/$', ppalcancel, name='paypalcancel'),
+    url(r'^paypalveryhardtofind/', include('paypal.standard.ipn.urls')),
+
+    # Rest API
     url(r'^api/artist/', ArtistApiView.as_view(), name='api_artist'),
     url(r'^api/show/', ShowApiView.as_view(), name='api_show'),
     url(r'^api/representation/', RepresentationApiView.as_view(),
@@ -80,4 +97,5 @@ urlpatterns = [
     url(r'^rss/representation/', RepresentationFeed(),
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
+
 ]

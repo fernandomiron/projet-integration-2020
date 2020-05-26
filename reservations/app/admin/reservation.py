@@ -1,9 +1,9 @@
 from django.contrib import admin
+
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 from app.models import Reservation
-#from app.models.show import Show, Representation
 
 
 class ReservationResource(resources.ModelResource):
@@ -17,22 +17,49 @@ class ReservationResource(resources.ModelResource):
 
 
 class ReservationAdmin(ImportExportModelAdmin):
-    """Reservation admin register class"""
+    """Reservation admin register class
 
-    list_display = ('pk', 'get_title', 'get_time', 'seats')
-    list_display_links = ('pk', 'get_title', 'get_time', 'seats') # to make field clickable
-    search_fields = ('representation__show__title',)
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
 
-    def get_title(self, obj):
-        """ to get the show title"""
-        return obj.representation.show.title
-    get_title.short_description = 'titre spectacle'
+    list_display = ('show_name', 'user', 'user_lastname', 'user_firstname',
+                    'time', 'seats', 'price', 'status')
+    readonly_fields = ['price', 'time']
+    ordering = ('status', '-time')
+    date_hierarchy = 'time'
 
-    def get_time(self, obj):
-        """ to get the time """
-        return obj.representation.time
-    get_time.short_description = 'heure spectacle'
+    list_filter = ('status', 'user')
+    search_fields = ('time', 'seats', 'price', 'status')
 
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant la \
+                réservation',
+            'fields': ('representation', 'user', 'time', 'seats', 'price', 'status')
+        }),
+    )
+
+    def show_name(self, reservation):
+        """Display the name of the show"""
+
+        return reservation.representation.show.title
+
+    show_name.short_description = 'Spectacle'
+
+    def user_lastname(self, userprofile):
+        """Display the lastname of the user"""
+
+        return userprofile.user.last_name
+
+    user_lastname.short_description = 'Nom de famille de l\'utilisateur'
+
+    def user_firstname(self, userprofile):
+        """Display the firstname of the user"""
+
+        return userprofile.user.first_name
+
+    user_firstname.short_description = 'Prénom de l\'utilisateur'
 
     resource_class = ReservationResource
 

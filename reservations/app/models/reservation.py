@@ -16,12 +16,14 @@ class Reservation(models.Model):
 
     representation = models.ForeignKey(Representation,
                                        on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    time = models.DateField(auto_now_add=True)
-    seats = models.PositiveIntegerField()
-    price = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             verbose_name="Utilisateur")
+    time = models.DateField(auto_now_add=True,
+                            verbose_name="Date de réservation")
+    seats = models.PositiveIntegerField(verbose_name="Nombre de sièges")
+    price = models.FloatField(verbose_name="Prix total (EUR)")
     status = models.CharField(max_length=9, choices=RESERVATION_STATUS,
-                              default='Ongoing')
+                              default='Ongoing', verbose_name="Statut")
 
     class Meta:
         """Meta definition for Reservation."""
@@ -64,3 +66,4 @@ class Reservation(models.Model):
         return ('')  # TODO: Define absolute url + url name
 
     # TODO: Define custom methods here
+

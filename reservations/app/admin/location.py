@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -15,6 +16,35 @@ class LocationResource(resources.ModelResource):
         skip_unchanged = True
 
 
+class LocationAdmin(ImportExportModelAdmin):
+    """Location admin register class
+
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
+    """
+
+    list_display = ('designation', 'locality', 'phone', 'website')
+    readonly_fields = ['slug']
+    ordering = ('designation', 'locality')
+
+    list_filter = ('locality', 'designation')
+    search_fields = ('designation', 'address', 'website')
+
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant \
+                l\'emplacement',
+            'fields': ('designation', 'slug', 'address', 'locality', 'phone',
+                       'website')
+        }),
+    )
+
+    resource_class = LocationResource
+
+
+admin.site.register(Location, LocationAdmin)
+
+
 class LocalityResource(resources.ModelResource):
     """Describe how Type resources can be imported or exported"""
 
@@ -25,32 +55,27 @@ class LocalityResource(resources.ModelResource):
         skip_unchanged = True
 
 
-class LocationAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class
-
-    Customize the appearance of the table Location in the admin database
-    """
-
-    list_display = ('pk', 'designation')
-    list_display_links = ('pk', 'designation')  # to make field clickable
-    search_fields = ('designation',)
-
-    resource_class = LocationResource
-
-
 class LocalityAdmin(ImportExportModelAdmin):
-    """ArtistType admin register class
+    """Locality admin register class
 
-    Customize the appearance of the table Locality in the admin database
+    Custom administration form and list.
+    Add the import/export buttom on the top of the entry.
     """
-    list_display = ('pk', 'postal_code', 'locality')
-    list_display_links = ('pk', 'postal_code', 'locality') # to make field clickable
+
+    list_display = ('locality', 'postal_code')
+    ordering = ('postal_code',)
+
+    list_filter = ('postal_code', 'locality')
     search_fields = ('postal_code', 'locality')
 
-
+    fieldsets = (
+        ('Information générales', {
+            'description': 'Informations générales concernant la localité',
+            'fields': ('postal_code', 'locality')
+        }),
+    )
 
     resource_class = LocalityResource
 
 
-admin.site.register(Location, LocationAdmin)
 admin.site.register(Locality, LocalityAdmin)
