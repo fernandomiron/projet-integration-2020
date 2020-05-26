@@ -118,7 +118,7 @@ class ExternalAPI(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
-        external_api_url = "http://127.0.0.1:8000/external-api/show/" 
+        external_api_url = "https://api.theatredelaville-paris.com/events" 
         r = requests.get(external_api_url, timeout=10)
         data_all = r.json()
         while attempt_num < MAX_RETRIES:
