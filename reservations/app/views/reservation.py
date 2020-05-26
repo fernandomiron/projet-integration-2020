@@ -31,6 +31,14 @@ def reservationview(request,pk):
 
     return render(request, template, context)
 
+def reservation_details(request,pk):
+    """ reservation """
+    reservation = get_object_or_404(Reservation, pk=pk)
+    context = {"reservation": reservation}
+    template = "app/reservationview.html"
+
+    return render(request, template, context)
+
 def representation_detail(request, pk):
 
     representation = get_object_or_404(Representation, pk=pk)
