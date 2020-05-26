@@ -19,5 +19,15 @@
             </div>
         </div>
     </div>
+    <div>
+        {% for reservation in reservations %}
+           <p></p>
+           <p>Titre: {{reservation.representation.show.title}}</p>
+           <p>Heure: {{reservation.time}}</p>
+           <p>Nbr Sièges:{{reservation.seats}}</p>
+           <p>Prix: {{reservation.price}}</p>
+           <p>Statut: {{reservation.status}}</p>
+        {%endfor%}
+    </div>    
 {% endblock  %}
 

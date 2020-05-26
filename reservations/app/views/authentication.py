@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import TemplateView, UpdateView
+from django.views.generic import TemplateView, UpdateView, ListView
 
 from app.forms.user import (
     UserProfileSignupForm,
@@ -11,6 +11,7 @@ from app.forms.user import (
     UserUpdateForm
 )
 from app.models.profile import UserProfile
+from app.models.reservation import Reservation
 
 
 def signup(request):
@@ -48,10 +49,18 @@ def signup(request):
     return render(request, 'app/signup.html', context)
 
 
-class ProfileView(TemplateView):
+class ProfileView(ListView):
     """User profile View"""
 
     template_name = 'app/profile.html'
+    model = Reservation
+
+    def get_context_data(self, **kwargs):
+        context = super(ListView, self).get_context_data(**kwargs)
+        context['reservations'] = Reservation.objects.filter(user=self.request.user)
+        return context
+
+
 
 
 def profileUpdate(request):
