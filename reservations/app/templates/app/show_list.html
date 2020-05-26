@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-footer">
                     <!-- a href="{% url 'show_detail_pk' show.pk %}" class="btn btn-primary">Find Out More!</a -->
-                    <a href="{{ show.get_absolute_url }}" class="btn btn-primary">Find Out More!</a>
+                    <a href="{{ show.get_absolute_url }}" class="btn btn-secondary">En savoir plus</a>
 
                     <!-- Connection as staff required ! -->
                     {% if request.user.is_staff %}

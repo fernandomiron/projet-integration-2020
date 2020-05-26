@@ -3,28 +3,34 @@
 {% block content %}
 
 <div class="pb-5">
-    <div class="container">
+
+    <form class="container" method='get' action ='{% url "reservationupdate" representation.pk %}'>
 
         <div class="row p-5 bg-white rounded shadow mb-5">
-            <div class="col-12 bg-light rounded-pill px-4 py-3 mb-5 text-uppercase font-weight-bold">Détail spectacle et
+            <div class="col-12 bg-dark text-light rounded-pill px-4 py-3 mb-5 text-uppercase font-weight-bold">Détail spectacle et
                 quantité
             </div>
 
-            <div class="col-2 col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+            <div class="col-2 col-xs-2"><img class="img-responsive img-fluid" style=" max-width: 100%; height: auto;" src="{{representation.show.poster|default:'http://placehold.it/200x200'}}">
             </div>
             <div class="col-4 col-xs-4">
-                <h4 class="product-name"><strong>Carmen</strong></h4>
-                <p><small>Carmen est un opéra-comique en quatre actes de Georges Bizet, sur un livret d'Henri Meilhac et
-                    Ludovic Halévy, d'après la nouvelle Carmen, de Prosper Mérimée.</small></p>
+                <h4 class="product-name"><strong>{{ representation.show.title }}</strong></h4>
+                <p><small>{{ representation.show.description }}</small></p>
             </div>
             <div class="col-6 col-xs-6">
                 <div class="row">
                     <div class="col-6 col-xs6 text-right">
-                        <h6><strong><span id="price">25.00</span> € <span class="text-muted">x</span></strong></h6>
+                        <h6><strong><span id="price">{{ representation.show.price }}</span> € <span class="text-muted">x</span></strong></h6>
                     </div>
+                    {% if representation.show.bookable and representation.available_seats > 0 %}
                     <div class="col-4 col-xs-4">
-                        <input type="text" id="quantity "class="form-control input-sm" value="1">
+                        <input type="number" name='qty' id="myQty" class="form-control input-sm" onchange="myFunction()" value="1" min="1" max="{{ representation.available_seats }}">
                     </div>
+                    {% else %}
+                    <div class="col-4 col-xs-4">
+                        <input type="text" name='qty' id="myQty" class="form-control input-sm" disabled value="0">
+                    </div>
+                    {% endif %}
                     <div class="col-2 col-xs-2">
                         <button type="button" class="btn btn-link btn-xs">
                             <span id="trash" class="fa fa-trash"> </span>
@@ -42,46 +48,57 @@
                 <div class="p-4">
                     <p class="font-italic mb-4">
                     <ul>
-                        <li> Date et heure : 15 mai 2020 à 20h00</li>
-                        <li> Adresse : Avenue du Roi 96</li>
-                        <li> Localité : 1060 Saint Gilles</li>
+                        <li> Lieu : {{ representation.location.designation}}</li>
+                        <li> Date et heure : {{ representation.time }}</li>
+                        <li> Adresse : {{ representation.location.address }}</li>
+                        <li> Localité : {{representation.location.locality.postal_code}} {{ representation.location.locality.locality }} </li>
+                        <li> Nombre de place restante : {{ representation.available_seats }}</li>
                     </ul>
                     </p>
                 </div>
-                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Remarque pour le vendeur
-                </div>
-                <div class="p-4">
-                    <p class="font-italic mb-4">Si vous avez des instructions pour le vendeur, s'il vous plait
-                        remplissez
-                        la case ci-dessous</p>
-                    <textarea name="" cols="30" rows="2" class="form-control"></textarea>
-                </div>
             </div>
             <div class="col-lg-6">
-                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Résumer de la commande
+                <div class="bg-dark text-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Résumer de la commande
                 </div>
                 <div class="p-4">
                     <ul class="list-unstyled mb-4">
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">
-                            Sous-total </strong><strong>$390.00</strong></li>
+                            Total-HTVA </strong><strong>$ <span id="totalhtva"></span> </strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong
-                                class="text-muted">TVA</strong><strong>$0.00</strong></li>
+                                class="text-muted">TVA</strong><strong> $ <span id="tva"></span></strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong
                                 class="text-muted">Total</strong>
-                            <h5 class="font-weight-bold" id="total">€ 50</h5>
+                            <h5 class="font-weight-bold"> € <span id="total"></span></h5>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Paiement</a>
+                    {% if representation.show.bookable and representation.available_seats > 0 %}
+                    <input type="submit" value="Passage en caisse" class="btn btn-success rounded-pill py-2 btn-block"></input>
+                    {% elif not representation.show.bookable %}
+                    <p style="color: red;"> Les réservations pour ce spectacle ({{ representation.show.title }}) sont désormais indisponibles. </p>
+                    {% else %}
+                    <span style="color: red ;"> Malheureusement, il n'y a plus aucune place de disponible. </span>
+                    <span style="color: red ;" >Mais vous pouvez toujours assiter à une autre représentation du spectacle. <a class="btn btn-success" href="{% url 'show_detail_slug' representation.show.slug %}">Cliquez ici pour voir les autres représentations de {{ representation.show.title }}</a></span>
+                    {% endif %}
                 </div>
             </div>
         </div>
 
-    </div>
+    </form>
 </div>
 </div>
 
 <script language="JavaScript">
+function myFunction() {
+  var price = parseFloat('{{ representation.show.price| safe }}');
+  var qty = document.getElementById("myQty").value;
+  var total = qty * price;
+  var tva = total * 0.21;
+  var totalhtva = total - tva;
 
+  document.getElementById("total").innerHTML = total ;
+  document.getElementById("tva").innerHTML = tva ;
+  document.getElementById("totalhtva").innerHTML = totalhtva ;
+}
 </script>
 
 {% endblock %}

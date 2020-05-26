@@ -3,11 +3,12 @@
 {% block header %} <h2> Emplacements des spectacles ! </h2> {% endblock header %}
 
 {% block content %}
-    <!-- the search bar button with bootstrap customization-->
-    <form class="form-inline my-2 my-lg-1">
-      <input name="search" placeholder=" Rechercher.. " value="{{search_term}}">
-      <button class="btn btn-success" type="submit">
+<!-- the search bar button with bootstrap customization-->
+<form class="form-inline my-2 my-lg-1">
+    <input name="search" placeholder=" Rechercher.. " value="{{search_term}}">
+    <button class="btn btn-success" type="submit">
         Rechercher
+
       </button>
     </form>
 
@@ -27,23 +28,23 @@
       {% if locations.has_previous %}
         <a class="btn btn-outline-info mb-5" href="?page=1">début</a>
         <a class="btn btn-outline-info mb-5" href="?page={{ locations.previous_page_number }}"><</a>
-      {% endif %}
-
-      {% for num in locations.paginator.page_range %}
-        {% if locations.number == num %}
-          <a class="btn btn-info mb-5" href="?page= {{ num }}">{{ num }}</a>
-        {% elif num > locations.number|add:'-5' and num < locations.number|add:'5' %}
-          <a class="btn btn-outline-info mb-5" href="?page= {{ num }}">{{ num }}</a>
         {% endif %}
 
-      {% endfor %}
+        {% for num in locations.paginator.page_range %}
+        {% if locations.number == num %}
+        <a class="btn btn-info mb-5" href="?page= {{ num }}">{{ num }}</a>
+        {% elif num > locations.number|add:'-5' and num < locations.number|add:'5' %}
+        <a class="btn btn-outline-info mb-5" href="?page= {{ num }}">{{ num }}</a>
+        {% endif %}
 
-      {% if locations.has_next %}
+        {% endfor %}
+
+        {% if locations.has_next %}
         <a class="btn btn-outline-info mb-5" href="?page={{ locations.next_page_number }}">></a>
         <a class="btn btn-outline-info mb-5" href="?page={{ locations.paginator.num_pages }}">fin</a>
-      {% endif %}
+        {% endif %}
 
-      </div>
+    </div>
 
 </section>
 

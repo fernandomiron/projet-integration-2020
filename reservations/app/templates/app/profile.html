@@ -27,6 +27,7 @@
            <p>Nbr Sièges:{{reservation.seats}}</p>
            <p>Prix: {{reservation.price}}</p>
            <p>Statut: {{reservation.status}}</p>
+           <a href="{% url 'reservationdetails' reservation.pk %}">reserver </a>
         {%endfor%}
     </div>    
 {% endblock  %}

@@ -4,8 +4,19 @@
 
 {% block content %}
 
-    <section class="content">
+<section class="content">
 
+
+    <div class="card border-dark mb-4">
+        <h5 class="card-header bg-dark text-white">{{location.designation}}</h5>
+        <div class="card-body">
+            <h5>Adresse : {{location.address}}</h5>
+            <h5>Code Postal : {{location.locality.postal_code}} {{location.locality.locality}}</h5>
+            <h5>Téléphone : {{location.phone}}</h5>
+            <h5> Site internet : {{ location.website|urlize }}</h5>
+            <a href="{% url 'LocationListView' %}" class="btn btn-secondary"> Retour aux emplacements</a>
+        </div>
+    </div>
 
 
       <h1>{{location.designation}}</h1>
@@ -42,9 +53,33 @@
 
       <h3>***********************************************</h3>
 
-    {% endfor %}
+        </tbody>
+    </table>
 
 
-    </section>
+</section>
 
 {% endblock content %}
+
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>Spectacle</th>
+        <th>Quand</th>
+        <th>Sièges</th>
+        <th>Sièges libres</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for rep in repdico %}
+    <tr>
+        <td>{{rep.show.title}}</td>
+        <td>{{rep.time}}</td>
+        <td>{{rep.total_seats}}</td>
+        <td>{{rep.available_seats}}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>

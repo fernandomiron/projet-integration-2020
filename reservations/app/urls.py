@@ -24,7 +24,7 @@ from app.views.representationCRUD import (
     DeleteRepresentation,
     UpdateRepresentation
 )
-from app.views.reservation import reservationglobalview, reservationview
+from app.views.reservation import reservationglobalview, reservationview, representation_detail, reservation_details
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
@@ -114,8 +114,8 @@ urlpatterns = [
 
     # Reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
-    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview,
-        name='reservationupdate'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
+    url(r'^reservation2/(?P<pk>[0-9]+)/$', reservation_details, name='reservationdetails'),
 
     # PayPal
     url(r'^payhome/$', ppalhome, name='homepaypal'),
@@ -140,5 +140,9 @@ urlpatterns = [
     url(r'^rss/show/$', LastShowFeed(), name='rss_show'),
     url(r'^rss/representation/$', RepresentationFeed(),
         name='rss_representation'),
-    url(r'^rss/location/$', LocationFeed(), name='rss_location'),
+    url(r'^rss/location/', LocationFeed(), name='rss_location'),
+
+    #representation_details
+    url(r'^representation/(?P<pk>[0-9]+)/$', representation_detail, name='representation_detail'),
+
 ]
