@@ -24,7 +24,12 @@ from app.views.representationCRUD import (
     DeleteRepresentation,
     UpdateRepresentation
 )
-from app.views.reservation import reservationglobalview, reservationview, representation_detail, reservation_details
+from app.views.reservation import (
+    reservationglobalview,
+    reservationview,
+    representation_detail,
+    reservation_details
+)
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
@@ -131,10 +136,10 @@ urlpatterns = [
     # Rest API
     url(r'^api/artist/$', ArtistApiView.as_view(), name='api_artist'),
     url(r'^api/show/$', ShowApiView.as_view(), name='api_show'),
-    url(r'^api/show/pull/$', ExternalAPIShowView.as_view(),
+    url(r'^api/show/pull/cleaned/$', ExternalAPIShowView.as_view(),
         name='ext-api-show'),
-    url(r'^api/show/pull2/$', ExternalAPI.as_view(),
-        name='ext-api-show-2'),  # TODO: Broken, must be fixed !
+    url(r'^api/show/pull/raw/$', ExternalAPI.as_view(),
+        name='ext-api-show-2'),
     url(r'^api/representation/$', RepresentationApiView.as_view(),
         name='api_representation'),
     url(r'^api/location/$', LocationApiView.as_view(), name='api_location'),
