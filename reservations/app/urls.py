@@ -55,22 +55,24 @@ urlpatterns = [
 
     # Shows
     url(r'^show/$', show.show_list, name='show'),
-    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
-    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
-        name='show_detail_slug'),
     url(r'^show/create/$', CreateShow, name='ShowCrud'),
     url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
     url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
+    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
+    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
+        name='show_detail_slug'),
+
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
-    url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/$', LocationDetailedView,
-        name='LocationPkView_slug'),
     url(r'^location/create/$', CreateLocation, name='CreateLocation'),
     url(r'^location/update/(?P<pk>[0-9]+)/?$', UpdateLocation,
         name='UpdateLocation'),
     url(r'^location/delete/(?P<pk>[0-9]+)/?$', DeleteLocation,
         name='DeleteLocation'),
+    url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/$', LocationDetailedView,
+        name='LocationPkView_slug'),
+
 
     # Representations
     url(r'^representation/create/(?P<pk>[0-9]+)/$', CreateRepresentation,
