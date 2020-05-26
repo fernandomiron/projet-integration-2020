@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from app.models.show import Location
+from app.models.location import Location
 from app.forms.locationForm import LocationForm
 
 def CreateLocation(request):

@@ -66,21 +66,6 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(template_name="app/\
             password_reset_complete.html"), name='password_reset_complete'),
 
-    #Crudshow
-    url(r'^showcrud/$', CreateShow, name = 'ShowCrud'),
-    url(r'^showcrud/(?P<pk>[0-9]+)/?$',UpdateShow, name = 'UpdateShow'),
-    url(r'^showcruddelete/(?P<pk>[0-9]+)/?$',DeleteShow, name = 'DeleteShow'),
-
-    #Crudlocation
-    url(r'^locationcrud/$', CreateLocation, name = 'CreateLocation'),
-    url(r'^locationcrud/(?P<pk>[0-9]+)/?$', UpdateLocation, name = 'UpdateLocation'),
-    url(r'^locationcruddelete/(?P<pk>[0-9]+)/?$', DeleteLocation, name = 'DeleteLocation'),
-
-    #CrudRepresentation
-    url(r'^representationcrud/(?P<pk>[0-9]+)/?$', CreateRepresentation, name = 'CreateRepresentation'),
-    url(r'^representationcrudUp/(?P<pk>[0-9]+)/$', UpdateRepresentation, name = 'UpdateRepresentation'),
-    url(r'^representationcruddel/(?P<pk>[0-9]+)/?$', DeleteRepresentation, name = 'DeleteRepresentation'),
-
     # Shows
     url(r'^show/$', show.show_list, name='show'),
     url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
@@ -92,14 +77,26 @@ urlpatterns = [
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
-    url(r'^location/(?P<pk>[0-9]+)/$', LocationDetailedView,
-        name='LocationPkView_pk'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/$', LocationDetailedView,
         name='LocationPkView_slug'),
+    url(r'^location/create/$', CreateLocation, name='CreateLocation'),
+    url(r'^location/update/(?P<pk>[0-9]+)/?$', UpdateLocation,
+        name='UpdateLocation'),
+    url(r'^location/delete/(?P<pk>[0-9]+)/?$', DeleteLocation,
+        name='DeleteLocation'),
+
+    # Representations
+    url(r'^representation/create/(?P<pk>[0-9]+)/$', CreateRepresentation,
+        name='CreateRepresentation'),
+    url(r'^representation/update/(?P<pk>[0-9]+)/$', UpdateRepresentation,
+        name='UpdateRepresentation'),
+    url(r'^representation/delete/(?P<pk>[0-9]+)/$', DeleteRepresentation,
+        name='DeleteRepresentation'),
 
     # Reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
-    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview,
+        name='reservationupdate'),
 
     # PayPal
     url(r'^payhome/$', ppalhome, name='homepaypal'),
