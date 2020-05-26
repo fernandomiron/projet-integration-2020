@@ -114,6 +114,8 @@ class ExternalAPIShowView(generics.GenericAPIView):
 
 
 class ExternalAPI(generics.ListAPIView):
+    #queryset = ''
+
     def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
         external_api_url = "http://127.0.0.1:8000/external-api/show/" 
