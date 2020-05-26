@@ -13,7 +13,7 @@ from app.views.api import (
 from app.views.locationList import LocationListView
 from app.views.locationdetailed import LocationDetailedView
 from app.views.payment import ppalreturn, ppalhome, ppalcancel
-from app.views.reservation import reservationglobalview, reservationview, representation_detail
+from app.views.reservation import reservationglobalview, reservationview, representation_detail, reservation_details
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
 
@@ -77,6 +77,7 @@ urlpatterns = [
     # Reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
     url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
+    url(r'^reservation2/(?P<pk>[0-9]+)/$', reservation_details, name='reservationdetails'),
 
     # PayPal
     url(r'^payhome/$', ppalhome, name='homepaypal'),
