@@ -15,8 +15,18 @@
       <h3>{{location.phone}}</h3>
       <h4>{{ location.website|urlize }}</h4>
       <h4><a href="{% url 'LocationListView' %}">Retour aux emplacements</a></h4>
+      <!-- hidden if you can't connect to the admin -->
+      {% if request.user.is_staff %}
+        <a href="{% url 'UpdateLocation' location.pk %}" class="btn btn-primary"> Modifier location </a>
+        <a href="{% url 'DeleteLocation' location.pk %}" class="btn btn-link"> Supprimer location </a>
+      {% endif %}
+
+
       <h3>***********************************************</h3>
       <h2> Representions</h2>
+      {% if request.user.is_staff %}
+        <a href="{% url 'CreateRepresentation' location.pk %}"> Ajouter Representation </a> <!-- A mettre dans la nav bar-->
+      {% endif %}
 
     {% for rep in repdico %}
       <h3>***********************************************</h3>
@@ -24,6 +34,12 @@
       <h3> Quand: {{rep.time}}</h3>
       <h3> Sièges: {{rep.total_seats}} </h3>
       <h3> Sièges libres: {{rep.available_seats}}</h3>
+      {% if request.user.is_staff %}
+        <a href="{% url 'UpdateRepresentation' rep.pk %}"> Modifier Representation </a>
+        <a href="{% url 'DeleteRepresentation' rep.pk %}"> Supprimer Representation </a>
+
+      {% endif %}
+
       <h3>***********************************************</h3>
 
     {% endfor %}

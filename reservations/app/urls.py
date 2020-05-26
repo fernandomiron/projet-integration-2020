@@ -1,7 +1,5 @@
 from django.conf.urls import url, include
-# import of the built-in Django authentication and give it a "auth_views" alias
 from django.contrib.auth import views as auth_views
-
 from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
 from app.views import authentication, views, show
 from app.views.api import (
@@ -13,8 +11,18 @@ from app.views.api import (
     ExternalAPIShowView,
 )
 from app.views.locationList import LocationListView
+from app.views.locationCRUD import (
+    CreateLocation,
+    DeleteLocation,
+    UpdateLocation
+)
 from app.views.locationdetailed import LocationDetailedView
 from app.views.payment import ppalreturn, ppalhome, ppalcancel
+from app.views.representationCRUD import (
+    CreateRepresentation,
+    DeleteRepresentation,
+    UpdateRepresentation
+)
 from app.views.reservation import reservationglobalview, reservationview
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
@@ -35,52 +43,53 @@ urlpatterns = [
     # User Profile
     url(r'^profile/$', authentication.ProfileView.as_view(), name='profile'),
     url(r'^profile/update$', authentication.profileUpdate,
-        name='profile_update'),
+        name='profile-update'),
 
     # Password Change
-    url(r'^password/change/$',
-        auth_views.PasswordChangeView.as_view(template_name="app/\
-            password_change_form.html"), name='password_change_form'),
-    url(r'^password/change/done/$',
-        auth_views.PasswordChangeDoneView.as_view(template_name="app/\
-            password_change_done.html"), name='password_change_done'),
+    url(r'^password/change/$',auth_views.PasswordChangeView.as_view(template_name="app/password_change_form.html"), name='password_change_form'),
+    url(r'^password/change/done/$',auth_views.PasswordChangeDoneView.as_view(template_name="app/password_change_done.html"), name='password_change_done'),
 
     # Password Reset
-    url(r'^password/reset/$',
-        auth_views.PasswordResetView.as_view(template_name="app/\
-            password_reset_form.html"), name='password_reset'),
-    url(r'^password/reset/done/$',
-        auth_views.PasswordResetDoneView.as_view(template_name="\
-            app/password_reset_done.html"), name='password_reset_done'),
-    url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/\
-        (?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        auth_views.PasswordResetConfirmView.as_view(template_name="app/\
-            password_reset_confirm.html"), name='password_reset_confirm'),
-    url(r'^password/reset/done/$',
-        auth_views.PasswordResetCompleteView.as_view(template_name="app/\
-            password_reset_complete.html"), name='password_reset_complete'),
+    url(r'^password/reset/$',auth_views.PasswordResetView.as_view(template_name="app/password_reset_form.html"), name='password_reset'),
+    url(r'^password/reset/done/$',auth_views.PasswordResetDoneView.as_view(template_name="app/password_reset_done.html"), name='password_reset_done'),
+    url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',auth_views.PasswordResetConfirmView.as_view(template_name="app/password_reset_confirm.html"), name='password_reset_confirm'),
+    url(r'^reset/complete/$',auth_views.PasswordResetCompleteView.as_view(template_name="app/password_reset_complete.html"), name='password_reset_complete'),
 
     # Shows
     url(r'^update-show-api/$', show.update_show_external_api, name='update-ext-show'),
     url(r'^show-api/$', show.show_external_api, name='ext-show'),
     url(r'^show/$', show.show_list, name='show'),
-    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
-    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
-        name='show_detail_slug'),
     url(r'^show/create/$', CreateShow, name='ShowCrud'),
     url(r'^show/update/(?P<pk>[0-9]+)/$', UpdateShow, name='UpdateShow'),
     url(r'^show/delete/(?P<pk>[0-9]+)/$', DeleteShow, name='DeleteShow'),
+    url(r'^show/(?P<pk>[0-9]+)/$', show.show_detail, name='show_detail_pk'),
+    url(r'^show/(?P<slug>[a-zA-Z0-9-]+)/$', show.show_detail_slug,
+        name='show_detail_slug'),
+
 
     # Locations
     url(r'^location/$', LocationListView, name='LocationListView'),
-    url(r'^location/(?P<pk>[0-9]+)/$', LocationDetailedView,
-        name='LocationPkView_pk'),
+    url(r'^location/create/$', CreateLocation, name='CreateLocation'),
+    url(r'^location/update/(?P<pk>[0-9]+)/?$', UpdateLocation,
+        name='UpdateLocation'),
+    url(r'^location/delete/(?P<pk>[0-9]+)/?$', DeleteLocation,
+        name='DeleteLocation'),
     url(r'^location/(?P<slug>[a-zA-Z0-9-]+)/$', LocationDetailedView,
         name='LocationPkView_slug'),
 
+
+    # Representations
+    url(r'^representation/create/(?P<pk>[0-9]+)/$', CreateRepresentation,
+        name='CreateRepresentation'),
+    url(r'^representation/update/(?P<pk>[0-9]+)/$', UpdateRepresentation,
+        name='UpdateRepresentation'),
+    url(r'^representation/delete/(?P<pk>[0-9]+)/$', DeleteRepresentation,
+        name='DeleteRepresentation'),
+
     # Reservation
     url(r'^reservation/$', reservationglobalview, name='reservationview'),
-    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
+    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview,
+        name='reservationupdate'),
 
     # PayPal
     url(r'^payhome/$', ppalhome, name='homepaypal'),

@@ -20,14 +20,12 @@ def CreateShow(request):
 
     return render(request, 'app/showCRUD.html', {'createform': form})
 
-
 def UpdateShow(request, pk):
     """ Updating a show
 
     This view will allow updating a show with if we got permissions
     """
-
-    a_show = Show.objects.get(pk=pk)  #the slug we got on the url
+    a_show = Show.objects.get(pk=pk) #the slug we got on the url
     form = ShowForm(request.POST or None, instance=a_show)
     #it will allow us to modify filled with the instance of the "slug show"
 
@@ -36,7 +34,6 @@ def UpdateShow(request, pk):
         return redirect('show')  #nom de l'url qui correspond à la vue
 
     return render(request, 'app/showCRUD.html', {'updateform': form})
-
 
 def DeleteShow(request, pk):
     """ Deleting a show
@@ -49,6 +46,5 @@ def DeleteShow(request, pk):
     #he will post and confirm a delete.
 
         a_show.delete()
-        return redirect('show')
-
-    return render(request, 'app/show_list.html', {'a_show': a_show})  # TODO: render doesn't work
+        return redirect ('show')
+    return render (request, 'app/deleteShow.html',{'a_show': a_show})

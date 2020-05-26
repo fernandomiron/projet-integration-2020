@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p> Etes vous sûr de supprimer location {{ location.designation }} ? </p>
+
+<form method="POST">
+
+  {% csrf_token %}
+  <a href="{% url 'LocationPkView_slug' location.slug %}"> Annuler </a>
+  <button type "submit" class="btn btn-primary"> Confirmer</button>
+
+</form>
+
+{% endblock content %}
