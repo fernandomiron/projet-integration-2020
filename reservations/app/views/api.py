@@ -114,7 +114,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
 
 
 class ExternalAPI(generics.ListAPIView):
-    #queryset = ''
+    queryset = ''
 
     def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
