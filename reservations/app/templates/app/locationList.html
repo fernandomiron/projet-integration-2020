@@ -8,20 +8,24 @@
     <input name="search" placeholder=" Rechercher.. " value="{{search_term}}">
     <button class="btn btn-success" type="submit">
         Rechercher
-    </button>
-</form>
 
-<section class="content">
-    <h1> Location </h1>
-    <div class="list-group">
-        {% for une_loc in locations %}
-        <a href='{{ une_loc.get_absolute_url }}' class="list-group-item list-group-item-action">{{ une_loc.designation }}</a>
-        {% endfor %}
-    </div>
-    </br></br>
-    <!--pagination part -->
-    <div class="pagination">
-        {% if locations.has_previous %}
+      </button>
+    </form>
+
+    {% if request.user.is_staff %}
+      <a href="{% url 'CreateLocation' %}"> Ajouter Location </a> <!-- A mettre dans la nav bar-->
+    {% endif %}
+
+    <section class="content">
+
+      {% for une_loc in locations %}
+
+          <h2><a href='{{ une_loc.get_absolute_url }}'> {{ une_loc.designation }}</a></h2>
+
+      {% endfor %}
+      <!--pagination part -->
+      <div class="pagination">
+      {% if locations.has_previous %}
         <a class="btn btn-outline-info mb-5" href="?page=1">début</a>
         <a class="btn btn-outline-info mb-5" href="?page={{ locations.previous_page_number }}"><</a>
         {% endif %}

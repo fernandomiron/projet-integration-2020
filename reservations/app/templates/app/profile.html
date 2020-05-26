@@ -1,4 +1,8 @@
-{% extends "app/base.html" %}
+  <!-- profile page-->
+
+{% extends "base.html" %}
+
+{% block title %}Page de profil{% endblock %}
 
 {% block content %}
     <div class="content-section">
@@ -15,5 +19,15 @@
             </div>
         </div>
     </div>
-{% endblock main %}
+    <div>
+        {% for reservation in reservations %}
+           <p></p>
+           <p>Titre: {{reservation.representation.show.title}}</p>
+           <p>Heure: {{reservation.time}}</p>
+           <p>Nbr Sièges:{{reservation.seats}}</p>
+           <p>Prix: {{reservation.price}}</p>
+           <p>Statut: {{reservation.status}}</p>
+        {%endfor%}
+    </div>    
+{% endblock  %}
 

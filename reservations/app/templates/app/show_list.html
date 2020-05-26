@@ -7,7 +7,7 @@
     <form method="get" action="{% url 'show' %}">
         <input type="text" name='query' placeholder="Search">
     </form>
-    
+
     <!-- hidden if you can't connect to the admin -->
     {% if request.user.is_staff %}
       <a href="{% url 'ShowCrud' %}"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
@@ -33,12 +33,7 @@
                     <!-- Connection as staff required ! -->
                     {% if request.user.is_staff %}
                       <a href="{% url 'UpdateShow' show.pk %}" class="btn btn-link"> Modifier show </a>
-                      <form action="{% url 'DeleteShow' show.pk %}" method="post">
-                          {% csrf_token %}
-                          <button type="submit" class= "btn btn-link" onclick="return confirm('Sûr de vouloir faire ça ?')">
-                              supprimer
-                          </button>
-                      </form>
+                      <a href="{% url 'DeleteShow' show.pk %}" class="btn btn-link"> supprimer show </a>
                     {% endif %}
 
                 </div>
