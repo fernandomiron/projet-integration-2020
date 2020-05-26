@@ -29,7 +29,11 @@ def ppalhome(request, **kwargs):
 
     form = PayPalPaymentsForm(initial=paypal_dict)
     args['form'] = form
-    return render(request,'app/ppalhome.html',args)
+    context = {
+        'reservation': reservation,
+        'form' : form }
+
+    return render(request,'app/reservationview.html', context)
 
 
 @csrf_exempt

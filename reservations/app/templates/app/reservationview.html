@@ -10,30 +10,25 @@
 
     <thead>
         <th> Representation</th>
-        <th> Places libres</th>
+        <th> Places </th>
         <th> Prix par place</th>
-        <th> Nombre de place souhaitées</th>
+        <th> Total </th>
+        
     </thead>
 
 
     <tr> 
         <td> {{ reservation.representation.show.title }} </td>  
-        <td> {{ reservation.representation.total_seats }} </td> 
+        <td> {{reservation.seats }} </td> 
         <td> {{ reservation.representation.show.price }} </td>
-        <td> 
-            <form class='form pull-right' method='GET' action ='{% url "reservationupdate" reservation.pk %}'>
-                <input name='qty'    type='number' maxlenghth="4" required='true' value='1' min='1'/>
-                <input type='submit' value='adapter' />
-            </form>
-        </td>
-        
+        <td> {{reservation.price }} </td>
     </tr>
 
 <tfoot>
     <tr>
-        <td>Sièges : {{reservation.seats }} </td>
         <td> </td>
-        <td>Total : {{reservation.price }} </td>
+        <td> </td>
+        
     </tr>
 </tfoot>
 
@@ -45,6 +40,8 @@
         <input type='submit' value='payer'  />
     </form>
 </P>
+
+{{ form.render }}
 
 <P>Status : {{ reservation.status }} </P>
 </div>

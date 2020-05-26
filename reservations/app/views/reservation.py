@@ -1,7 +1,12 @@
 from app.models import *
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
-
+from django.views.decorators.csrf import csrf_exempt # permet de selectionner si on prend un post ou un get en fonction de la vue? 
+from paypal.standard.forms import PayPalEncryptedPaymentsForm, PayPalPaymentsForm
+from app.models import *
+from django.conf import settings
+from django.contrib import messages
+from decimal import Decimal
 
 def reservationglobalview(request):
 
