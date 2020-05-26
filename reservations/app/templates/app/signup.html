@@ -1,7 +1,10 @@
-{% extends 'app/base.html' %}
+  <!-- register form-->
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
+  <h2>Enregistrez-vous</h2>
   <form method="post">
   <!-- csrf_token protection-->
     {% csrf_token %}
