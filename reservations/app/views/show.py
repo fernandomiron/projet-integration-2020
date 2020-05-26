@@ -62,7 +62,7 @@ def show_detail_slug(request, slug):
 
 def show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/external-api/show/"
+    api_url = "http://127.0.0.1:8000/api/show/pull/"
     r = requests.get(api_url, timeout=10)
     data = r.json()
 
@@ -74,7 +74,7 @@ def show_external_api(request):
 
 def update_show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/external-api/show/"
+    api_url = "http://127.0.0.1:8000/api/show/pull/"
     r = requests.get(api_url, timeout=10)
     data = r.json()
     data_to_create = []
