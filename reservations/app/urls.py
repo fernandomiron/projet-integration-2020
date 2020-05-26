@@ -106,16 +106,19 @@ urlpatterns = [
     # Representations
     url(r'^representation/create/(?P<pk>[0-9]+)/$', CreateRepresentation,
         name='CreateRepresentation'),
-    # TODO: Add Representation DetailedView URL
+    url(r'^representation/read/(?P<pk>[0-9]+)/$', representation_detail,
+        name='representation_detail'),
     url(r'^representation/update/(?P<pk>[0-9]+)/$', UpdateRepresentation,
         name='UpdateRepresentation'),
     url(r'^representation/delete/(?P<pk>[0-9]+)/$', DeleteRepresentation,
         name='DeleteRepresentation'),
 
     # Reservation
-    url(r'^reservation/$', reservationglobalview, name='reservationview'),
-    url(r'^reservation/(?P<pk>[0-9]+)/$', reservationview, name='reservationupdate'),
-    url(r'^reservation2/(?P<pk>[0-9]+)/$', reservation_details, name='reservationdetails'),
+    url(r'^reservation/$', reservationglobalview, name='reservationview'),  # TODO: Is this one used ?
+    url(r'^reservation/create/(?P<pk>[0-9]+)/$', reservationview,
+        name='reservationupdate'),
+    url(r'^reservation/update/(?P<pk>[0-9]+)/$', reservation_details,
+        name='reservationdetails'),
 
     # PayPal
     url(r'^payhome/$', ppalhome, name='homepaypal'),
@@ -141,8 +144,4 @@ urlpatterns = [
     url(r'^rss/representation/$', RepresentationFeed(),
         name='rss_representation'),
     url(r'^rss/location/', LocationFeed(), name='rss_location'),
-
-    #representation_details
-    url(r'^representation/(?P<pk>[0-9]+)/$', representation_detail, name='representation_detail'),
-
 ]

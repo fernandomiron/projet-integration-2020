@@ -21,4 +21,4 @@ while true; do
     fi
 done
 
-printf "\n----------------------------------\n RUNSERVER_PLUS GRACEFULLY EXITED \n----------------------------------"
+printf "\n----------------------------------\n RUNSERVER_PLUS GRACEFULLY EXITED \n----------------------------------\n"
