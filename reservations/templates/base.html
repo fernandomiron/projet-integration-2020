@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <title>{% block title %}{% endblock title %}</title>
     <meta charset="utf-8">
@@ -13,6 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- add fontawesome link to make disponible amazing icon -->
     <script src="https://kit.fontawesome.com/10b9094114.js"></script>
+    <!-- link to a css file  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
     <!-- some css rules before definition of a assets files  -->
     <style>
