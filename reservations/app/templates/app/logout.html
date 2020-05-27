@@ -4,6 +4,10 @@
 {% block title %}Logout {% endblock %}
 
 {% block content %}
-<p>Vous êtes déconnecté.</p>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Aurevoir </h4>
+  <p>Vous êtes bien déconnecter</p>
+  <hr>
 <a  href="{% url 'login' %}">Connectez Vous à nouveau</a>
+</div>
 {% endblock %}
