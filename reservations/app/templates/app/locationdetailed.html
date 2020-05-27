@@ -17,58 +17,20 @@
             <a href="{% url 'LocationListView' %}" class="btn btn-secondary"> Retour aux emplacements</a>
         </div>
     </div>
-
-
-      <h1>{{location.designation}}</h1>
-      <h3> {{location.address}}</h3>
-      <h3> {{location.locality.postal_code}} </h3>
-      <h3> {{location.locality.locality}} </h3>
-      <h3>{{location.phone}}</h3>
-      <h4>{{ location.website|urlize }}</h4>
-      <h4><a href="{% url 'LocationListView' %}">Retour aux emplacements</a></h4>
-      <!-- hidden if you can't connect to the admin -->
-      {% if request.user.is_staff %}
-        <a href="{% url 'UpdateLocation' location.pk %}" class="btn btn-primary"> Modifier location </a>
-        <a href="{% url 'DeleteLocation' location.pk %}" class="btn btn-link"> Supprimer location </a>
-      {% endif %}
-
-
-      <h3>***********************************************</h3>
       <h2> Representions</h2>
       {% if request.user.is_staff %}
         <a href="{% url 'CreateRepresentation' location.pk %}"> Ajouter Representation </a> <!-- A mettre dans la nav bar-->
       {% endif %}
 
-    {% for rep in repdico %}
-      <h3>***********************************************</h3>
-      <h2> Spectacle: {{rep.show.title}}</h2>
-      <h3> Quand: {{rep.time}}</h3>
-      <h3> Sièges: {{rep.total_seats}} </h3>
-      <h3> Sièges libres: {{rep.available_seats}}</h3>
-      {% if request.user.is_staff %}
-        <a href="{% url 'UpdateRepresentation' rep.pk %}"> Modifier Representation </a>
-        <a href="{% url 'DeleteRepresentation' rep.pk %}"> Supprimer Representation </a>
-
-      {% endif %}
-
-      <h3>***********************************************</h3>
-
-        </tbody>
-    </table>
-
-
-</section>
-
-{% endblock content %}
-
-
-<table class="table">
+    <table class="table">
     <thead class="thead-dark">
     <tr>
         <th>Spectacle</th>
         <th>Quand</th>
         <th>Sièges</th>
         <th>Sièges libres</th>
+        <th> </th>
+        <th> </th>
     </tr>
     </thead>
     <tbody>
@@ -78,8 +40,17 @@
         <td>{{rep.time}}</td>
         <td>{{rep.total_seats}}</td>
         <td>{{rep.available_seats}}</td>
+        <td><a href="{% url 'UpdateRepresentation' rep.pk %}"><i class="fas fa-edit"></i></a></td>
+        <td><a href="{% url 'DeleteRepresentation' rep.pk %}"><i class="fas fa-trash"></i></a></td>
+
     </tr>
     {% endfor %}
 
     </tbody>
 </table>
+
+</section>
+
+{% endblock content %}
+
+
