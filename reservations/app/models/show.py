@@ -1,8 +1,8 @@
+import itertools
+
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
-import itertools
 
 from app.models.location import Location
 
@@ -120,6 +120,4 @@ class Representation(models.Model):
     def get_absolute_url(self):
         """Return absolute url for Representation."""
 
-        return reverse('show')
-
-    # TODO: Define custom methods here
+        return reverse('representation_detail', kwargs={'pk': self.pk})

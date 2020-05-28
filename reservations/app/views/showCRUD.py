@@ -1,11 +1,11 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from app.forms.showForm import ShowForm
 from app.models.show import Show
 
 
 def CreateShow(request):
-    """ Creating a show.
+    """Creating a show.
 
     This view will allow creating a show within our app if we got permissions
     """
@@ -16,35 +16,40 @@ def CreateShow(request):
 
     if form.is_valid():
         form.save()
-        return redirect('show')  #nom de l'url qui correspond à la vue
+        return redirect('show')  # nom de l'url qui correspond à la vue
+    else:
+        return render(request, 'app/showCRUD.html', {'createform': form})
 
-    return render(request, 'app/showCRUD.html', {'createform': form})
 
 def UpdateShow(request, pk):
     """ Updating a show
 
     This view will allow updating a show with if we got permissions
     """
-    a_show = Show.objects.get(pk=pk) #the slug we got on the url
+
+    a_show = get_object_or_404(Show, pk=pk)  # the slug we got on the url
     form = ShowForm(request.POST or None, instance=a_show)
-    #it will allow us to modify filled with the instance of the "slug show"
+    # it will allow us to modify filled with the instance of the "slug show"
 
     if form.is_valid():
         form.save()
-        return redirect('show')  #nom de l'url qui correspond à la vue
+        return redirect('show')  # nom de l'url qui correspond à la vue
+    else:
+        return render(request, 'app/showCRUD.html', {'updateform': form})
 
-    return render(request, 'app/showCRUD.html', {'updateform': form})
 
 def DeleteShow(request, pk):
-    """ Deleting a show
+    """Deleting a show
 
-    This view will delete a show if we got permission"""
+    This view will delete a show if we got permission.
+    """
 
-    a_show = Show.objects.get(pk=pk)
+    a_show = get_object_or_404(Show, pk=pk)
     if request.method == 'POST':
-    #if the user click on the submit button (displayed by the template)
-    #he will post and confirm a delete.
+        # if the user click on the submit button (displayed by the template)
+        # he will post and confirm a delete.
 
         a_show.delete()
-        return redirect ('show')
-    return render (request, 'app/deleteShow.html',{'a_show': a_show})
+        return redirect('show')
+    else:
+        return render(request, 'app/deleteShow.html', {'a_show': a_show})

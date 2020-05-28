@@ -63,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -76,7 +75,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),  # Add default template folder
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -103,7 +102,7 @@ DATABASES = {
         'USER': env("DATABASE_USER"),
         'PASSWORD': env("DATABASE_PASSWORD"),
         'HOST': env("DATABASE_HOST"),
-        'PORT': '3308',
+        'PORT': env("DATABASE_PORT")
     }
 }
 
@@ -174,13 +173,13 @@ PAYPAL_TEST = True
 if DEBUG:
     CACHES = {
         'default': {
-            'BACKEND': "django.core.cache.dummy.DummyCache",
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
         }
     }
 else:
     CACHES = {
         'default': {
-            'BACKEND': "django.core.cache.LocMemCache",
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
             'LOCATION': "projet-integration-2020_cache"
         }
     }

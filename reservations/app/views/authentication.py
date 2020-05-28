@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, UpdateView, ListView
 
 from app.forms.user import (
@@ -14,8 +15,9 @@ from app.models.profile import UserProfile
 from app.models.reservation import Reservation
 
 
+@cache_page(24 * 60 * 60)
 def signup(request):
-    """Comment to be added here"""  # TODO: Comment function
+    """"""  # TODO: Comments missing !
 
     if request.method == 'POST':
         user_form = UserSignupForm(request.POST)
@@ -55,12 +57,12 @@ class ProfileView(ListView):
     template_name = 'app/profile.html'
     model = Reservation
 
-    def get_context_data(self, **kwargs):
-        context = super(ListView, self).get_context_data(**kwargs)
-        context['reservations'] = Reservation.objects.filter(user=self.request.user)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data()
+        context['reservations'] \
+            = Reservation.objects.filter(user=self.request.user)
+
         return context
-
-
 
 
 def profileUpdate(request):
