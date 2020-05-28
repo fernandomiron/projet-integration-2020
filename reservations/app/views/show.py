@@ -62,7 +62,9 @@ def show_detail_slug(request, slug):
 
 def show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/" + reverse('ext-api-show')
+    show_external = reverse('ext-api-show')
+    host = request.get_host()
+    api_url = f'http://{host}{show_external}'
     response = requests.get(api_url, timeout=10)
     data = response.json()
 
@@ -74,7 +76,9 @@ def show_external_api(request):
 
 def update_show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/" + reverse('ext-api-show')
+    show_external = reverse('ext-api-show')
+    host = request.get_host()
+    api_url = f'http://{host}{show_external}'
     response = requests.get(api_url, timeout=10)
     data = response.json()
     data_to_create = []
