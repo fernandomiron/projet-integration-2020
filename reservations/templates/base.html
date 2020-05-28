@@ -50,6 +50,7 @@ img {
     </div>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Home</a>
         <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -60,14 +61,11 @@ img {
                     <a class="nav-link" href="{% url 'show' %}">Show</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Representation</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'LocationListView' %}">Location</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                {% if user.is_superuser %}
+                {% if user.is_staff %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
                 </li>
@@ -88,7 +86,9 @@ img {
                 {% endif %}
             </ul>
         </div>
+        </div>
     </nav>
+
 </header>
 
 <!-- container - Page Content -->
