@@ -25,10 +25,9 @@ from app.views.representationCRUD import (
     UpdateRepresentation
 )
 from app.views.reservation import (
-    reservationglobalview,
-    reservationview,
-    representation_detail,
-    reservation_details
+    representationDetailView,
+    reservationCreateView,
+    reservationUpdateView
 )
 from app.views.showCRUD import CreateShow, DeleteShow, UpdateShow
 
@@ -111,7 +110,7 @@ urlpatterns = [
     # Representations
     url(r'^representation/create/(?P<pk>[0-9]+)/$', CreateRepresentation,
         name='CreateRepresentation'),
-    url(r'^representation/read/(?P<pk>[0-9]+)/$', representation_detail,
+    url(r'^representation/read/(?P<pk>[0-9]+)/$', representationDetailView,
         name='representation_detail'),
     url(r'^representation/update/(?P<pk>[0-9]+)/$', UpdateRepresentation,
         name='UpdateRepresentation'),
@@ -119,10 +118,9 @@ urlpatterns = [
         name='DeleteRepresentation'),
 
     # Reservation
-    url(r'^reservation/$', reservationglobalview, name='reservationview'),  # TODO: Is this one used ?
-    url(r'^reservation/create/(?P<pk>[0-9]+)/$', reservationview,
+    url(r'^reservation/create/(?P<pk>[0-9]+)/$', reservationCreateView,
         name='reservationupdate'),
-    url(r'^reservation/update/(?P<pk>[0-9]+)/$', reservation_details,
+    url(r'^reservation/update/(?P<pk>[0-9]+)/$', reservationUpdateView,
         name='reservationdetails'),
 
     # PayPal

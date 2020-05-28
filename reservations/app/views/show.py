@@ -62,9 +62,11 @@ def show_detail_slug(request, slug):
 
 def show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/api/show/pull/"
-    r = requests.get(api_url, timeout=10)
-    data = r.json()
+    show_external = reverse('ext-api-show')
+    host = request.get_host()
+    api_url = f'http://{host}{show_external}'
+    response = requests.get(api_url, timeout=10)
+    data = response.json()
 
     context = {
         'data' : data
@@ -74,14 +76,16 @@ def show_external_api(request):
 
 def update_show_external_api(request):
 
-    api_url = "http://127.0.0.1:8000/api/show/pull/"
-    r = requests.get(api_url, timeout=10)
-    data = r.json()
+    show_external = reverse('ext-api-show')
+    host = request.get_host()
+    api_url = f'http://{host}{show_external}'
+    response = requests.get(api_url, timeout=10)
+    data = response.json()
     data_to_create = []
     data_to_update = []
 
     for show in data:
-        if show['description'] == None:
+        if show['description'] is None:
             show['description'] = 'Pas de description'
         new_show = Show(
             title = show['title'],
