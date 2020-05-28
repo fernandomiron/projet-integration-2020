@@ -81,10 +81,10 @@ img {
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Créer un compte</a>
+                    <a class="nav-link" href="{% url 'register' %}">Vous n'avez pas encore de compte ?</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">login</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'login' %}">login <i class="fas fa-user"></i></a>
                 </li>
                 {% endif %}
             </ul>
