@@ -113,18 +113,15 @@
                     </div> 
 
                 <div class='col-lg-5'> 
-
-                {{ form.render }}
-
+                    {% if reservation.status == "Ongoing" %}
+                        {{ form.render }}
+                    {% endif %}
                 </div> 
             
             </div>
         </div>
 
     </div>
-                <div class='col-lg-4'>
-                    Status : {{ reservation.status }}
-                </div>
 
 </div>
 
