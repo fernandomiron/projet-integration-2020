@@ -81,6 +81,9 @@ img {
                 </li>
                 {% else %}
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Créer un compte</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">login</a>
                 </li>
                 {% endif %}
