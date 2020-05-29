@@ -7,6 +7,7 @@ from django.views.generic import ListView, TemplateView
 from django.urls import reverse
 
 from app.models.show import Show, Representation
+from app.permissions.group import group_required
 
 
 @cache_page(15 * 60)
@@ -57,6 +58,7 @@ def show_detail_slug(request, slug):
 
 
 @cache_page(24 * 60 * 60)
+@group_required('Administrateur', 'Moderateur')
 def show_external_api(request):
     """"""  # TODO: Comments missing !
 
@@ -71,6 +73,7 @@ def show_external_api(request):
 
 
 @cache_page(24 * 60 * 60)
+@group_required('Administrateur', 'Moderateur')
 def update_show_external_api(request):
     """"""  # TODO: Comments missing !
 
