@@ -11,8 +11,9 @@ from paypal.standard.forms import (
 )
 
 from app.models import *
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def ppalhome(request, **kwargs):
     """"""  # TODO: Comments missing !
 
@@ -43,6 +44,7 @@ def ppalhome(request, **kwargs):
 
 
 @csrf_exempt
+@login_required
 def ppalreturn(request, pk):
     """"""  # TODO: Comments missing !
 
@@ -53,7 +55,7 @@ def ppalreturn(request, pk):
 
     return render(request, 'app/paypal_return.html',)
 
-
+@login_required
 def ppalcancel(request, pk):
     """"""  # TODO: Comments missing !
 
