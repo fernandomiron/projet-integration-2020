@@ -10,7 +10,7 @@
 
     <!-- hidden if you can't connect to the admin -->
     {% if request.user.is_staff %}
-      <a href="{% url 'ShowCrud' %}"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
+      <a href="{% url 'ShowCrud' %}" class="btn btn-primary btn-sm m-1"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
     {% endif %}
 
 </div>
@@ -32,8 +32,8 @@
 
                     <!-- Connection as staff required ! -->
                     {% if request.user.is_staff %}
-                      <a href="{% url 'UpdateShow' show.pk %}" class="btn btn-link"> Modifier show </a>
-                      <a href="{% url 'DeleteShow' show.pk %}" class="btn btn-link"> supprimer show </a>
+                      <a href="{% url 'UpdateShow' show.pk %}" class="btn btn-primary btn-sm m-1"> Modifier show </a>
+                      <a href="{% url 'DeleteShow' show.pk %}" class="btn btn-primary btn-sm m-1"> supprimer show </a>
                     {% endif %}
 
                 </div>
