@@ -109,3 +109,13 @@
     color: #777;
   }
 }
+
+
+
+@media (min-width: 992px) {
+  .nav-icc {
+    border: 2px solid;
+    border-color:white;
+    border-radius:30px;
+  }
+}
