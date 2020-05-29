@@ -17,7 +17,7 @@ from app.serializers.artists import ArtistSerializer
 from app.serializers.location import LocationSerializer
 from app.serializers.representation import RepresentationSerializer
 from app.serializers.show import ShowSerializer
-from app.permissions.group import group_required,  GroupRequiredMixin
+from app.permissions.group import GroupRequiredMixin
 
 
 class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
@@ -65,6 +65,7 @@ class ExternalAPIShowView(GroupRequiredMixin, generics.GenericAPIView):
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
     group_required = [u'Administrateur', u'Moderateur']
+
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
         data_list = []
