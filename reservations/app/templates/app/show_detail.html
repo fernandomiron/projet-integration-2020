@@ -44,7 +44,7 @@
             <th> </th>
             {% if request.user.is_staff %}
             <th> </th>
-            <th> </th>
+            <th><a href="{% url 'CreateRepresentation' show.pk %}" style="color:white;"> Ajouter <i class="fas fa-plus-circle"></i></a></th>
             {% endif %}
         </tr>
         </thead>
