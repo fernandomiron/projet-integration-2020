@@ -4,9 +4,11 @@ from django.views.decorators.cache import cache_page
 
 from app.models.location import Location
 from app.forms.locationForm import LocationForm
+from app.permissions.group import group_required
 
 
 @cache_page(7 * 24 * 60 * 60)
+@group_required('Administrateur', 'Moderateur')
 def CreateLocation(request):
     """Creating a location
 
@@ -25,6 +27,7 @@ def CreateLocation(request):
                   {'createLocationform': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def UpdateLocation(request, pk):
     """ Updating a location
 
@@ -44,6 +47,7 @@ def UpdateLocation(request, pk):
                   {'updateLocationform': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def DeleteLocation(request, pk):
     """Updating a location
 
