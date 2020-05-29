@@ -26,9 +26,12 @@
         <th>Sièges</th>
         <th>Sièges libres</th>
         <th> </th>
-        <th> {% if request.user.is_staff %}
-    <a href="{% url 'CreateRepresentation' location.pk %}"> Ajouter <i class="fas fa-plus-circle"></i></a> <!-- A mettre dans la nav bar-->
-      {% endif %}</th>
+        {% if request.user.is_staff %}
+        <th> </th>
+        <th>
+        <a href="{% url 'CreateRepresentation' location.pk %}" style="color:white;"> Ajouter <i class="fas fa-plus-circle"></i></a> <!-- A mettre dans la nav bar-->
+        </th>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
@@ -38,9 +41,15 @@
         <td>{{rep.time}}</td>
         <td>{{rep.total_seats}}</td>
         <td>{{rep.available_seats}}</td>
+        <td>
+                <a href="{% url 'representation_detail' rep.pk %}">
+                    <button type="button" class="btn btn-success">Réserver</button>
+                </a>
+        </td>
+        {% if request.user.is_staff %}
         <td><a href="{% url 'UpdateRepresentation' rep.pk %}"><i class="fas fa-edit"></i></a></td>
         <td><a href="{% url 'DeleteRepresentation' rep.pk %}"><i class="fas fa-trash"></i></a></td>
-
+        {% endif %}
     </tr>
     {% endfor %}
 
