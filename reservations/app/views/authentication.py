@@ -4,6 +4,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, UpdateView, ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from app.forms.user import (
     UserProfileSignupForm,
@@ -51,7 +53,7 @@ def signup(request):
     return render(request, 'app/signup.html', context)
 
 
-class ProfileView(ListView):
+class ProfileView(LoginRequiredMixin, ListView):
     """User profile View"""
 
     template_name = 'app/profile.html'
@@ -64,7 +66,7 @@ class ProfileView(ListView):
 
         return context
 
-
+@login_required
 def profileUpdate(request):
     """User update profile view"""
 
