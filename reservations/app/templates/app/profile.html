@@ -41,7 +41,6 @@
             <h5>Prénom : {{ user.first_name }}</h5>
             <h5>E-mail : {{ user.email }}</h5>
             <h5>Langue : {{ user.userprofile.language }}</h5>
-            <h5>Role : {{ user.groups.all.0.name }}</h5>
             <a href='{% url "profile-update" %}' class="btn btn-secondary">Modifier le profil</a>
             <a href="{% url 'admin:index' %}" class="btn btn-secondary">Administration</a>
         </div>
