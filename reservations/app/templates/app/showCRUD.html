@@ -2,14 +2,19 @@
 
 {% block header %} <h2> CRUD DES SHOW ! </h2> {% endblock header %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <!-- The form to update or create a show-->
-<form class="form-inline my-2 my-lg-1" method="post">
+
+<form method="post">
   {%csrf_token %}
-  {{ createform }}
-  {{ updateform }}
-  <button class="btn btn-info" type ="submit">Enregistrer </button>
+  {{ createform|crispy }}
+  {{ updateform|crispy }}
+  <br>
+  <button class="btn btn-info" type="submit">Enregistrer </button>
+
 </form>
 
 
