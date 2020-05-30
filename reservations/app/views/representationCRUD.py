@@ -6,8 +6,10 @@ from app.forms.representationForm import (
 )
 from app.models.show import Location
 from app.models.show import Representation
+from app.permissions.group import group_required
 
 
+@group_required('Administrateur', 'Moderateur')
 def CreateRepresentation(request, pk):
     """Creating a Representation.
 
@@ -33,6 +35,7 @@ def CreateRepresentation(request, pk):
                       {'CreateRep': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def UpdateRepresentation(request, pk):
     """Updating a representation.
 
@@ -51,6 +54,7 @@ def UpdateRepresentation(request, pk):
                       {'UpdateRep': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def DeleteRepresentation(request, pk):
     """ Deleting a representation
 

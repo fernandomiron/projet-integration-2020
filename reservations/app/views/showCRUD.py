@@ -2,8 +2,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from app.forms.showForm import ShowForm
 from app.models.show import Show
+from app.permissions.group import group_required
 
 
+@group_required('Administrateur', 'Moderateur')
 def CreateShow(request):
     """Creating a show.
 
@@ -21,6 +23,7 @@ def CreateShow(request):
         return render(request, 'app/showCRUD.html', {'createform': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def UpdateShow(request, pk):
     """ Updating a show
 
@@ -38,6 +41,7 @@ def UpdateShow(request, pk):
         return render(request, 'app/showCRUD.html', {'updateform': form})
 
 
+@group_required('Administrateur', 'Moderateur')
 def DeleteShow(request, pk):
     """Deleting a show
 

@@ -10,8 +10,10 @@ from app.models.reservation import Reservation
 from django.conf import settings
 from django.contrib import messages
 from decimal import Decimal
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def representationDetailView(request, pk):
     """Render the Representation DetailView.
 
@@ -27,6 +29,7 @@ def representationDetailView(request, pk):
     return render(request, template, context)
 
 
+@login_required
 def reservationCreateView(request, pk):
     """Create and render a Reservation object Detail View, leading to a
     checkout view.
@@ -47,6 +50,7 @@ def reservationCreateView(request, pk):
     return render(request, template, context)
 
 
+@login_required
 def reservationUpdateView(request, pk):
     """Render a created Reservation object's Detail View.
 
