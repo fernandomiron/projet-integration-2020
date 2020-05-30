@@ -7,6 +7,7 @@ from rest_framework import status
 
 from app.serializers import serializers 
 
+
 @cache_page(30 * 60)
 def home(request):
     """Default test homepage with base-template"""
