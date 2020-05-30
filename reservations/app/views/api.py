@@ -67,12 +67,11 @@ class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class ExternalAPIShowView(GroupRequiredMixin, generics.GenericAPIView):
+class ExternalAPIShowView(generics.GenericAPIView):
     """"""  # TODO: Comments missing !
 
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
-    group_required = [u'Administrateur', u'Moderateur']
 
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
