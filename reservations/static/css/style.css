@@ -119,3 +119,18 @@
     border-radius:30px;
   }
 }
+
+#id_username,#id_password,
+#id_first_name,#id_last_name,
+#id_username, #id_password2,
+#id_password1, #id_email {
+    display: block;
+    width: 100%;
+
+}
+
+.form-label-group>input:focus{
+    border-color: #007bff;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
