@@ -17,48 +17,55 @@ from app.serializers.artists import ArtistSerializer
 from app.serializers.location import LocationSerializer
 from app.serializers.representation import RepresentationSerializer
 from app.serializers.show import ShowSerializer
+from app.permissions.group import GroupRequiredMixin
 
 
-class ArtistApiView (generics.ListAPIView):
+class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
     """ Comment here """  # TODO: Comment class
 
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id', 'lastname')
+    group_required = [u'Administrateur', u'Moderateur']
 
 
-class RepresentationApiView (generics.ListAPIView):
+class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
     """ Comment here """  # TODO: Comment class
 
     queryset = Representation.objects.all()
     serializer_class = RepresentationSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id', 'location')
+    group_required = [u'Administrateur', u'Moderateur']
 
 
-class ShowApiView (generics.ListAPIView):
+class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
     """ Comment here """  # TODO: Comment class
 
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id', 'title')
+    group_required = [u'Administrateur', u'Moderateur']
 
 
-class LocationApiView (generics.ListAPIView):
+class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
     """ Comment here """  # TODO: Comment class
 
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ('id', 'designation')
+    group_required = [u'Administrateur', u'Moderateur']
 
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
-class ExternalAPIShowView(generics.GenericAPIView):
+class ExternalAPIShowView(GroupRequiredMixin, generics.GenericAPIView):
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
+    group_required = [u'Administrateur', u'Moderateur']
+
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
         data_list = []
@@ -113,8 +120,9 @@ class ExternalAPIShowView(generics.GenericAPIView):
     
 
 
-class ExternalAPI(generics.ListAPIView):
+class ExternalAPI(GroupRequiredMixin, generics.ListAPIView):
     queryset = ''
+    group_required = [u'Administrateur', u'Moderateur']
 
     def get(self, request, *args, **kwargs):
         attempt_num = 0  # keep track of how many times we've retried
