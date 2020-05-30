@@ -14,7 +14,7 @@ class LastShowFeed(Feed):
     def items(self):
         """Feed item definition"""
 
-        return Show.objects.order_by('-date_created')
+        return Show.objects.order_by('-date_created') [:3]
 
     def item_title(self,item):
         """Feed item title"""
