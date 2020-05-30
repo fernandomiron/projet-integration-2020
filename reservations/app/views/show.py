@@ -28,6 +28,7 @@ def show_list(request):
     context = {'shows': page}
     return render(request, 'app/show_list.html', context)
 
+
 @cache_page(15 * 60)
 def show_detail(request, pk):
     """Display details of one selected show based on its pk"""

@@ -12,6 +12,7 @@ from django.contrib import messages
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def representationDetailView(request, pk):
     """Render the Representation DetailView.
@@ -26,6 +27,7 @@ def representationDetailView(request, pk):
     template = "app/reservation_view.html"
     context = {"representation": representation}
     return render(request, template, context)
+
 
 @login_required
 def reservationCreateView(request, pk):
@@ -46,6 +48,7 @@ def reservationCreateView(request, pk):
     template = "app/reservationview.html"
     context = {"reservation": reservation}
     return render(request, template, context)
+
 
 @login_required
 def reservationUpdateView(request, pk):

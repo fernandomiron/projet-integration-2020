@@ -66,6 +66,7 @@ class ProfileView(LoginRequiredMixin, ListView):
 
         return context
 
+
 @login_required
 def profileUpdate(request):
     """User update profile view"""
