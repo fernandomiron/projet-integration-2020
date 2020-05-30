@@ -86,17 +86,16 @@ def update_show_external_api(request):
         if show['description'] is None:
             show['description'] = 'N/D'
 
-            new_show = Show(
-                title=show['title'],
-                description=show['description'],
-                poster=show['poster'],
-                bookable=show['bookable'],
-                price=show['price'],
-            )
+        new_show = Show(
+            title=show['title'],
+            description=show['description'],
+            poster=show['poster'],
+            bookable=show['bookable'],
+            price=show['price'],
+        )
 
         if not Show.objects.filter(title=show['title']):
             data_to_create.append(new_show)
-
             new_show.save()
         else:
             data_to_update.append(show)

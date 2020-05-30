@@ -8,10 +8,3 @@ class RepresentationForm(forms.ModelForm):
     class Meta:
         model = Representation
         fields = ['show', 'location', 'time', 'total_seats']
-
-class RepresentationFormMod(forms.ModelForm):
-    """ Representation Form for update """
-
-    class Meta:
-        model = Representation
-        fields = ['show', 'location', 'time', 'total_seats']

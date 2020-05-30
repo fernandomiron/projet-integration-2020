@@ -2,15 +2,18 @@
 
 {% block header %} <h2> CRUD DES SHOW ! </h2> {% endblock header %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <!-- The form to update or create a locattion-->
-<form class="form-inline my-2 my-lg-1" method="post">
+<form method="post">
   {%csrf_token %}
-  {{ createLocationform }}
-  {{ updateLocationform }}
-  <button class="btn btn-info" type ="submit">Enregistrer </button>
-</form>
+  {{ createLocationform|crispy }}
+  {{ updateLocationform|crispy }}
+  <br>
+  <button class="btn btn-info" type="submit">Enregistrer </button>
 
+</form>
 
 {% endblock content %}
