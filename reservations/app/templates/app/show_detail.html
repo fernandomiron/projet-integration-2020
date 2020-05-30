@@ -22,7 +22,7 @@
             <ul>
                 <li>Disponible : {{show.bookable}}</li>
                 <li>Prix : {{show.price}}</li>
-                <li>date de création : {{show.date}}</li>
+                <li>date de création : {{show.date_created}}</li>
             </ul>
         </div>
 
@@ -42,6 +42,10 @@
             <th>Adresse</th>
             <th>Localité</th>
             <th> </th>
+            {% if request.user.is_staff %}
+            <th> </th>
+            <th><a href="{% url 'CreateRepresentation' show.pk %}" style="color:white;"> Ajouter <i class="fas fa-plus-circle"></i></a></th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -59,6 +63,10 @@
                     <button type="button" class="btn btn-success">Réserver</button>
                 </a>
             </td>
+            {% if request.user.is_staff %}
+            <td><a href="{% url 'UpdateRepresentation' representation.pk %}"><i class="fas fa-edit"></i></a></td>
+            <td><a href="{% url 'DeleteRepresentation' representation.pk %}"><i class="fas fa-trash"></i></a></td>
+            {% endif %}
         </tr>
         {% endfor %}
 

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from app.forms.representationForm import (
     RepresentationForm,
-    RepresentationFormMod
+
 )
 from app.models.show import Location
 from app.models.show import Representation
@@ -43,7 +43,7 @@ def UpdateRepresentation(request, pk):
     """
 
     representation = get_object_or_404(Representation, pk=pk)
-    form = RepresentationFormMod(request.POST or None, instance=representation)
+    form = RepresentationForm(request.POST or None, instance=representation)
     if form.is_valid():
         location = representation.location  # getting the location matching the current representation.
         form.save()
