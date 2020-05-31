@@ -22,8 +22,18 @@
                 <tr>
                 <th scope="row">{{show.title|title}}</th>
                 <td>{{show.description}}</td>
-                <td>{{show.poster}}</td>
-                <td>{{show.bookable}}</td>
+                <td><img src='{{show.poster}}'></td>
+                <td class="text-center">
+
+                    {% load static %}
+
+                    {% if show.bookable %}
+                        <img src='{% static "admin/img/icon-yes.svg" %}'>
+                    {% else %}
+                        <img src='{% static "admin/img/icon-no.svg" %}'>
+                    {% endif %}
+
+                </td>
                 <td>{{show.price}}€</td>
                 <td>{{show.date_created}}</td>
                 </tr>
@@ -50,8 +60,18 @@
                 <tr>
                 <th scope="row">{{show.title|title}}</th>
                 <td>{{show.description}}</td>
-                <td>{{show.poster}}</td>
-                <td>{{show.bookable}}</td>
+                <td><img src='{{show.poster}}'></td>
+                <td class="text-center">
+
+                    {% load static %}
+                    
+                    {% if show.bookable %}
+                        <img src='{% static "admin/img/icon-yes.svg" %}'>
+                    {% else %}
+                        <img src='{% static "admin/img/icon-no.svg" %}'>
+                    {% endif %}
+                    
+                </td>
                 <td>{{show.price}}€</td>
                 <td>{{show.date_created}}</td>
                 </tr>
