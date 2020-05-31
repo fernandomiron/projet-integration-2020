@@ -6,7 +6,7 @@
         <div class="row Show">
             <div class="show_image col-sm-8"
                  style="background-image: url('{{show1.poster|default:'http://placehold.it/700x500'}}');">
-                <a href="{{ show1.get_absolute_url }}" class="btn btn-outline-secondary btn-lg button_home"> En savoir plus</a>
+                <a href="{{ show1.get_absolute_url }}" class="btn btn-secondary btn-lg button_home"> En savoir plus</a>
             </div>
             <div class="show_description col-sm-4 text-light">
                 <h3 class="pt-4 font-weight-bold"> {{show1.title}}</h3>
@@ -17,22 +17,23 @@
             </div>
         </div>
         <div class="row Show">
-            <div class="show_description col-md-4 col-sm-12 order-sm-2 order-md-1 text-light">
+            <div class="show_image col-md-8 col-sm-12 col-xs-12 col-md-4 order-md-2"
+                 style="background-image: url('{{show2.poster|default:'http://placehold.it/700x500'}}');">
+                <a href="{{ show2.get_absolute_url }}" class="btn btn-secondary btn-lg button_home"> En savoir
+                    plus</a>
+            </div>
+            <div class="show_description col-sm-12 col-xs-12 col-md-4 order-md-1 text-light">
                 <h3 class="pt-4 font-weight-bold">{{show2.title}}</h3>
                 <small> Date de création : </small>
                 <small>{{show2.date_created}}</small>
                 </br></br>
                 <p> {{show2.description|safe|truncatewords:50}}</p>
             </div>
-            <div class="show_image col-md-8 col-sm-12 order-sm-1 order-md-2"
-                 style="background-image: url('{{show2.poster|default:'http://placehold.it/700x500'}}');">
-                <a href="{{ show2.get_absolute_url }}" class="btn btn-outline-secondary btn-lg button_home"> En savoir plus</a>
-            </div>
-    </div>
+        </div>
         <div class="row Show">
             <div class="show_image col-sm-8"
                  style="background-image: url('{{show3.poster|default:'http://placehold.it/700x500'}}');">
-                <a href="{{ show3.get_absolute_url }}" class="btn btn-outline-secondary btn-lg button_home"> En savoir plus</a>
+                <a href="{{ show3.get_absolute_url }}" class="btn btn-secondary btn-lg button_home"> En savoir plus</a>
             </div>
             <div class="show_description col-sm-4 text-light">
                 <h3 class="pt-4 font-weight-bold"> {{show3.title}}</h3>
