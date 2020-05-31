@@ -12,15 +12,16 @@ from app.serializers import serializers
 
 @cache_page(30 * 60)
 def home(request):
-    """Default test homepage with base-template"""
-    # shows = Show.objects.all()[:3]
-    # # shows_random = random.sample(shows,3)
-    # for obj in shows[0]:
-    #     print (obj.slug)
-
-    show1 = get_object_or_404(Show, slug="antoine-henaut")
-    show2 = get_object_or_404(Show, slug="cyrano-de-bergerac")
-    show3 = get_object_or_404(Show, slug="sweet-and-swing")
+    """Default test homepage with base-template this method allowed to select 3 random shows
+    and put in a list named slugs then put each slug value into a show variable via a get_object_or_404 methode
+    to prevent error """
+    shows = Show.objects.order_by("?")[:3]
+    slugs = []
+    for obj in shows:
+        slugs.append(obj.slug)
+    show1 = get_object_or_404(Show, slug=slugs[0])
+    show2 = get_object_or_404(Show, slug=slugs[1])
+    show3 = get_object_or_404(Show, slug=slugs[2])
     context = {
         'show1': show1,
         'show2': show2,
