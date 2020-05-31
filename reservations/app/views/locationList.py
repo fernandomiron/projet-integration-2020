@@ -5,7 +5,6 @@ from django.views.decorators.cache import cache_page
 from app.models.location import Location
 
 
-@cache_page(1 * 60 * 60)
 def LocationListView(request):
     """List of locations.
 
