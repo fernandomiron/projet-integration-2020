@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
+from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 
 from app.models import UserProfile
@@ -32,7 +32,7 @@ class UserProfileSignupForm(forms.ModelForm):
         fields = ['language']
 
 
-class UserUpdateForm(UserChangeForm):
+class UserUpdateForm(forms.ModelForm):
     """UserUpdateForm custom made class"""
 
     class Meta:
@@ -45,7 +45,6 @@ class UserUpdateForm(UserChangeForm):
             'username',
             'email',
         ]
-
 
 class UserProfileUpdateForm(forms.ModelForm):
     '''UserProfileUpdateForm custom made class'''
