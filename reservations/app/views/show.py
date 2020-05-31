@@ -10,7 +10,6 @@ from app.models.show import Show, Representation
 from app.permissions.group import group_required
 
 
-@cache_page(15 * 60)
 def show_list(request):
     """Render list of shows"""
 
@@ -29,7 +28,6 @@ def show_list(request):
     return render(request, 'app/show_list.html', context)
 
 
-@cache_page(15 * 60)
 def show_detail(request, pk):
     """Display details of one selected show based on its pk"""
 
@@ -43,7 +41,6 @@ def show_detail(request, pk):
     return render(request, 'app/show_detail.html', context)
 
 
-@cache_page(15 * 60)
 def show_detail_slug(request, slug):
     """Display details of one selected show based on its slug"""
     # TODO: Function has been duplicated for slug support, must be merged
@@ -58,7 +55,6 @@ def show_detail_slug(request, slug):
     return render(request, 'app/show_detail.html', context)
 
 
-@cache_page(24 * 60 * 60)
 @group_required('Administrateur', 'Moderateur')
 def show_external_api(request):
     """"""  # TODO: Comments missing !
@@ -73,7 +69,6 @@ def show_external_api(request):
     return render(request, 'app/external_api_show.html', context)
 
 
-@cache_page(24 * 60 * 60)
 @group_required('Administrateur', 'Moderateur')
 def update_show_external_api(request):
     """"""  # TODO: Comments missing !
