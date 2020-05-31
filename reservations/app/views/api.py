@@ -70,8 +70,7 @@ class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
 class ExternalAPIShowView(generics.GenericAPIView):
     """"""  # TODO: Comments missing !
 
-    queryset = Show.objects.all()
-    serializer_class = ShowSerializer
+    queryset = ''
 
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
@@ -110,7 +109,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
                             price = price.strip()
 
                     # Convert the price in Integer
-                    price = int(price)
+                    price = float(price)
 
                     data_filtered = {
                         'title': title,
