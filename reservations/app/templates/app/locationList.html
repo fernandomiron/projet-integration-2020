@@ -8,8 +8,15 @@
 
     <section class="content">
         <h1> Liste des lieux d'évenements </h1>
-        <form class="form-inline my-2 my-lg-1">
-            <input name="search" class="form-control" placeholder=" Rechercher.. " value="{{search_term}}">
+        <form>
+            <div class="input-group">
+                <input name="search" class="form-control" placeholder=" Rechercher.. " value="{{search_term}}">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
         </form>
 
         {% if request.user.is_staff %}

@@ -32,9 +32,6 @@
                     </div>
                     {% endif %}
                     <div class="col-2 col-xs-2">
-                        <button type="button" class="btn btn-link btn-xs">
-                            <span id="trash" class="fa fa-trash"> </span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -62,13 +59,13 @@
                 </div>
                 <div class="p-4">
                     <ul class="list-unstyled mb-4">
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">
-                            Total-HTVA </strong><strong>$ <span id="totalhtva"></span> </strong></li>
+<!--                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">
+                            Total-HTVA </strong><strong>€ <span id="totalhtva"></span> </strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong
-                                class="text-muted">TVA</strong><strong> $ <span id="tva"></span></strong></li>
+                                class="text-muted">TVA</strong><strong> € <span id="tva"></span></strong></li>-->
                         <li class="d-flex justify-content-between py-3 border-bottom"><strong
                                 class="text-muted">Total</strong>
-                            <h5 class="font-weight-bold"> € <span id="total"></span></h5>
+                            <h5 class="font-weight-bold"> € <span id="total">{{ representation.show.price}}</span></h5>
                         </li>
                     </ul>
                     {% if representation.show.bookable and representation.available_seats > 0 %}
@@ -92,12 +89,7 @@ function myFunction() {
   var price = parseFloat('{{ representation.show.price| safe }}');
   var qty = document.getElementById("myQty").value;
   var total = qty * price;
-  var tva = total * 0.21;
-  var totalhtva = total - tva;
-
-  document.getElementById("total").innerHTML = total ;
-  document.getElementById("tva").innerHTML = tva ;
-  document.getElementById("totalhtva").innerHTML = totalhtva ;
+  document.getElementById("total").innerHTML = total.toFixed(2);
 }
 </script>
 

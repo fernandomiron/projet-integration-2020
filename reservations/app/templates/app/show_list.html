@@ -7,7 +7,14 @@
 <h1> Liste des spectacles </h1>
 <div style="margin-bottom:10px;">
     <form method="get" class="my-2" action="{% url 'show' %}">
-        <input type="text" class="form-control" name='query' placeholder="Rechercher.. ">
+        <div class="input-group">
+                <input name="query" class="form-control" placeholder=" Rechercher.. " value="{{search_term}}">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
     </form>
 
     <!-- hidden if you can't connect to the admin -->
