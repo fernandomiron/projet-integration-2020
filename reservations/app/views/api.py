@@ -28,7 +28,7 @@ MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
 
 class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+    """ APi view for Artist Data"""  
 
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
@@ -38,7 +38,7 @@ class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
 
 
 class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+    """ API view for Representation data"""  
 
     queryset = Representation.objects.all()
     serializer_class = RepresentationSerializer
@@ -48,7 +48,7 @@ class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
 
 
 class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+    """ API view for Show Data"""  
 
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
@@ -58,7 +58,7 @@ class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
 
 
 class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+    """ API view for Location data"""  
 
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
