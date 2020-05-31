@@ -7,7 +7,6 @@ from app.forms.locationForm import LocationForm
 from app.permissions.group import group_required
 
 
-@cache_page(7 * 24 * 60 * 60)
 @group_required('Administrateur', 'Moderateur')
 def CreateLocation(request):
     """Creating a location

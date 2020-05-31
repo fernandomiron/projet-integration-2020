@@ -17,7 +17,6 @@ from app.models.profile import UserProfile
 from app.models.reservation import Reservation
 
 
-@cache_page(24 * 60 * 60)
 def signup(request):
     """funtion for signup/register functionality"""
 
