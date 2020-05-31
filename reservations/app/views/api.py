@@ -12,6 +12,7 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 from url_filter.integrations.drf import DjangoFilterBackend
+from django.views.generic.base import TemplateView
 
 from app.models.artist import Artist
 from app.models.location import Location
@@ -25,6 +26,10 @@ from app.serializers.show import ShowSerializer
 
 
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
+
+class ListAPIView(TemplateView):
+    """ Render a list of all the html of the reservations project """
+    template_name = 'app/api_list.html'
 
 
 class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
