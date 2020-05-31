@@ -4,34 +4,61 @@
 <!-- Page Content -->
 <div class="container">
     <h1>Récupération des spectacles réussi !</h1>
-    <h2>Créer : </h2>
-        <ol>
+    <h2 class='mt-4'>Créer : </h2>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Poster</th>
+            <th scope="col">Bookable</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Date de création</th>
+            </tr>
+        </thead>
+        <tbody>
+            
             {% for show in data_to_create %}
-                <li>
-                    <h3>{{show.title|title}}</h3>
-                    <p>Description : {{show.description}}</p>
-                    <p>Poster : {{show.poster}}</p>
-                    <p>Bookable : {{show.bookable}}</p>
-                    <p>Price : {{show.price}}€</p>
-                    <p>Date_created : {{show.date_created}}</p>
-                </lI>
+                <tr>
+                <th scope="row">{{show.title|title}}</th>
+                <td>{{show.description}}</td>
+                <td>{{show.poster}}</td>
+                <td>{{show.bookable}}</td>
+                <td>{{show.price}}€</td>
+                <td>{{show.date_created}}</td>
+                </tr>
             {% endfor%}
-        </ol>
+            
+        </tbody>
+    </table>
 
-    <h2>Mis à jour : </h2>
-        <ol>
+    <h2 class='mt-4'>Mis à jour : </h2>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Poster</th>
+            <th scope="col">Bookable</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Date de création</th>
+            </tr>
+        </thead>
+        <tbody>
+            
             {% for show in data_to_update %}
-                <li>
-                    <h3>{{show.title}}</h3>
-                    <p>Description : {{show.description}}</p>
-                    <p>Poster : {{show.poster}}</p>
-                    <p>Bookable : {{show.bookable}}</p>
-                    <p>Price : {{show.price}}€</p>
-                    <p>Date_created : {{show.date_created}}</p>
-                </lI>
-                </br>
+                <tr>
+                <th scope="row">{{show.title|title}}</th>
+                <td>{{show.description}}</td>
+                <td>{{show.poster}}</td>
+                <td>{{show.bookable}}</td>
+                <td>{{show.price}}€</td>
+                <td>{{show.date_created}}</td>
+                </tr>
             {% endfor%}
-        </ol>
+            
+        </tbody>
+    </table>
 </div>
 <!-- /.container -->
 
