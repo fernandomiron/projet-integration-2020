@@ -78,8 +78,9 @@ def update_show_external_api(request):
     api_url = "http://{}{}".format(host, show_external)
     response = requests.get(api_url, timeout=10)
     data = response.json()
-    data_to_create = []
-    data_to_update = []
+    new_data = {}
+    to_update = 0
+    to_create = 0
 
     for show in data:
         if show['description'] is None:
@@ -94,10 +95,19 @@ def update_show_external_api(request):
         )
 
         if not Show.objects.filter(title=show['title']):
-            data_to_create.append(new_show)
+            is_new = True
+            new_data[show['title']] = {
+                'show' : show,
+                'is_new' : is_new
+            }
             new_show.save()
+            to_create += 1
         else:
-            data_to_update.append(show)
+            is_new = False
+            new_data[show['title']] = {
+                'show' : show,
+                'is_new' : is_new
+            }
             Show.objects.filter(title=show['title']).update(
                 title=show['title'],
                 description=show['description'],
@@ -105,9 +115,11 @@ def update_show_external_api(request):
                 bookable=show['bookable'],
                 price=show['price'],
             )
+            to_update += 1
 
     context = {
-        'data_to_create' : data_to_create,
-        'data_to_update' : data_to_update,
+        'data_dico' : new_data.values(),
+        'to_create' : to_create,
+        'to_update' : to_update,
     }
     return render(request, 'app/update_show.html', context)
