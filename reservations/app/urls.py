@@ -1,7 +1,12 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 
-from app.feedrss import LastShowFeed, LocationFeed, RepresentationFeed
+from app.feedrss import (
+    LastShowFeed,
+    LocationFeed,
+    RepresentationFeed,
+    ListFeedRSSView
+)
 from app.views import authentication, views, show
 from app.views.api import (
     ArtistApiView,
@@ -145,6 +150,7 @@ urlpatterns = [
     url(r'^api/list/$', ListAPIView.as_view(), name='api_list'),
 
     # RSS Feeds
+    url(r'^rss/list/$', ListFeedRSSView.as_view(), name='rss_list'),
     url(r'^rss/show/$', LastShowFeed(), name='rss_show'),
     url(r'^rss/representation/$', RepresentationFeed(),
         name='rss_representation'),
