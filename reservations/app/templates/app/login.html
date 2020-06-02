@@ -1,7 +1,7 @@
 <!--login template-->
 {% extends "base.html" %}
 
-{% block title %}Login {% endblock %}
+{% block title %}Se connecter {% endblock %}
 
 {% block content %}
 <!--<h1>Login</h1>
@@ -26,7 +26,7 @@
                 {{ form.non_field_errors }}
                 <div class="form-label-group">
                   {{ form.username }}
-                  <label for="{{ form.username.id_for_label }}">Adresse E-mail</label>
+                  <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
 
                     {{ form.username.errors }}
                 </div>
@@ -36,10 +36,6 @@
                   <label for="{{ form.password.id_for_label }}">Mot de passe</label>
 
                     {{ form.password.errors }}
-                </div>
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Se souvenir de mon mot de passe</label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" value="login">S'authentifier</button>
                 <div class="text-center">

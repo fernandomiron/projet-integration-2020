@@ -18,7 +18,6 @@ from app.models.artist import Artist
 from app.models.location import Location
 from app.models.show import Representation
 from app.models.show import Show
-from app.permissions.group import GroupRequiredMixin
 from app.serializers.artists import ArtistSerializer
 from app.serializers.location import LocationSerializer
 from app.serializers.representation import RepresentationSerializer
@@ -27,13 +26,14 @@ from app.serializers.show import ShowSerializer
 
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
+
 class ListAPIView(TemplateView):
     """ Render a list of all the html of the reservations project """
     template_name = 'app/api_list.html'
 
 
-class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class ArtistApiView (generics.ListAPIView):
+    """ APi view for Artist Data"""  
 
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
@@ -42,8 +42,8 @@ class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class RepresentationApiView (generics.ListAPIView):
+    """ API view for Representation data"""  
 
     queryset = Representation.objects.all()
     serializer_class = RepresentationSerializer
@@ -52,8 +52,8 @@ class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class ShowApiView (generics.ListAPIView):
+    """ API view for Show Data"""  
 
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
@@ -62,8 +62,8 @@ class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class LocationApiView (generics.ListAPIView):
+    """ API view for Location data"""  
 
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
@@ -134,7 +134,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
             return Response({"error": "Request failed"}, status=r.status_code)
 
 
-class ExternalAPI(GroupRequiredMixin, generics.ListAPIView):
+class ExternalAPI(generics.ListAPIView):
     """"""  # TODO: Comments missing !
 
     queryset = ''
