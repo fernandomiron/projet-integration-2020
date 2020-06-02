@@ -79,8 +79,8 @@ def update_show_external_api(request):
     response = requests.get(api_url, timeout=10)
     data = response.json()
     new_data = {}
-    to_update = 0
-    to_create = 0
+    nb_to_create = 0
+    nb_to_update = 0
 
     for show in data:
         if show['description'] is None:
@@ -101,7 +101,7 @@ def update_show_external_api(request):
                 'is_new' : is_new
             }
             new_show.save()
-            to_create += 1
+            nb_to_create += 1
         else:
             is_new = False
             new_data[show['title']] = {
@@ -115,11 +115,11 @@ def update_show_external_api(request):
                 bookable=show['bookable'],
                 price=show['price'],
             )
-            to_update += 1
+            nb_to_update += 1
 
     context = {
         'data_dico' : new_data.values(),
-        'to_create' : to_create,
-        'to_update' : to_update,
+        'nb_to_create' : nb_to_create,
+        'nb_to_update' : nb_to_update,
     }
     return render(request, 'app/update_show.html', context)

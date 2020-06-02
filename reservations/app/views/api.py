@@ -28,7 +28,7 @@ MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
 
 class ListAPIView(TemplateView):
-    """ Render a list of all the html of the reservations project """
+    """ Render a list of all the api of the reservations project """
     template_name = 'app/api_list.html'
 
 
