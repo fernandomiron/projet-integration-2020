@@ -9,7 +9,7 @@
 <section class="content">
 
 
-    <div class="card border-dark mb-4">
+    <div class="card border-dark mb-4" id="profil">
         <h5 class="card-header bg-dark text-white">{{ user.username }}</h5>
         <div class="card-body">
             <h5>Nom : {{ user.last_name }}</h5>
@@ -17,11 +17,10 @@
             <h5>E-mail : {{ user.email }}</h5>
             <h5>Langue : {{ user.userprofile.language }}</h5>
             <a href='{% url "profile-update" %}' class="btn btn-secondary">Modifier le profil</a>
-            <a href="{% url 'admin:index' %}" class="btn btn-secondary">Administration</a>
         </div>
     </div>
 
-    <h2> Mes réservations</h2>
+    <h2 id="Mes_reservations"> Mes réservations</h2>
     <table class="table">
         <thead class="thead-dark">
         <tr>
