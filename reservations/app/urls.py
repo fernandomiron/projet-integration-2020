@@ -10,6 +10,7 @@ from app.views.api import (
     ShowApiView,
     ExternalAPI,
     ExternalAPIShowView,
+    ListAPIView
 )
 from app.views.locationList import LocationListView
 from app.views.locationCRUD import (
@@ -141,6 +142,7 @@ urlpatterns = [
     url(r'^api/representation/$', RepresentationApiView.as_view(),
         name='api_representation'),
     url(r'^api/location/$', LocationApiView.as_view(), name='api_location'),
+    url(r'^api/list/$', ListAPIView.as_view(), name='api_list'),
 
     # RSS Feeds
     url(r'^rss/show/$', LastShowFeed(), name='rss_show'),

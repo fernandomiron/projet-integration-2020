@@ -12,6 +12,7 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 from url_filter.integrations.drf import DjangoFilterBackend
+from django.views.generic.base import TemplateView
 
 from app.models.artist import Artist
 from app.models.location import Location
@@ -25,6 +26,10 @@ from app.serializers.show import ShowSerializer
 
 
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
+
+class ListAPIView(TemplateView):
+    """ Render a list of all the html of the reservations project """
+    template_name = 'app/api_list.html'
 
 
 class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
@@ -70,8 +75,7 @@ class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
 class ExternalAPIShowView(generics.GenericAPIView):
     """"""  # TODO: Comments missing !
 
-    queryset = Show.objects.all()
-    serializer_class = ShowSerializer
+    queryset = ''
 
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
@@ -110,7 +114,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
                             price = price.strip()
 
                     # Convert the price in Integer
-                    price = int(price)
+                    price = float(price)
 
                     data_filtered = {
                         'title': title,
