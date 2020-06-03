@@ -31,7 +31,7 @@
       <!--pagination part -->
       <div class="pagination">
       {% if locations.has_previous %}
-        <a class="btn btn-outline-secondary mb-5" href="?page=1">début</a>
+        <a class="btn btn-outline-secondary mb-5" href="?page=1">Première page</a>
         <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.previous_page_number }}"><</a>
         {% endif %}
 
@@ -46,7 +46,7 @@
 
         {% if locations.has_next %}
         <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.next_page_number }}">></a>
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.paginator.num_pages }}">fin</a>
+        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.paginator.num_pages }}">Dernière page</a>
         {% endif %}
 
     </div>
