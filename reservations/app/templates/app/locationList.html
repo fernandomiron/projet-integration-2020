@@ -32,7 +32,7 @@
       <div class="pagination">
       {% if locations.has_previous %}
         <a class="btn btn-outline-secondary mb-5" href="?page=1">Première page</a>
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.previous_page_number }}"><</a>
+        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.previous_page_number }}">Page précédente</a>
         {% endif %}
 
         {% for num in locations.paginator.page_range %}
@@ -45,7 +45,7 @@
         {% endfor %}
 
         {% if locations.has_next %}
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.next_page_number }}">></a>
+        <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.next_page_number }}">Page suivante</a>
         <a class="btn btn-outline-secondary mb-5" href="?page={{ locations.paginator.num_pages }}">Dernière page</a>
         {% endif %}
 
