@@ -70,6 +70,9 @@ img {
                 <li class="nav-item">
                     <a class="nav-link mr-2" href="{% url 'api_list' %}">API</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link mr-2" href="{% url 'rss_list' %}">RSS</a>
+                </li>
                 {% if user.is_staff %}
                 <li class="nav-item mr-2 nav-icc">
                     <a class="nav-link" href="{% url 'admin:index' %}">Administration</a>
