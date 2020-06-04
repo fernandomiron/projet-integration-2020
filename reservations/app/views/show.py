@@ -10,7 +10,6 @@ from app.models.show import Show, Representation
 from app.permissions.group import group_required
 
 
-@cache_page(15 * 60)
 def show_list(request):
     """Render list of shows"""
 
@@ -29,9 +28,8 @@ def show_list(request):
     return render(request, 'app/show_list.html', context)
 
 
-@cache_page(15 * 60)
 def show_detail(request, pk):
-    """Display details of one selected show based on its pk"""
+    """ Display details of one selected show based on its pk"""
 
     show = get_object_or_404(Show, pk=pk)
     representations = Representation.objects.filter(show=pk)
@@ -43,7 +41,6 @@ def show_detail(request, pk):
     return render(request, 'app/show_detail.html', context)
 
 
-@cache_page(15 * 60)
 def show_detail_slug(request, slug):
     """Display details of one selected show based on its slug"""
     # TODO: Function has been duplicated for slug support, must be merged
@@ -58,10 +55,9 @@ def show_detail_slug(request, slug):
     return render(request, 'app/show_detail.html', context)
 
 
-@cache_page(24 * 60 * 60)
 @group_required('Administrateur', 'Moderateur')
 def show_external_api(request):
-    """"""  # TODO: Comments missing !
+    """ show external api function """
 
     show_external = reverse('ext-api-show')
     host = request.get_host()
@@ -73,18 +69,18 @@ def show_external_api(request):
     return render(request, 'app/external_api_show.html', context)
 
 
-@cache_page(24 * 60 * 60)
 @group_required('Administrateur', 'Moderateur')
 def update_show_external_api(request):
-    """"""  # TODO: Comments missing !
+    """ update show external api function """
 
     show_external = reverse('ext-api-show')
     host = request.get_host()
     api_url = "http://{}{}".format(host, show_external)
     response = requests.get(api_url, timeout=10)
     data = response.json()
-    data_to_create = []
-    data_to_update = []
+    new_data = {}
+    nb_to_create = 0
+    nb_to_update = 0
 
     for show in data:
         if show['description'] is None:
@@ -99,10 +95,19 @@ def update_show_external_api(request):
         )
 
         if not Show.objects.filter(title=show['title']):
-            data_to_create.append(new_show)
+            is_new = True
+            new_data[show['title']] = {
+                'show' : show,
+                'is_new' : is_new
+            }
             new_show.save()
+            nb_to_create += 1
         else:
-            data_to_update.append(show)
+            is_new = False
+            new_data[show['title']] = {
+                'show' : show,
+                'is_new' : is_new
+            }
             Show.objects.filter(title=show['title']).update(
                 title=show['title'],
                 description=show['description'],
@@ -110,9 +115,11 @@ def update_show_external_api(request):
                 bookable=show['bookable'],
                 price=show['price'],
             )
+            nb_to_update += 1
 
     context = {
-        'data_to_create' : data_to_create,
-        'data_to_update' : data_to_update,
+        'data_dico' : new_data.values(),
+        'nb_to_create' : nb_to_create,
+        'nb_to_update' : nb_to_update,
     }
     return render(request, 'app/update_show.html', context)

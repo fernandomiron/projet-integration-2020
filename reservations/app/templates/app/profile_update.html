@@ -12,6 +12,8 @@
 
                         {{ user_update_form.as_p }}
                         {{ user_profile_update_form.as_p}}
+                        
+                        <a class="btn btn-secondary mb-4" href="{% url 'password_change_form' %}">Modifier le mot de passe</a>
 
                     </fieldset>
                     <div class="form-group">

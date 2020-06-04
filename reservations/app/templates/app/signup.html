@@ -56,13 +56,14 @@
                                     {{user_profile_form.language}}
                                     <label for="{{user_profile_form.language.id_for_label}}"></label>
                                 </div>
-
+                                    {{user_form.errors}}
                                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">
                                     s'enregistrer
                                 </button>
                                 <a class="d-block text-center mt-2 small" href="{% url 'login' %}">Se connecter</a>
                                 <hr class="my-4">
                                 </form>
+
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,6 @@
+<!-- show list html template-->
 {% extends 'base.html' %}
+{% block title %} Liste de spectacle {% endblock %}
 
 {% block content %}
 <section class="content">
@@ -6,12 +8,20 @@
 <h1> Liste des spectacles </h1>
 <div style="margin-bottom:10px;">
     <form method="get" class="my-2" action="{% url 'show' %}">
-        <input type="text" class="form-control" name='query' placeholder="Rechercher.. ">
+        <div class="input-group">
+                <input name="query" class="form-control" placeholder=" Rechercher.. " value="{{search_term}}">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
     </form>
 
     <!-- hidden if you can't connect to the admin -->
     {% if request.user.is_staff %}
-      <a href="{% url 'ShowCrud' %}" class="btn btn-primary btn-sm m-1"> Ajouter Show </a> <!-- A mettre dans la nav bar-->
+        <a href="{% url 'ShowCrud' %}" class="btn btn-primary btn-sm m-1"> Ajouter un spéctacle </a> <!-- A mettre dans la nav bar-->
+        <a href="{% url 'ext-show' %}" class="btn btn-primary btn-sm m-1"> Mise à jour des spécracles avec une API</a>
     {% endif %}
 
 </div>
@@ -33,8 +43,8 @@
 
                     <!-- Connection as staff required ! -->
                     {% if request.user.is_staff %}
-                      <a href="{% url 'UpdateShow' show.pk %}" class="btn btn-primary btn-sm m-1"> Modifier show </a>
-                      <a href="{% url 'DeleteShow' show.pk %}" class="btn btn-primary btn-sm m-1"> supprimer show </a>
+                      <a href="{% url 'UpdateShow' show.pk %}" class="btn btn-primary btn-sm m-1">Modifier show</a>
+                      <a href="{% url 'DeleteShow' show.pk %}" class="btn btn-primary btn-sm m-1">Supprimer show</a>
                     {% endif %}
 
                 </div>
@@ -59,25 +69,23 @@
 
 </div>-->
     <div class="pagination">
-      {% if shows.has_previous %}
-        <a class="btn btn-outline-secondary mb-5" href="?page=1">début</a>
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.previous_page_number }}"><</a>
+        {% if shows.has_previous %}
+            <a class="btn btn-outline-secondary mb-5" href="?page=1">Première page</a>
+            <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.previous_page_number }}">Page précédente</a>
         {% endif %}
 
         {% for num in shows.paginator.page_range %}
-        {% if shows.number == num %}
-        <a class="btn btn-secondary mb-5" href="?page= {{ num }}">{{ num }}</a>
-        {% elif num > shows.number|add:'-5' and num < shows.number|add:'5' %}
-        <a class="btn btn-outline-secondary mb-5" href="?page= {{ num }}">{{ num }}</a>
-        {% endif %}
-
+            {% if shows.number == num %}
+                <a class="btn btn-secondary mb-5" href="?page= {{ num }}">{{ num }}</a>
+            {% elif num > shows.number|add:'-5' and num < shows.number|add:'5' %}
+                <a class="btn btn-outline-secondary mb-5" href="?page= {{ num }}">{{ num }}</a>
+            {% endif %}
         {% endfor %}
 
         {% if shows.has_next %}
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.next_page_number }}">></a>
-        <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.paginator.num_pages }}">fin</a>
+            <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.next_page_number }}">Page suivante</a>
+            <a class="btn btn-outline-secondary mb-5" href="?page={{ shows.paginator.num_pages }}">Dernière page</a>
         {% endif %}
-
     </div>
 <section class="content">
 

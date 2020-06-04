@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def ppalhome(request, **kwargs):
-    """"""  # TODO: Comments missing !
+    """ paypal home """
 
     idreservation = request.GET.get('idreservation')
     reservation = get_object_or_404(Reservation, pk=idreservation)
@@ -47,7 +47,7 @@ def ppalhome(request, **kwargs):
 @csrf_exempt
 @login_required
 def ppalreturn(request, pk):
-    """"""  # TODO: Comments missing !
+    """"paypal return page"""
 
     reservation = get_object_or_404(Reservation, pk=pk)
     reservation.status = 'Completed'
@@ -59,7 +59,7 @@ def ppalreturn(request, pk):
 
 @login_required
 def ppalcancel(request, pk):
-    """"""  # TODO: Comments missing !
+    """paypal cancel page"""
 
     reservation = get_object_or_404(Reservation, pk=pk)
     reservation.status = 'Cancelled'

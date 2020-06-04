@@ -12,12 +12,12 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 from url_filter.integrations.drf import DjangoFilterBackend
+from django.views.generic.base import TemplateView
 
 from app.models.artist import Artist
 from app.models.location import Location
 from app.models.show import Representation
 from app.models.show import Show
-from app.permissions.group import GroupRequiredMixin
 from app.serializers.artists import ArtistSerializer
 from app.serializers.location import LocationSerializer
 from app.serializers.representation import RepresentationSerializer
@@ -27,8 +27,13 @@ from app.serializers.show import ShowSerializer
 MAX_RETRIES = 5  # Arbitrary number of times we want to try
 
 
-class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class ListAPIView(TemplateView):
+    """ Render a list of all the api of the reservations project """
+    template_name = 'app/api_list.html'
+
+
+class ArtistApiView (generics.ListAPIView):
+    """ APi view for Artist Data"""  
 
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
@@ -37,8 +42,8 @@ class ArtistApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class RepresentationApiView (generics.ListAPIView):
+    """ API view for Representation data"""  
 
     queryset = Representation.objects.all()
     serializer_class = RepresentationSerializer
@@ -47,8 +52,8 @@ class RepresentationApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class ShowApiView (generics.ListAPIView):
+    """ API view for Show Data"""  
 
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
@@ -57,8 +62,8 @@ class ShowApiView (GroupRequiredMixin, generics.ListAPIView):
     group_required = [u'Administrateur', u'Moderateur']
 
 
-class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
-    """"""  # TODO: Comments missing !
+class LocationApiView (generics.ListAPIView):
+    """ API view for Location data"""  
 
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
@@ -70,8 +75,7 @@ class LocationApiView (GroupRequiredMixin, generics.ListAPIView):
 class ExternalAPIShowView(generics.GenericAPIView):
     """"""  # TODO: Comments missing !
 
-    queryset = Show.objects.all()
-    serializer_class = ShowSerializer
+    queryset = ''
 
     # Get the list of show from Théatre de la ville de Paris
     def get(self, request, *args, **kwargs):
@@ -110,7 +114,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
                             price = price.strip()
 
                     # Convert the price in Integer
-                    price = int(price)
+                    price = float(price)
 
                     data_filtered = {
                         'title': title,
@@ -130,7 +134,7 @@ class ExternalAPIShowView(generics.GenericAPIView):
             return Response({"error": "Request failed"}, status=r.status_code)
 
 
-class ExternalAPI(GroupRequiredMixin, generics.ListAPIView):
+class ExternalAPI(generics.ListAPIView):
     """"""  # TODO: Comments missing !
 
     queryset = ''

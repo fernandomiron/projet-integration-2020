@@ -5,7 +5,6 @@ from app.models.show import Representation
 from app.models.location import Location
 
 
-@cache_page(24 * 60 * 60)
 def LocationDetailedView(request, slug):
     """This function will return a dictionnary with all the representations
     matching the location's slugs got by clicking on location's

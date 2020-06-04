@@ -1,7 +1,13 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse_lazy
+from django.views.generic.base import TemplateView
 
 from app.models import Location, Representation, Show
+
+
+class ListFeedRSSView(TemplateView):
+    """ Render a list of all the rss of the reservations project """
+    template_name = 'app/rss_list.html'
 
 
 class LastShowFeed(Feed):

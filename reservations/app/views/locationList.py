@@ -5,7 +5,6 @@ from django.views.decorators.cache import cache_page
 from app.models.location import Location
 
 
-@cache_page(1 * 60 * 60)
 def LocationListView(request):
     """List of locations.
 
@@ -21,7 +20,7 @@ def LocationListView(request):
 
         locations = locations.filter(designation__icontains=search_term)
 
-    paginator = Paginator(locations, 5)  # pagination will allow only 5 items
+    paginator = Paginator(locations, 10)  # pagination will allow only 5 items
     page = request.GET.get('page')
     locations = paginator.get_page(page)
     return render(request, 'app/locationList.html',
