@@ -4,7 +4,7 @@ from app.forms.representationForm import (
     RepresentationForm,
 
 )
-from app.models.show import Location
+from app.models.show import Show
 from app.models.show import Representation
 from app.permissions.group import group_required
 
@@ -17,19 +17,18 @@ def CreateRepresentation(request, pk):
     permissions.
     """
 
-    location = get_object_or_404(Location, pk=pk)
-    # getting the id in order to stay in the current location detailed view, matching the pk
+    show = get_object_or_404(Show, pk=pk)
+    # getting the id in order to stay in the current Show detailed view, matching the pk
 
     form = RepresentationForm(request.POST or None)
     # when the user will click at save he will POST contents
     # if there is something in POST create a form with contents if not create an empty form (NONE)
 
     if form.is_valid():
-        location = get_object_or_404(Location, pk=pk)
-        # getting the id in order to stay in the current location detailed view, matching the pk
+        # getting the id in order to stay in the current show detailed view, matching the pk
         form.save()
 
-        return redirect(location)  # we'll be redirect again at the current location detailed view.
+        return redirect(show)  # we'll be redirect again at the current show detailed view.
     else:
         return render(request, 'app/representationCRUD.html',
                       {'CreateRep': form})
@@ -45,10 +44,10 @@ def UpdateRepresentation(request, pk):
     representation = get_object_or_404(Representation, pk=pk)
     form = RepresentationForm(request.POST or None, instance=representation)
     if form.is_valid():
-        location = representation.location  # getting the location matching the current representation.
+        show = representation.show  # getting the show matching the current representation.
         form.save()
 
-        return redirect(location)
+        return redirect(show)
     else:
         return render(request, 'app/representationCRUD.html',
                       {'UpdateRep': form})
@@ -61,14 +60,14 @@ def DeleteRepresentation(request, pk):
     This will allow deleting a representation"""
 
     representation = get_object_or_404(Representation, pk=pk)
-    location = representation.location  # getting the location matching the current representation.
+    show = representation.show  # getting the show matching the current representation.
 
     if request.method == 'POST':
         # if the user click on the submit button (displayed by the template)
         # he will post and confirm a delete.
 
         representation.delete()
-        return redirect(location)
+        return redirect(show)
     else:
         return render(request, 'app/deleteRepresentation.html',
-                      {'representation': representation, 'location': location})
+                      {'representation': representation, 'show': show})
