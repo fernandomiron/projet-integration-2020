@@ -29,7 +29,7 @@ def show_list(request):
 
 
 def show_detail(request, pk):
-    """Display details of one selected show based on its pk"""
+    """ Display details of one selected show based on its pk"""
 
     show = get_object_or_404(Show, pk=pk)
     representations = Representation.objects.filter(show=pk)
@@ -57,7 +57,7 @@ def show_detail_slug(request, slug):
 
 @group_required('Administrateur', 'Moderateur')
 def show_external_api(request):
-    """"""  # TODO: Comments missing !
+    """ show external api function """
 
     show_external = reverse('ext-api-show')
     host = request.get_host()
@@ -71,7 +71,7 @@ def show_external_api(request):
 
 @group_required('Administrateur', 'Moderateur')
 def update_show_external_api(request):
-    """"""  # TODO: Comments missing !
+    """ update show external api function """
 
     show_external = reverse('ext-api-show')
     host = request.get_host()

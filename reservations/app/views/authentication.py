@@ -18,7 +18,7 @@ from app.models.reservation import Reservation
 
 
 def signup(request):
-    """funtion for signup/register functionality"""
+    """function for signup/register functionality"""
 
     if request.method == 'POST':
         user_form = UserSignupForm(request.POST)
